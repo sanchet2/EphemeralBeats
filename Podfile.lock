@@ -1,0 +1,22 @@
+PODS:
+  - JSONKit (1.4)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - StreamingKit (0.1.25)
+
+DEPENDENCIES:
+  - JSONKit
+  - ReactiveCocoa
+  - StreamingKit
+
+SPEC CHECKSUMS:
+  JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
+
+COCOAPODS: 0.37.2

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE33116FE28156059E2189AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 222D7AA0B36C141E6A25E493 /* libPods.a */; };
 		C72FA25F1B1C149D00BCBE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA25E1B1C149D00BCBE19 /* main.m */; };
 		C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2611B1C149D00BCBE19 /* AppDelegate.m */; };
 		C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */; };
@@ -15,6 +16,8 @@
 		C72FA26D1B1C149D00BCBE19 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C72FA26C1B1C149D00BCBE19 /* Images.xcassets */; };
 		C72FA2701B1C149D00BCBE19 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72FA26E1B1C149D00BCBE19 /* LaunchScreen.xib */; };
 		C72FA27C1B1C149D00BCBE19 /* EfemerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA27B1B1C149D00BCBE19 /* EfemerTests.m */; };
+		C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2861B1C156C00BCBE19 /* LoginViewController.m */; };
+		C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		222D7AA0B36C141E6A25E493 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		42176A70E44ED983B1884D5D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8F92E34B593FD258087A439E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C72FA2591B1C149D00BCBE19 /* Efemer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Efemer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA25D1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA25E1B1C149D00BCBE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,6 +48,10 @@
 		C72FA2751B1C149D00BCBE19 /* EfemerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EfemerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA27A1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA27B1B1C149D00BCBE19 /* EfemerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EfemerTests.m; sourceTree = "<group>"; };
+		C72FA2851B1C156C00BCBE19 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C72FA2861B1C156C00BCBE19 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C72FA28C1B1C17C100BCBE19 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
+		C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE33116FE28156059E2189AB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +73,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C2C1400ADDF2D4073492613 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F92E34B593FD258087A439E /* Pods.debug.xcconfig */,
+				42176A70E44ED983B1884D5D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C62774CF95663BCB4CA8BD0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				222D7AA0B36C141E6A25E493 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C72FA2501B1C149D00BCBE19 = {
 			isa = PBXGroup;
 			children = (
 				C72FA25B1B1C149D00BCBE19 /* Efemer */,
 				C72FA2781B1C149D00BCBE19 /* EfemerTests */,
 				C72FA25A1B1C149D00BCBE19 /* Products */,
+				7C2C1400ADDF2D4073492613 /* Pods */,
+				C62774CF95663BCB4CA8BD0D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +115,7 @@
 			children = (
 				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
 				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
+				C72FA2881B1C157300BCBE19 /* LoginViewController */,
 				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
@@ -122,6 +153,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C72FA2881B1C157300BCBE19 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C72FA2851B1C156C00BCBE19 /* LoginViewController.h */,
+				C72FA2861B1C156C00BCBE19 /* LoginViewController.m */,
+				C72FA28C1B1C17C100BCBE19 /* LoginViewModel.h */,
+				C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C72FA27F1B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "Efemer" */;
 			buildPhases = (
+				84A43B35A174028422B011C2 /* Check Pods Manifest.lock */,
 				C72FA2551B1C149D00BCBE19 /* Sources */,
 				C72FA2561B1C149D00BCBE19 /* Frameworks */,
 				C72FA2571B1C149D00BCBE19 /* Resources */,
+				446013D682754A2A6B43DAB8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +261,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		446013D682754A2A6B43DAB8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84A43B35A174028422B011C2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C72FA2551B1C149D00BCBE19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -224,8 +301,10 @@
 			files = (
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
+				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,
 				C72FA2681B1C149D00BCBE19 /* ViewController.m in Sources */,
 				C72FA25F1B1C149D00BCBE19 /* main.m in Sources */,
+				C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +430,7 @@
 		};
 		C72FA2801B1C149D00BCBE19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F92E34B593FD258087A439E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Efemer/Info.plist;
@@ -361,6 +441,7 @@
 		};
 		C72FA2811B1C149D00BCBE19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42176A70E44ED983B1884D5D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Efemer/Info.plist;
@@ -422,6 +503,7 @@
 				C72FA2811B1C149D00BCBE19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C72FA2821B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "EfemerTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +512,7 @@
 				C72FA2841B1C149D00BCBE19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
