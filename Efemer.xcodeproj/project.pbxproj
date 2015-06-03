@@ -18,6 +18,8 @@
 		C72FA27C1B1C149D00BCBE19 /* EfemerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA27B1B1C149D00BCBE19 /* EfemerTests.m */; };
 		C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2861B1C156C00BCBE19 /* LoginViewController.m */; };
 		C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */; };
+		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
+		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,10 @@
 		C72FA2861B1C156C00BCBE19 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C72FA28C1B1C17C100BCBE19 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		C7D52C0C1B1ED10C00657D55 /* SearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarVC.h; sourceTree = "<group>"; };
+		C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarVC.m; sourceTree = "<group>"; };
+		C7D52C101B1ED4C000657D55 /* SearchBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewModel.h; sourceTree = "<group>"; };
+		C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +122,9 @@
 				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
 				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
 				C72FA2881B1C157300BCBE19 /* LoginViewController */,
-				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
+				C7D52C0F1B1ED11400657D55 /* SearchBarVC */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
+				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
 				C72FA26C1B1C149D00BCBE19 /* Images.xcassets */,
 				C72FA26E1B1C149D00BCBE19 /* LaunchScreen.xib */,
@@ -162,6 +169,17 @@
 				C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */,
 			);
 			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		C7D52C0F1B1ED11400657D55 /* SearchBarVC */ = {
+			isa = PBXGroup;
+			children = (
+				C7D52C0C1B1ED10C00657D55 /* SearchBarVC.h */,
+				C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */,
+				C7D52C101B1ED4C000657D55 /* SearchBarViewModel.h */,
+				C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */,
+			);
+			name = SearchBarVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,9 +319,11 @@
 			files = (
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
+				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,
 				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,
 				C72FA2681B1C149D00BCBE19 /* ViewController.m in Sources */,
 				C72FA25F1B1C149D00BCBE19 /* main.m in Sources */,
+				C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */,
 				C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Efemer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -445,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Efemer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

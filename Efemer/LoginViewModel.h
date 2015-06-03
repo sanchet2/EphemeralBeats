@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface LoginViewModel : NSObject
-
++ (id)sharedManager;
+@property (strong,nonatomic) RACSignal *textInput;
+@property (strong,nonatomic) RACCommand *command;
 @end

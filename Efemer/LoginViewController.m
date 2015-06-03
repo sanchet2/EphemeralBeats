@@ -9,32 +9,67 @@
 #import "LoginViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "LoginViewModel.h"
+#import "SearchBarVC.h"
 
 @interface LoginViewController ()
 @property (nonatomic,strong) UITextField *userName;
 @property (nonatomic,strong) UIButton *loginButton;
+@property (nonatomic,strong) LoginViewModel *viewModel;
+@property (nonatomic,strong) UIButton *button;
 @end
 
 @implementation LoginViewController
 
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if(self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
+    {
+       
+        self.viewModel=[LoginViewModel sharedManager];
+    }
+    return self;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //initialize view model
     
-    self.userName= [[UITextField alloc] initWithFrame:CGRectMake(45, 30, 200, 40)];
+    self.userName= [[UITextField alloc] initWithFrame:CGRectMake(80, 200, 200, 40)];
     self.userName.textColor = [UIColor colorWithRed:0/256.0 green:84/256.0 blue:129/256.0 alpha:1.0];
     self.userName.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
-    self.userName.backgroundColor=[UIColor whiteColor];
+    self.userName.backgroundColor=[UIColor greenColor];
     self.userName.text=@"Hello World";
-    
     [self.view addSubview:self.userName];
-    RAC(self.viem)[self.userName.rac_textSignal];
+    
+    
+    self.button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.button addTarget:self
+               action:@selector(goToNewViewController)
+     forControlEvents:UIControlEventTouchUpInside];
+    [self.button setTitle:@"Show View" forState:UIControlStateNormal];
+    self.button.frame = CGRectMake(80.0, 300.0, 160.0, 40.0);
+    [self.view addSubview:self.button];
+    
+    [self bindToModelView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)bindToModelView
+{
+    RAC(self.viewModel,textInput)=self.userName.rac_textSignal;
+    self.button.rac_command=self.viewModel.command;
+    
+}
+-(void)goToNewViewController{
+    //add to navigation bar
+    SearchBarVC *searchBar=[[SearchBarVC alloc]init];
+    [self.navigationController pushViewController:searchBar animated:YES];
+    
 }
 
 /*

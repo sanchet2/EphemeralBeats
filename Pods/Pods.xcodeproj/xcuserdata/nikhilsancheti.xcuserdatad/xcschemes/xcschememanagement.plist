@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-JSONKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-ReactiveCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>084593822799533BCC6063AD</key>
+		<key>369FD03ECA978F00CE0A08BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F22D0BE51FB5C96DFD32F06</key>
+		<key>667618585A00D8A34EAFB4A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>802DFB47DD3F04BFE0A38758</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8D70E07D9BC533EAF01C1228</key>
+		<key>896D06F3520688E5C889AF25</key>
 		<dict>
 			<key>primary</key>
 			<true/>
