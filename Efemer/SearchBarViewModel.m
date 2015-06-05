@@ -27,30 +27,23 @@
     if (self=[super init]) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.session = [NSURLSession sessionWithConfiguration:config];
-        [self searchBar];
+        [self jsonData];
     }
     return self;
 }
--(void)searchBar{
-    RACSignal * url=[[[[RACObserve(self, textInput)
+-(RACSignal *)jsonData{
+    return [[[[[RACObserve(self, textInput)
             filter:^BOOL(NSString *input){
-            return [input length]>3;
-        }]  map:^NSString*(NSString *input){
-            //TODO: need to replace spaces with %20
-            NSString *needed=[input stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-            return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&limit=20&streamable=yes",needed];
-        }] throttle:0.5]
+             return [input length]>3;
+     }]     map:^NSString*(NSString *input){
+             NSString *needed=[input stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+             return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&limit=20&streamable=yes",needed];
+     }]     throttle:0.5]
             map:^NSURL *(NSString *url){
-            return [NSURL URLWithString:url];
+             return [NSURL URLWithString:url];
+     }]     flattenMap:^(NSURL *url){
+             return [self fetchJSONFromURL:url];
      }];
-    
-    [[url flattenMap:^(NSURL *url){
-        return [self fetchJSONFromURL:url];
-    }] subscribeNext:^(id x){
-        NSLog(@"%@",x);
-    }];
-    
-    
 }
 - (RACSignal *)fetchJSONFromURL:(NSURL *)url {
     NSLog(@"Fetching: %@",url.absoluteString);
@@ -82,5 +75,37 @@
         NSLog(@"%@",error);
     }];
 }
+-(RACSignal *)downloadImage:(NSURL *)url{
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+    [self downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
+        if (succeeded) {
+            [subscriber sendNext:image];
+            [subscriber sendCompleted];
+        }
+    }];
+        return [RACDisposable disposableWithBlock:^{
+        }];
+    }] doError:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if ( !error )
+                               {
+                                   UIImage *image = [[UIImage alloc] initWithData:data];
+                                   completionBlock(YES,image);
+                               } else{
+                                   completionBlock(NO,nil);
+                               }
+                           }];
+}
+
+
 
 @end
