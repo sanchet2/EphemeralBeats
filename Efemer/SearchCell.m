@@ -13,7 +13,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        
+        self.backgroundColor=[UIColor blackColor];
         UIImageView *av = [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width-20, self.frame.size.height-20)];
         av.backgroundColor = [UIColor clearColor];
         av.opaque = NO;
@@ -22,7 +22,6 @@
         self.backgroundView = av;
         av.contentMode=UIViewContentModeScaleAspectFill;
         av.layer.cornerRadius=5;
-        av.layer.opacity=0.5;
         
         self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 200, 30)];
         self.artist.textColor = [UIColor whiteColor];

@@ -1,4 +1,5 @@
 PODS:
+  - JSONModel (1.1.0)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -9,10 +10,12 @@ PODS:
   - StreamingKit (0.1.25)
 
 DEPENDENCIES:
+  - JSONModel
   - ReactiveCocoa
   - StreamingKit
 
 SPEC CHECKSUMS:
+  JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
 

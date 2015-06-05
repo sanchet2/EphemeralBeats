@@ -32,23 +32,24 @@
     return self;
 }
 -(void)searchBar{
-    [[[[RACObserve(self, textInput)
-        filter:^BOOL(NSString *input){
+    RACSignal * url=[[[[RACObserve(self, textInput)
+            filter:^BOOL(NSString *input){
             return [input length]>3;
         }]  map:^NSString*(NSString *input){
             //TODO: need to replace spaces with %20
             NSString *needed=[input stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
             return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&limit=20&streamable=yes",needed];
         }] throttle:0.5]
-     subscribeNext:^(NSString *url){
-         //hack
-         [[self fetchJSONFromURL:[NSURL URLWithString:url]]subscribeNext:^(id x){
-                                                                   NSLog(@"%@",x);
-         }
-                                                                   error:^(NSError *error){
-                                                                       NSLog(@"%@",error);
-                                                                   }];
+            map:^NSURL *(NSString *url){
+            return [NSURL URLWithString:url];
      }];
+    
+    [[url flattenMap:^(NSURL *url){
+        return [self fetchJSONFromURL:url];
+    }] subscribeNext:^(id x){
+        NSLog(@"%@",x);
+    }];
+    
     
 }
 - (RACSignal *)fetchJSONFromURL:(NSURL *)url {

@@ -6,6 +6,12 @@
 // project.
 
 
+// JSONModel
+#define COCOAPODS_POD_AVAILABLE_JSONModel
+#define COCOAPODS_VERSION_MAJOR_JSONModel 1
+#define COCOAPODS_VERSION_MINOR_JSONModel 1
+#define COCOAPODS_VERSION_PATCH_JSONModel 0
+
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa 2

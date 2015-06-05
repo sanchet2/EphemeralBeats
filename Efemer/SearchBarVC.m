@@ -34,7 +34,7 @@
     [self.navigationController setNavigationBarHidden:true];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor=[UIColor blackColor];
+    self.view.backgroundColor=[UIColor whiteColor];
     self.searchQuery= [[UITextField alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width-40, 40)];
     self.searchQuery.textColor = [UIColor colorWithRed:0/256.0 green:84/256.0 blue:129/256.0 alpha:1.0];
     self.searchQuery.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
@@ -42,7 +42,7 @@
     self.searchQuery.text=@"c";
     [self.view addSubview:self.searchQuery];
     
-    self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height-100) style:UITableViewStyleGrouped];
+    self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-100) style:UITableViewStyleGrouped];
     self.searchTable.delegate=self;
     self.searchTable.dataSource=self;
     self.searchTable.backgroundColor=[UIColor clearColor];

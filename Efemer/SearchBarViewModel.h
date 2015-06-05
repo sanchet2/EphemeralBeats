@@ -11,5 +11,6 @@
 
 @interface SearchBarViewModel : NSObject
 @property (strong,nonatomic) NSString *textInput;
+@property (strong,nonatomic) NSArray *songs;
 + (id)sharedManager;
 @end
