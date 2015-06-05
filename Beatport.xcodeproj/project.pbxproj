@@ -36,7 +36,7 @@
 		222D7AA0B36C141E6A25E493 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		42176A70E44ED983B1884D5D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8F92E34B593FD258087A439E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C72FA2591B1C149D00BCBE19 /* Efemer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Efemer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C72FA2591B1C149D00BCBE19 /* Beatport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA25D1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA25E1B1C149D00BCBE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C72FA2601B1C149D00BCBE19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		C72FA26A1B1C149D00BCBE19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C72FA26C1B1C149D00BCBE19 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C72FA26F1B1C149D00BCBE19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		C72FA2751B1C149D00BCBE19 /* EfemerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EfemerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C72FA2751B1C149D00BCBE19 /* BeatportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA27A1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA27B1B1C149D00BCBE19 /* EfemerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EfemerTests.m; sourceTree = "<group>"; };
 		C72FA2851B1C156C00BCBE19 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 		C72FA25A1B1C149D00BCBE19 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C72FA2591B1C149D00BCBE19 /* Efemer.app */,
-				C72FA2751B1C149D00BCBE19 /* EfemerTests.xctest */,
+				C72FA2591B1C149D00BCBE19 /* Beatport.app */,
+				C72FA2751B1C149D00BCBE19 /* BeatportTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C72FA2581B1C149D00BCBE19 /* Efemer */ = {
+		C72FA2581B1C149D00BCBE19 /* Beatport */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C72FA27F1B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "Efemer" */;
+			buildConfigurationList = C72FA27F1B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "Beatport" */;
 			buildPhases = (
 				84A43B35A174028422B011C2 /* Check Pods Manifest.lock */,
 				C72FA2551B1C149D00BCBE19 /* Sources */,
@@ -199,14 +199,14 @@
 			);
 			dependencies = (
 			);
-			name = Efemer;
+			name = Beatport;
 			productName = Efemer;
-			productReference = C72FA2591B1C149D00BCBE19 /* Efemer.app */;
+			productReference = C72FA2591B1C149D00BCBE19 /* Beatport.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C72FA2741B1C149D00BCBE19 /* EfemerTests */ = {
+		C72FA2741B1C149D00BCBE19 /* BeatportTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C72FA2821B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "EfemerTests" */;
+			buildConfigurationList = C72FA2821B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "BeatportTests" */;
 			buildPhases = (
 				C72FA2711B1C149D00BCBE19 /* Sources */,
 				C72FA2721B1C149D00BCBE19 /* Frameworks */,
@@ -217,9 +217,9 @@
 			dependencies = (
 				C72FA2771B1C149D00BCBE19 /* PBXTargetDependency */,
 			);
-			name = EfemerTests;
+			name = BeatportTests;
 			productName = EfemerTests;
-			productReference = C72FA2751B1C149D00BCBE19 /* EfemerTests.xctest */;
+			productReference = C72FA2751B1C149D00BCBE19 /* BeatportTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -240,7 +240,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C72FA2541B1C149D00BCBE19 /* Build configuration list for PBXProject "Efemer" */;
+			buildConfigurationList = C72FA2541B1C149D00BCBE19 /* Build configuration list for PBXProject "Beatport" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -253,8 +253,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C72FA2581B1C149D00BCBE19 /* Efemer */,
-				C72FA2741B1C149D00BCBE19 /* EfemerTests */,
+				C72FA2581B1C149D00BCBE19 /* Beatport */,
+				C72FA2741B1C149D00BCBE19 /* BeatportTests */,
 			);
 		};
 /* End PBXProject section */
@@ -341,7 +341,7 @@
 /* Begin PBXTargetDependency section */
 		C72FA2771B1C149D00BCBE19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C72FA2581B1C149D00BCBE19 /* Efemer */;
+			target = C72FA2581B1C149D00BCBE19 /* Beatport */;
 			targetProxy = C72FA2761B1C149D00BCBE19 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -402,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -440,7 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -454,9 +454,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Efemer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Beatport;
 			};
 			name = Debug;
 		};
@@ -466,9 +466,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Efemer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Beatport;
 			};
 			name = Release;
 		};
@@ -486,8 +486,8 @@
 				);
 				INFOPLIST_FILE = EfemerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Efemer.app/Efemer";
+				PRODUCT_NAME = BeatportTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Beatport.app/Beatport";
 			};
 			name = Debug;
 		};
@@ -501,15 +501,15 @@
 				);
 				INFOPLIST_FILE = EfemerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Efemer.app/Efemer";
+				PRODUCT_NAME = BeatportTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Beatport.app/Beatport";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C72FA2541B1C149D00BCBE19 /* Build configuration list for PBXProject "Efemer" */ = {
+		C72FA2541B1C149D00BCBE19 /* Build configuration list for PBXProject "Beatport" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C72FA27D1B1C149D00BCBE19 /* Debug */,
@@ -518,7 +518,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C72FA27F1B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "Efemer" */ = {
+		C72FA27F1B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "Beatport" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C72FA2801B1C149D00BCBE19 /* Debug */,
@@ -527,7 +527,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C72FA2821B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "EfemerTests" */ = {
+		C72FA2821B1C149D00BCBE19 /* Build configuration list for PBXNativeTarget "BeatportTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C72FA2831B1C149D00BCBE19 /* Debug */,

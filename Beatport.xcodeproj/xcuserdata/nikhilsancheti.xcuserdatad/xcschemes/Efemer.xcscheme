@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C72FA2581B1C149D00BCBE19"
-               BuildableName = "Efemer.app"
-               BlueprintName = "Efemer"
-               ReferencedContainer = "container:Efemer.xcodeproj">
+               BuildableName = "Beatport.app"
+               BlueprintName = "Beatport"
+               ReferencedContainer = "container:Beatport.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C72FA2741B1C149D00BCBE19"
-               BuildableName = "EfemerTests.xctest"
-               BlueprintName = "EfemerTests"
-               ReferencedContainer = "container:Efemer.xcodeproj">
+               BuildableName = "BeatportTests.xctest"
+               BlueprintName = "BeatportTests"
+               ReferencedContainer = "container:Beatport.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C72FA2741B1C149D00BCBE19"
-               BuildableName = "EfemerTests.xctest"
-               BlueprintName = "EfemerTests"
-               ReferencedContainer = "container:Efemer.xcodeproj">
+               BuildableName = "BeatportTests.xctest"
+               BlueprintName = "BeatportTests"
+               ReferencedContainer = "container:Beatport.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C72FA2581B1C149D00BCBE19"
-            BuildableName = "Efemer.app"
-            BlueprintName = "Efemer"
-            ReferencedContainer = "container:Efemer.xcodeproj">
+            BuildableName = "Beatport.app"
+            BlueprintName = "Beatport"
+            ReferencedContainer = "container:Beatport.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C72FA2581B1C149D00BCBE19"
-            BuildableName = "Efemer.app"
-            BlueprintName = "Efemer"
-            ReferencedContainer = "container:Efemer.xcodeproj">
+            BuildableName = "Beatport.app"
+            BlueprintName = "Beatport"
+            ReferencedContainer = "container:Beatport.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C72FA2581B1C149D00BCBE19"
-            BuildableName = "Efemer.app"
-            BlueprintName = "Efemer"
-            ReferencedContainer = "container:Efemer.xcodeproj">
+            BuildableName = "Beatport.app"
+            BlueprintName = "Beatport"
+            ReferencedContainer = "container:Beatport.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
