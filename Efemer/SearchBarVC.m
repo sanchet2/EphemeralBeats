@@ -67,7 +67,7 @@
     if (cell == nil) {
         cell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    cell.backgroundImage=[UIImage imageNamed:@"nirvana.jpg"];
+    cell.bgImage.image=[UIImage imageNamed:@"coldplay"];
     cell.artist.text=@"Nirvana";
     cell.song.text=@"Smells like teen spirit";
     return cell;

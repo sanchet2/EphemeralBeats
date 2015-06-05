@@ -14,14 +14,14 @@
     if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
         self.backgroundColor=[UIColor blackColor];
-        UIImageView *av = [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width-20, self.frame.size.height-20)];
-        av.backgroundColor = [UIColor clearColor];
-        av.opaque = NO;
-        av.image = [UIImage imageNamed:@"nirvana.jpg"];
-        [av setClipsToBounds:true];
-        self.backgroundView = av;
-        av.contentMode=UIViewContentModeScaleAspectFill;
-        av.layer.cornerRadius=1;
+         self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width-20, self.frame.size.height-20)];
+        self.bgImage.backgroundColor = [UIColor clearColor];
+        self.bgImage.opaque = NO;
+//        self.bgImage.image = [UIImage imageNamed:@"nirvana.jpg"];
+        [self.bgImage setClipsToBounds:true];
+        self.backgroundView = self.bgImage;
+        self.bgImage.contentMode=UIViewContentModeScaleAspectFill;
+        self.bgImage.layer.cornerRadius=1;
         
         self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 200, 30)];
         self.artist.textColor = [UIColor whiteColor];

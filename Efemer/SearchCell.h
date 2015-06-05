@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchCell : UITableViewCell
-@property (strong,nonatomic) UIImage *backgroundImage;
+@property (strong,nonatomic) UIImageView *bgImage;
 @property (strong,nonatomic) UILabel *artist;
 @property (strong,nonatomic) UILabel *song;
 @end
