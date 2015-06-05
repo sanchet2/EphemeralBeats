@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Efemer/SearchBarViewModel.m"
-            timestampString = "455180494.155803"
+            timestampString = "455182014.6763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-searchBar"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-jsonData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

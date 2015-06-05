@@ -14,6 +14,7 @@
 @end
 
 @implementation SearchBarViewModel
+
 + (id)sharedManager {
     static SearchBarViewModel *sharedMyManager = nil;
     static dispatch_once_t onceToken;
@@ -22,6 +23,7 @@
     });
     return sharedMyManager;
 }
+
 -(id)init
 {
     if (self=[super init]) {
@@ -31,6 +33,7 @@
     }
     return self;
 }
+
 -(RACSignal *)jsonData{
     return [[[[[RACObserve(self, textInput)
             filter:^BOOL(NSString *input){
@@ -45,6 +48,7 @@
              return [self fetchJSONFromURL:url];
      }];
 }
+
 - (RACSignal *)fetchJSONFromURL:(NSURL *)url {
     NSLog(@"Fetching: %@",url.absoluteString);
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -75,6 +79,7 @@
         NSLog(@"%@",error);
     }];
 }
+
 -(RACSignal *)downloadImage:(NSURL *)url{
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
     [self downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {

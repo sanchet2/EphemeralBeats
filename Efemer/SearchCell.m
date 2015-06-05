@@ -21,7 +21,7 @@
         [av setClipsToBounds:true];
         self.backgroundView = av;
         av.contentMode=UIViewContentModeScaleAspectFill;
-        av.layer.cornerRadius=5;
+        av.layer.cornerRadius=1;
         
         self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 200, 30)];
         self.artist.textColor = [UIColor whiteColor];
