@@ -49,7 +49,7 @@
 #pragma mark - Audio player delegates
 
 -(void)audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode {
-    
+    NSLog(@"%u",errorCode);
 }
 -(void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId{
     
