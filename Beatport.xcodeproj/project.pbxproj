@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE33116FE28156059E2189AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 222D7AA0B36C141E6A25E493 /* libPods.a */; };
+		C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FD9C1B22CA6300AF68A5 /* Song.m */; };
 		C72FA25F1B1C149D00BCBE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA25E1B1C149D00BCBE19 /* main.m */; };
 		C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2611B1C149D00BCBE19 /* AppDelegate.m */; };
 		C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */; };
@@ -38,6 +39,8 @@
 		222D7AA0B36C141E6A25E493 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		42176A70E44ED983B1884D5D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8F92E34B593FD258087A439E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C727FD9B1B22CA6300AF68A5 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		C727FD9C1B22CA6300AF68A5 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		C72FA2591B1C149D00BCBE19 /* Beatport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA25D1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA25E1B1C149D00BCBE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +104,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C727FD9E1B22CA6A00AF68A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C727FD9B1B22CA6300AF68A5 /* Song.h */,
+				C727FD9C1B22CA6300AF68A5 /* Song.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		C72FA2501B1C149D00BCBE19 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +136,7 @@
 		C72FA25B1B1C149D00BCBE19 /* Efemer */ = {
 			isa = PBXGroup;
 			children = (
+				C727FD9E1B22CA6A00AF68A5 /* Models */,
 				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
 				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
 				C72FA2881B1C157300BCBE19 /* LoginViewController */,
@@ -326,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */,
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,

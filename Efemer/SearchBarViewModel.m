@@ -7,7 +7,7 @@
 //
 
 #import "SearchBarViewModel.h"
-
+#import "Song.h"
 
 @interface SearchBarViewModel ()
 @property (nonatomic,strong)NSURLSession *session;
@@ -29,7 +29,11 @@
     if (self=[super init]) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.session = [NSURLSession sessionWithConfiguration:config];
-        [self jsonData];
+        [[self jsonData]subscribeNext:^(id x){
+           
+            NSArray* models = [Song arrayOfModelsFromDictionaries:x];
+            NSLog(@"%@",models);
+        }];
     }
     return self;
 }
@@ -40,7 +44,7 @@
              return [input length]>3;
      }]     map:^NSString*(NSString *input){
              NSString *needed=[input stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-             return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&limit=20&streamable=yes",needed];
+             return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&limit=15&streamable=yes",needed];
      }]     throttle:0.5]
             map:^NSURL *(NSString *url){
              return [NSURL URLWithString:url];

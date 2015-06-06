@@ -48,13 +48,20 @@
     self.searchTable.backgroundColor=[UIColor clearColor];
     self.searchTable.separatorColor=[UIColor clearColor];
     [self.view addSubview:self.searchTable];
-    
+    @weakify(self);
+    [RACObserve(self.viewModel, songs) subscribeNext:^(NSArray *songs){
+        NSLog(@"%@",songs);
+        dispatch_async(dispatch_get_main_queue(), ^{
+         @strongify(self);
+        [self.searchTable reloadData];
+        });
+    }];
     [self bindToModelView];
     
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.viewModel.songs.count;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView
 {

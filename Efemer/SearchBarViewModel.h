@@ -12,5 +12,6 @@
 @interface SearchBarViewModel : NSObject
 @property (strong,nonatomic) NSString *textInput;
 @property (strong,nonatomic) NSArray *songs;
+-(RACSignal *)downloadImage:(NSURL *)url;
 + (id)sharedManager;
 @end

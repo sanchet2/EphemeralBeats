@@ -24,9 +24,9 @@
         self.bgImage.layer.cornerRadius=1;
         
         self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 200, 30)];
-        self.artist.textColor = [UIColor whiteColor];
+        self.artist.textColor = [UIColor blackColor];
         self.song = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 200, 30)];
-        self.song.textColor = [UIColor whiteColor];
+        self.song.textColor = [UIColor blackColor];
         
         [self addSubview:self.artist];
         [self addSubview:self.song];
