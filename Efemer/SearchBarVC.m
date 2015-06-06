@@ -49,8 +49,8 @@
     self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     self.searchTable.delegate=self;
     self.searchTable.dataSource=self;
+    self.searchTable.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.searchTable.backgroundColor=[UIColor clearColor];
-    self.searchTable.separatorColor=[UIColor clearColor];
     [self.view addSubview:self.searchTable];
     @weakify(self);
     [RACObserve(self.viewModel, songs) subscribeNext:^(NSArray *songs){
