@@ -9,6 +9,7 @@
 #import "SearchBarVC.h"
 #import "SearchBarViewModel.h"
 #import "SearchCell.h"
+#import "Song.h"
 
 @interface SearchBarVC ()
 @property (nonatomic,strong) UITextField *searchQuery;
@@ -74,9 +75,18 @@
     if (cell == nil) {
         cell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    cell.bgImage.image=[UIImage imageNamed:@"coldplay"];
-    cell.artist.text=@"Nirvana";
-    cell.song.text=@"Smells like teen spirit";
+    Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
+    if (song.artwork_url) {
+        NSString *url=[song.artwork_url absoluteString];
+        NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"crop"];
+        NSURL *neededurl=[NSURL URLWithString:finalurl];
+        [[self.viewModel downloadImage:neededurl]subscribeNext:^(UIImage *image){
+            dispatch_async(dispatch_get_main_queue(), ^{
+            cell.bgImage.image=image;
+            });
+        }];
+    }
+    cell.artist.text=song.title;
     return cell;
 }
 

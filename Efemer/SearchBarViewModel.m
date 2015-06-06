@@ -32,7 +32,7 @@
         [[self jsonData]subscribeNext:^(id x){
            
             NSArray* models = [Song arrayOfModelsFromDictionaries:x];
-            NSLog(@"%@",models);
+            self.songs=models;
         }];
     }
     return self;
