@@ -77,6 +77,7 @@
     }
     Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
     if (song.artwork_url) {
+        //TODO: clean this shitty code here
         NSString *url=[song.artwork_url absoluteString];
         NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"crop"];
         NSURL *neededurl=[NSURL URLWithString:finalurl];
@@ -89,9 +90,6 @@
     cell.artist.text=song.title;
     return cell;
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

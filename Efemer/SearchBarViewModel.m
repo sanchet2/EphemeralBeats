@@ -29,6 +29,7 @@
     if (self=[super init]) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.session = [NSURLSession sessionWithConfiguration:config];
+        //TODO: not the cleanest binding. Hack
         [[self jsonData]subscribeNext:^(id x){
            
             NSArray* models = [Song arrayOfModelsFromDictionaries:x];

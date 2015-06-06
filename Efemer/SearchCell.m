@@ -17,7 +17,7 @@
          self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width-20, self.frame.size.height-20)];
         self.bgImage.backgroundColor = [UIColor clearColor];
         self.bgImage.opaque = NO;
-//        self.bgImage.image = [UIImage imageNamed:@"nirvana.jpg"];
+        self.bgImage.image = [UIImage imageNamed:@"placeholder"];
         [self.bgImage setClipsToBounds:true];
         self.backgroundView = self.bgImage;
         self.bgImage.contentMode=UIViewContentModeScaleAspectFill;

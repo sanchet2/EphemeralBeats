@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE33116FE28156059E2189AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 222D7AA0B36C141E6A25E493 /* libPods.a */; };
 		C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FD9C1B22CA6300AF68A5 /* Song.m */; };
+		C727FDA31B22E07C00AF68A5 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C727FDA21B22E07C00AF68A5 /* placeholder.png */; };
 		C72FA25F1B1C149D00BCBE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA25E1B1C149D00BCBE19 /* main.m */; };
 		C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2611B1C149D00BCBE19 /* AppDelegate.m */; };
 		C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */; };
@@ -41,6 +42,7 @@
 		8F92E34B593FD258087A439E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C727FD9B1B22CA6300AF68A5 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		C727FD9C1B22CA6300AF68A5 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		C727FDA21B22E07C00AF68A5 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		C72FA2591B1C149D00BCBE19 /* Beatport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA25D1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA25E1B1C149D00BCBE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				C78A8CD11B2164D7004EBF4D /* nirvana.jpg */,
 				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
+				C727FDA21B22E07C00AF68A5 /* placeholder.png */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
 				C72FA26C1B1C149D00BCBE19 /* Images.xcassets */,
 				C72FA26E1B1C149D00BCBE19 /* LaunchScreen.xib */,
@@ -288,6 +291,7 @@
 				C72FA26B1B1C149D00BCBE19 /* Main.storyboard in Resources */,
 				C78A8CD21B2164D7004EBF4D /* nirvana.jpg in Resources */,
 				C72FA2701B1C149D00BCBE19 /* LaunchScreen.xib in Resources */,
+				C727FDA31B22E07C00AF68A5 /* placeholder.png in Resources */,
 				C72FA26D1B1C149D00BCBE19 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
