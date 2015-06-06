@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE33116FE28156059E2189AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 222D7AA0B36C141E6A25E493 /* libPods.a */; };
 		C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FD9C1B22CA6300AF68A5 /* Song.m */; };
-		C727FDA31B22E07C00AF68A5 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C727FDA21B22E07C00AF68A5 /* placeholder.png */; };
+		C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */; };
 		C72FA25F1B1C149D00BCBE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA25E1B1C149D00BCBE19 /* main.m */; };
 		C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2611B1C149D00BCBE19 /* AppDelegate.m */; };
 		C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */; };
@@ -21,7 +21,6 @@
 		C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2861B1C156C00BCBE19 /* LoginViewController.m */; };
 		C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */; };
 		C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A8CCB1B215A0D004EBF4D /* SearchCell.m */; };
-		C78A8CD21B2164D7004EBF4D /* nirvana.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C78A8CD11B2164D7004EBF4D /* nirvana.jpg */; };
 		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
 		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
 /* End PBXBuildFile section */
@@ -42,7 +41,8 @@
 		8F92E34B593FD258087A439E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C727FD9B1B22CA6300AF68A5 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		C727FD9C1B22CA6300AF68A5 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
-		C727FDA21B22E07C00AF68A5 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		C727FDA61B22E1AF00AF68A5 /* StreamingPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingPlayer.h; sourceTree = "<group>"; };
+		C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingPlayer.m; sourceTree = "<group>"; };
 		C72FA2591B1C149D00BCBE19 /* Beatport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA25D1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA25E1B1C149D00BCBE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,7 +63,6 @@
 		C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		C78A8CCA1B215A0D004EBF4D /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		C78A8CCB1B215A0D004EBF4D /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
-		C78A8CD11B2164D7004EBF4D /* nirvana.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nirvana.jpg; sourceTree = "<group>"; };
 		C7D52C0C1B1ED10C00657D55 /* SearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarVC.h; sourceTree = "<group>"; };
 		C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarVC.m; sourceTree = "<group>"; };
 		C7D52C101B1ED4C000657D55 /* SearchBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewModel.h; sourceTree = "<group>"; };
@@ -115,6 +114,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		C727FDA51B22E17700AF68A5 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				C727FDA61B22E1AF00AF68A5 /* StreamingPlayer.h */,
+				C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
 		C72FA2501B1C149D00BCBE19 = {
 			isa = PBXGroup;
 			children = (
@@ -138,15 +146,14 @@
 		C72FA25B1B1C149D00BCBE19 /* Efemer */ = {
 			isa = PBXGroup;
 			children = (
+				C727FDA51B22E17700AF68A5 /* Player */,
 				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
 				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
-				C72FA2881B1C157300BCBE19 /* LoginViewController */,
+				C72FA2881B1C157300BCBE19 /* LoginVC */,
 				C7D52C0F1B1ED11400657D55 /* SearchBarVC */,
 				C727FD9E1B22CA6A00AF68A5 /* Models */,
-				C78A8CD11B2164D7004EBF4D /* nirvana.jpg */,
 				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
-				C727FDA21B22E07C00AF68A5 /* placeholder.png */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
 				C72FA26C1B1C149D00BCBE19 /* Images.xcassets */,
 				C72FA26E1B1C149D00BCBE19 /* LaunchScreen.xib */,
@@ -182,7 +189,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C72FA2881B1C157300BCBE19 /* LoginViewController */ = {
+		C72FA2881B1C157300BCBE19 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
 				C72FA2851B1C156C00BCBE19 /* LoginViewController.h */,
@@ -190,7 +197,7 @@
 				C72FA28C1B1C17C100BCBE19 /* LoginViewModel.h */,
 				C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */,
 			);
-			name = LoginViewController;
+			name = LoginVC;
 			sourceTree = "<group>";
 		};
 		C7D52C0F1B1ED11400657D55 /* SearchBarVC */ = {
@@ -289,9 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72FA26B1B1C149D00BCBE19 /* Main.storyboard in Resources */,
-				C78A8CD21B2164D7004EBF4D /* nirvana.jpg in Resources */,
 				C72FA2701B1C149D00BCBE19 /* LaunchScreen.xib in Resources */,
-				C727FDA31B22E07C00AF68A5 /* placeholder.png in Resources */,
 				C72FA26D1B1C149D00BCBE19 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +352,7 @@
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,
+				C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */,
 				C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */,
 				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,
 				C72FA2681B1C149D00BCBE19 /* ViewController.m in Sources */,

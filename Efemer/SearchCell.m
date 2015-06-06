@@ -23,7 +23,7 @@
         self.bgImage.contentMode=UIViewContentModeScaleAspectFill;
         self.bgImage.layer.cornerRadius=1;
         
-        self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 200, 30)];
+        self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, self.frame.size.width-5, 30)];
         self.artist.textColor = [UIColor whiteColor];
         [self.artist setFont:[UIFont boldSystemFontOfSize:16]];
         self.song = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 200, 30)];
