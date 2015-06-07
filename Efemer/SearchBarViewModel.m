@@ -30,18 +30,22 @@
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.session = [NSURLSession sessionWithConfiguration:config];
         //TODO: not the cleanest binding. Hack
-        [[self jsonData]subscribeNext:^(id x){
-            NSArray* models = [Song arrayOfModelsFromDictionaries:x];
-            self.songs=models;
-        }];
+        RAC(self,songs)=[self addJsonToModel];
     }
     return self;
 }
-
+-(RACSignal *)addJsonToModel
+{
+    return [[self jsonData] map:^NSArray *(id x){
+    NSArray* models = [Song arrayOfModelsFromDictionaries:x];
+        return models;
+    }];
+    
+}
 -(RACSignal *)jsonData{
     return [[[[[RACObserve(self, textInput)
             filter:^BOOL(NSString *input){
-             return [input length]>3;
+             return [input length]>2;
      }]     map:^NSString*(NSString *input){
              NSString *needed=[input stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
              return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&streamable=true&limit=20&state=finished",needed];

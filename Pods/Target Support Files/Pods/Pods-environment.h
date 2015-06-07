@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_JSONModel 1
 #define COCOAPODS_VERSION_PATCH_JSONModel 0
 
+// RNSwipeViewController
+#define COCOAPODS_POD_AVAILABLE_RNSwipeViewController
+#define COCOAPODS_VERSION_MAJOR_RNSwipeViewController 0
+#define COCOAPODS_VERSION_MINOR_RNSwipeViewController 2
+#define COCOAPODS_VERSION_PATCH_RNSwipeViewController 0
+
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa 2

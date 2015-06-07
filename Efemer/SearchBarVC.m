@@ -11,6 +11,7 @@
 #import "SearchCell.h"
 #import "Song.h"
 #import "StreamingPlayer.h"
+#import "simplyVC.h"
 
 @interface SearchBarVC ()
 @property (nonatomic,strong) UITextField *searchQuery;
@@ -52,12 +53,14 @@
     self.searchTable.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.searchTable.backgroundColor=[UIColor clearColor];
     [self.view addSubview:self.searchTable];
+
+    
     @weakify(self);
     [RACObserve(self.viewModel, songs) subscribeNext:^(NSArray *songs){
         NSLog(@"%@",songs);
         dispatch_async(dispatch_get_main_queue(), ^{
-         @strongify(self);
-        [self.searchTable reloadData];
+            @strongify(self);
+            [self.searchTable reloadData];
         });
     }];
     [self bindToModelView];
@@ -68,7 +71,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.viewModel.songs.count+1;
+    return self.viewModel.songs.count;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView
 {
@@ -82,19 +85,14 @@
         cell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     if (indexPath.row<[[self.viewModel songs]count]) {
-    Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
-    if (song.artwork_url) {
-        //TODO: clean this shitty code here
-        NSString *url=[song.artwork_url absoluteString];
-        NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"crop"];
-        NSURL *neededurl=[NSURL URLWithString:finalurl];
-        [[self.viewModel downloadImage:neededurl]subscribeNext:^(UIImage *image){
-            dispatch_async(dispatch_get_main_queue(), ^{
-            cell.bgImage.image=image;
-            });
-        }];
-    }
-    cell.artist.text=song.title;
+        Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
+        if (song.artwork_url) {
+            NSString *url=[song.artwork_url absoluteString];
+            NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"crop"];
+            NSURL *neededurl=[NSURL URLWithString:finalurl];
+            RAC(cell.bgImage,image)=[[self.viewModel downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler];
+        }
+        cell.artist.text=song.title;
     }
     return cell;
 }
@@ -110,7 +108,9 @@
     NSString *neededUrl=[NSString stringWithFormat:@"%@?client_id=4346c8125f4f5c40ad666bacd8e96498",song.stream_url];
     [self.player playSong:neededUrl];
 }
-
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
 
 
 #pragma mark - add bindings to viewModel

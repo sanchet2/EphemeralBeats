@@ -1,0 +1,1 @@
+../../../RNSwipeViewController/RNSwipeViewController/UIApplication+AppDimensions.h

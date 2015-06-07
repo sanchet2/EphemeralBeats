@@ -12,4 +12,6 @@
 @property (strong,nonatomic) UIImageView *bgImage;
 @property (strong,nonatomic) UILabel *artist;
 @property (strong,nonatomic) UILabel *song;
+@property (strong,nonatomic) UIButton *incognito;
+@property (strong,nonatomic) UIButton *share;
 @end

@@ -7,16 +7,19 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - RNSwipeViewController (0.2.0)
   - StreamingKit (0.1.25)
 
 DEPENDENCIES:
   - JSONModel
   - ReactiveCocoa
+  - RNSwipeViewController
   - StreamingKit
 
 SPEC CHECKSUMS:
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  RNSwipeViewController: e2552ff4fe6c6ce452302ab1318954f612386af2
   StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
 
 COCOAPODS: 0.37.2

@@ -10,6 +10,8 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "LoginViewModel.h"
 #import "SearchBarVC.h"
+#import <RNSwipeViewController/RNSwipeViewController.h>
+#import "simplyVC.h"
 
 @interface LoginViewController ()
 @property (nonatomic,strong) UITextField *userName;
@@ -68,7 +70,15 @@
 -(void)goToNewViewController{
     //add to navigation bar
     SearchBarVC *searchBar=[[SearchBarVC alloc]init];
-    [self.navigationController pushViewController:searchBar animated:YES];
+    RNSwipeViewController *swipeVC=[[RNSwipeViewController alloc]init];
+    swipeVC.view.backgroundColor=[UIColor clearColor];
+    swipeVC.leftVisibleWidth=self.view.frame.size.width;
+    
+    swipeVC.centerViewController=searchBar;
+    simplyVC *simply=[[simplyVC alloc]init];
+    swipeVC.leftViewController=simply;
+    
+    [self.navigationController presentViewController:swipeVC animated:YES completion:nil];
     
 }
 

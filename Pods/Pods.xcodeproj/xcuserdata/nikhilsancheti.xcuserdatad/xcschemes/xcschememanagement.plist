@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-RNSwipeViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ReactiveCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>11836C26119C02B1D364E105</key>
+		<key>645FFA0B0AAFF636D1D480F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>295F60D6538A1BE78E67971D</key>
+		<key>A54D4F2FAA2C6E2539BC58FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>541ACACECE6D73D83997CABE</key>
+		<key>AD252BF46966406F1CCBE7CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4A75BD76F219B8C8ABAAB38</key>
+		<key>C80EFF1AAC4BC63611B0B332</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD1D9F3929B3932DC78F70B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -10,6 +10,8 @@
 		AE33116FE28156059E2189AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 222D7AA0B36C141E6A25E493 /* libPods.a */; };
 		C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FD9C1B22CA6300AF68A5 /* Song.m */; };
 		C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */; };
+		C727FDAF1B240A9000AF68A5 /* simplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDAE1B240A9000AF68A5 /* simplyVC.m */; };
+		C727FDB11B240EEC00AF68A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */; };
 		C72FA25F1B1C149D00BCBE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA25E1B1C149D00BCBE19 /* main.m */; };
 		C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2611B1C149D00BCBE19 /* AppDelegate.m */; };
 		C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */; };
@@ -43,6 +45,9 @@
 		C727FD9C1B22CA6300AF68A5 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		C727FDA61B22E1AF00AF68A5 /* StreamingPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingPlayer.h; sourceTree = "<group>"; };
 		C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingPlayer.m; sourceTree = "<group>"; };
+		C727FDAD1B240A9000AF68A5 /* simplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simplyVC.h; sourceTree = "<group>"; };
+		C727FDAE1B240A9000AF68A5 /* simplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = simplyVC.m; sourceTree = "<group>"; };
+		C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C72FA2591B1C149D00BCBE19 /* Beatport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA25D1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA25E1B1C149D00BCBE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C727FDB11B240EEC00AF68A5 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +106,7 @@
 		C62774CF95663BCB4CA8BD0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */,
 				222D7AA0B36C141E6A25E493 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -146,19 +153,21 @@
 		C72FA25B1B1C149D00BCBE19 /* Efemer */ = {
 			isa = PBXGroup;
 			children = (
-				C727FDA51B22E17700AF68A5 /* Player */,
 				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
 				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
 				C72FA2881B1C157300BCBE19 /* LoginVC */,
 				C7D52C0F1B1ED11400657D55 /* SearchBarVC */,
 				C727FD9E1B22CA6A00AF68A5 /* Models */,
-				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
+				C727FDA51B22E17700AF68A5 /* Player */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
+				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
 				C72FA26C1B1C149D00BCBE19 /* Images.xcassets */,
 				C72FA26E1B1C149D00BCBE19 /* LaunchScreen.xib */,
 				C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */,
 				C72FA25C1B1C149D00BCBE19 /* Supporting Files */,
+				C727FDAD1B240A9000AF68A5 /* simplyVC.h */,
+				C727FDAE1B240A9000AF68A5 /* simplyVC.m */,
 			);
 			path = Efemer;
 			sourceTree = "<group>";
@@ -352,6 +361,7 @@
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,
+				C727FDAF1B240A9000AF68A5 /* simplyVC.m in Sources */,
 				C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */,
 				C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */,
 				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,
