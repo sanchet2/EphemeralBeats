@@ -11,7 +11,7 @@
 #import "SearchCell.h"
 #import "Song.h"
 #import "StreamingPlayer.h"
-#import "simplyVC.h"
+#import "SearchUsersVC.h"
 
 @interface SearchBarVC ()
 @property (nonatomic,strong) UITextField *searchQuery;

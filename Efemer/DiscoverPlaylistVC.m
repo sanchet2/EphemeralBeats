@@ -1,23 +1,23 @@
 //
-//  simplyVC.m
+//  DiscoverPlaylistVC.m
 //  Beatport
 //
 //  Created by Nikhil Sancheti on 6/6/15.
 //  Copyright (c) 2015 Nikhil Sancheti. All rights reserved.
 //
 
-#import "simplyVC.h"
+#import "DiscoverPlaylistVC.h"
 
-@interface simplyVC ()
+@interface DiscoverPlaylistVC ()
 
 @end
 
-@implementation simplyVC
+@implementation DiscoverPlaylistVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor=[UIColor greenColor];
+    self.view.backgroundColor=[UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {

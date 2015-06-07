@@ -1,5 +1,5 @@
 //
-//  simplyVC.h
+//  DiscoverPlaylistVC.h
 //  Beatport
 //
 //  Created by Nikhil Sancheti on 6/6/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface simplyVC : UIViewController
+@interface DiscoverPlaylistVC : UIViewController
 
 @end

@@ -11,7 +11,8 @@
 #import "LoginViewModel.h"
 #import "SearchBarVC.h"
 #import <RNSwipeViewController/RNSwipeViewController.h>
-#import "simplyVC.h"
+#import "SearchUsersVC.h"
+#import "DiscoverPlaylistVC.h"
 
 @interface LoginViewController ()
 @property (nonatomic,strong) UITextField *userName;
@@ -69,14 +70,20 @@
 }
 -(void)goToNewViewController{
     //add to navigation bar
-    SearchBarVC *searchBar=[[SearchBarVC alloc]init];
+    
     RNSwipeViewController *swipeVC=[[RNSwipeViewController alloc]init];
     swipeVC.view.backgroundColor=[UIColor clearColor];
     swipeVC.leftVisibleWidth=self.view.frame.size.width;
+    swipeVC.rightVisibleWidth=self.view.frame.size.width;
     
+    SearchBarVC *searchBar=[[SearchBarVC alloc]init];
     swipeVC.centerViewController=searchBar;
-    simplyVC *simply=[[simplyVC alloc]init];
+    
+    SearchUsersVC *simply=[[SearchUsersVC alloc]init];
     swipeVC.leftViewController=simply;
+    
+    DiscoverPlaylistVC *playlistVC=[[DiscoverPlaylistVC alloc]init];
+    swipeVC.rightViewController=playlistVC;
     
     [self.navigationController presentViewController:swipeVC animated:YES completion:nil];
     
