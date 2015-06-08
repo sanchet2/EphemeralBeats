@@ -1,4 +1,6 @@
 pod 'ReactiveCocoa'
+pod 'Colours'
 pod 'StreamingKit'
 pod 'JSONModel'
 pod 'RNSwipeViewController'
+pod 'Canvas'

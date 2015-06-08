@@ -1,4 +1,6 @@
 PODS:
+  - Canvas (0.1.2)
+  - Colours (5.6.2)
   - JSONModel (1.1.0)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -11,12 +13,16 @@ PODS:
   - StreamingKit (0.1.25)
 
 DEPENDENCIES:
+  - Canvas
+  - Colours
   - JSONModel
   - ReactiveCocoa
   - RNSwipeViewController
   - StreamingKit
 
 SPEC CHECKSUMS:
+  Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
+  Colours: 0afd4c3429656880fd4cff350ca3bf0ab86ca348
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RNSwipeViewController: e2552ff4fe6c6ce452302ab1318954f612386af2

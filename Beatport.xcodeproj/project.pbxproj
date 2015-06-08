@@ -133,10 +133,36 @@
 			name = Player;
 			sourceTree = "<group>";
 		};
+		C727FDB51B2545DE00AF68A5 /* SearchUsersVC */ = {
+			isa = PBXGroup;
+			children = (
+				C727FDAD1B240A9000AF68A5 /* SearchUsersVC.h */,
+				C727FDAE1B240A9000AF68A5 /* SearchUsersVC.m */,
+			);
+			name = SearchUsersVC;
+			sourceTree = "<group>";
+		};
+		C727FDB61B2545F600AF68A5 /* DiscoverPlaylistVC */ = {
+			isa = PBXGroup;
+			children = (
+				C727FDB31B24188F00AF68A5 /* DiscoverPlaylistVC.m */,
+				C727FDB21B24188F00AF68A5 /* DiscoverPlaylistVC.h */,
+			);
+			name = DiscoverPlaylistVC;
+			sourceTree = "<group>";
+		};
+		C727FDB71B2546F500AF68A5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C727FDA51B22E17700AF68A5 /* Player */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		C72FA2501B1C149D00BCBE19 = {
 			isa = PBXGroup;
 			children = (
-				C72FA25B1B1C149D00BCBE19 /* Efemer */,
+				C72FA25B1B1C149D00BCBE19 /* Beatport */,
 				C72FA2781B1C149D00BCBE19 /* EfemerTests */,
 				C72FA25A1B1C149D00BCBE19 /* Products */,
 				7C2C1400ADDF2D4073492613 /* Pods */,
@@ -153,15 +179,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C72FA25B1B1C149D00BCBE19 /* Efemer */ = {
+		C72FA25B1B1C149D00BCBE19 /* Beatport */ = {
 			isa = PBXGroup;
 			children = (
 				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
 				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
 				C72FA2881B1C157300BCBE19 /* LoginVC */,
 				C7D52C0F1B1ED11400657D55 /* SearchBarVC */,
+				C727FDB51B2545DE00AF68A5 /* SearchUsersVC */,
+				C727FDB61B2545F600AF68A5 /* DiscoverPlaylistVC */,
 				C727FD9E1B22CA6A00AF68A5 /* Models */,
-				C727FDA51B22E17700AF68A5 /* Player */,
+				C727FDB71B2546F500AF68A5 /* Utilities */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
 				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
@@ -169,11 +197,8 @@
 				C72FA26E1B1C149D00BCBE19 /* LaunchScreen.xib */,
 				C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */,
 				C72FA25C1B1C149D00BCBE19 /* Supporting Files */,
-				C727FDAD1B240A9000AF68A5 /* SearchUsersVC.h */,
-				C727FDB21B24188F00AF68A5 /* DiscoverPlaylistVC.h */,
-				C727FDB31B24188F00AF68A5 /* DiscoverPlaylistVC.m */,
-				C727FDAE1B240A9000AF68A5 /* SearchUsersVC.m */,
 			);
+			name = Beatport;
 			path = Efemer;
 			sourceTree = "<group>";
 		};

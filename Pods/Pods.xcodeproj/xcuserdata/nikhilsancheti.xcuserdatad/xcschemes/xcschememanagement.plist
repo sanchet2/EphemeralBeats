@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-Canvas.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Colours.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-JSONModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>645FFA0B0AAFF636D1D480F3</key>
+		<key>0E1294173ED69D2D3AA3E30E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A54D4F2FAA2C6E2539BC58FB</key>
+		<key>453D114CED8D0C70F08F20D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD252BF46966406F1CCBE7CC</key>
+		<key>6A059D151BAEEFB954F6D830</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C80EFF1AAC4BC63611B0B332</key>
+		<key>9584C5F3AA40F20E1ACB676D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD1D9F3929B3932DC78F70B8</key>
+		<key>C5F6ED1E5043A2539ADCFD9C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD77CE838919471E5E5ED9A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3C98894D8E3DB67992826C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
