@@ -13,6 +13,7 @@
 		C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDAE1B240A9000AF68A5 /* SearchUsersVC.m */; };
 		C727FDB11B240EEC00AF68A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */; };
 		C727FDB41B24188F00AF68A5 /* DiscoverPlaylistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDB31B24188F00AF68A5 /* DiscoverPlaylistVC.m */; };
+		C727FDBB1B25535B00AF68A5 /* NetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDBA1B25535B00AF68A5 /* NetworkUtilities.m */; };
 		C72FA25F1B1C149D00BCBE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA25E1B1C149D00BCBE19 /* main.m */; };
 		C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2611B1C149D00BCBE19 /* AppDelegate.m */; };
 		C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */; };
@@ -51,6 +52,8 @@
 		C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C727FDB21B24188F00AF68A5 /* DiscoverPlaylistVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverPlaylistVC.h; sourceTree = "<group>"; };
 		C727FDB31B24188F00AF68A5 /* DiscoverPlaylistVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverPlaylistVC.m; sourceTree = "<group>"; };
+		C727FDB91B25535B00AF68A5 /* NetworkUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtilities.h; sourceTree = "<group>"; };
+		C727FDBA1B25535B00AF68A5 /* NetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtilities.m; sourceTree = "<group>"; };
 		C72FA2591B1C149D00BCBE19 /* Beatport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA25D1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA25E1B1C149D00BCBE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -154,9 +157,19 @@
 		C727FDB71B2546F500AF68A5 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C727FDBC1B25552800AF68A5 /* NetworkUtilities */,
 				C727FDA51B22E17700AF68A5 /* Player */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		C727FDBC1B25552800AF68A5 /* NetworkUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				C727FDB91B25535B00AF68A5 /* NetworkUtilities.h */,
+				C727FDBA1B25535B00AF68A5 /* NetworkUtilities.m */,
+			);
+			name = NetworkUtilities;
 			sourceTree = "<group>";
 		};
 		C72FA2501B1C149D00BCBE19 = {
@@ -388,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */,
+				C727FDBB1B25535B00AF68A5 /* NetworkUtilities.m in Sources */,
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,

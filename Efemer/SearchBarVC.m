@@ -12,12 +12,14 @@
 #import "Song.h"
 #import "StreamingPlayer.h"
 #import "SearchUsersVC.h"
+#import "NetworkUtilities.h"
 
 @interface SearchBarVC ()
 @property (nonatomic,strong) UITextField *searchQuery;
 @property (nonatomic,strong) SearchBarViewModel *viewModel;
 @property (nonatomic,strong) UITableView *searchTable;
 @property (nonatomic,strong) StreamingPlayer *player;
+@property (strong,nonatomic) NetworkUtilities *util;
 @end
 
 @implementation SearchBarVC
@@ -29,6 +31,7 @@
         
         self.viewModel=[SearchBarViewModel sharedManager];
         self.player=[StreamingPlayer sharedManager];
+        self.util=[NetworkUtilities sharedManager];
     }
     return self;
     
@@ -90,7 +93,7 @@
             NSString *url=[song.artwork_url absoluteString];
             NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"crop"];
             NSURL *neededurl=[NSURL URLWithString:finalurl];
-            RAC(cell.bgImage,image)=[[self.viewModel downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler];
+            RAC(cell.bgImage,image)=[[self.util downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler];
         }
         cell.artist.text=song.title;
     }
