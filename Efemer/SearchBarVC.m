@@ -56,14 +56,23 @@
     self.searchTable.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.searchTable.backgroundColor=[UIColor clearColor];
     [self.view addSubview:self.searchTable];
-
+    
     
     @weakify(self);
     [RACObserve(self.viewModel, songs) subscribeNext:^(NSArray *songs){
         NSLog(@"%@",songs);
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
-            [self.searchTable reloadData];
+            [UIView animateWithDuration:1.0
+                                  delay:1.5
+                                options: UIViewAnimationOptionCurveEaseIn
+                             animations:^{
+                                 
+                                 [self.searchTable reloadData];
+                             }
+                             completion:^(BOOL finished){
+                                 NSLog(@"Done!");
+                             }];
         });
     }];
     [self bindToModelView];

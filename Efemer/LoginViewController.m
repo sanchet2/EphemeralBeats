@@ -62,14 +62,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - RAC bindings
+
 -(void)bindToModelView
 {
     RAC(self.viewModel,textInput)=self.userName.rac_textSignal;
     self.button.rac_command=self.viewModel.command;
     
 }
+
+#pragma mark - Swipe View Controller after login
+
 -(void)goToNewViewController{
-    //add to navigation bar
     
     RNSwipeViewController *swipeVC=[[RNSwipeViewController alloc]init];
     swipeVC.view.backgroundColor=[UIColor clearColor];

@@ -13,6 +13,7 @@
 @end
 
 @implementation NetworkUtilities
+#pragma mark - Singleton Class
 + (id)sharedManager {
     static NetworkUtilities *sharedMyManager = nil;
     static dispatch_once_t onceToken;
@@ -28,6 +29,8 @@
     }
     return self;
 }
+
+#pragma mark - Fetch json from server GET request
 
 - (RACSignal *)fetchJSONFromURL:(NSURL *)url {
     NSLog(@"Fetching: %@",url.absoluteString);
@@ -60,6 +63,8 @@
     }];
 }
 
+#pragma mark - Fetch Image from url
+
 -(RACSignal *)downloadImage:(NSURL *)url{
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
         [self downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
@@ -90,4 +95,5 @@
                                }
                            }];
 }
+
 @end

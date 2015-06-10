@@ -14,28 +14,30 @@
     if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
         self.backgroundColor=[UIColor clearColor];
-         self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width-20, self.frame.size.height-20)];
+        
+        // Background image for search
+        
+        self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width-20, self.frame.size.height-20)];
         self.bgImage.backgroundColor = [UIColor clearColor];
         self.bgImage.opaque = NO;
         self.bgImage.image = [UIImage imageNamed:@"placeholder"];
         [self.bgImage setClipsToBounds:true];
-        self.backgroundView = self.bgImage;
         self.bgImage.contentMode=UIViewContentModeScaleAspectFill;
         self.bgImage.layer.cornerRadius=1;
+        self.backgroundView = self.bgImage;
         
+        // Artist Name Label
         self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, self.frame.size.width-5, 30)];
         self.artist.textColor = [UIColor whiteColor];
         [self.artist setFont:[UIFont boldSystemFontOfSize:16]];
         
-        
+        // Song Name Label
         self.song = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 200, 30)];
         self.song.textColor = [UIColor whiteColor];
         
-        
-        
-        
         [self addSubview:self.artist];
         [self addSubview:self.song];
+        
         self.backgroundColor=[UIColor clearColor];
         
     }
@@ -49,7 +51,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
