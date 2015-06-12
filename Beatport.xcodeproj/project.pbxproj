@@ -12,7 +12,7 @@
 		C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */; };
 		C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDAE1B240A9000AF68A5 /* SearchUsersVC.m */; };
 		C727FDB11B240EEC00AF68A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */; };
-		C727FDB41B24188F00AF68A5 /* DiscoverPlaylistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDB31B24188F00AF68A5 /* DiscoverPlaylistVC.m */; };
+		C727FDB41B24188F00AF68A5 /* SongQueueCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDB31B24188F00AF68A5 /* SongQueueCollectionVC.m */; };
 		C727FDBB1B25535B00AF68A5 /* NetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDBA1B25535B00AF68A5 /* NetworkUtilities.m */; };
 		C72FA25F1B1C149D00BCBE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA25E1B1C149D00BCBE19 /* main.m */; };
 		C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2611B1C149D00BCBE19 /* AppDelegate.m */; };
@@ -25,6 +25,8 @@
 		C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2861B1C156C00BCBE19 /* LoginViewController.m */; };
 		C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */; };
 		C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A8CCB1B215A0D004EBF4D /* SearchCell.m */; };
+		C7B7B6D91B2AADFD00403609 /* SongQueueViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */; };
+		C7B7B6DC1B2AAF7500403609 /* CurrentSongSwipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */; };
 		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
 		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
 /* End PBXBuildFile section */
@@ -50,8 +52,8 @@
 		C727FDAD1B240A9000AF68A5 /* SearchUsersVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUsersVC.h; sourceTree = "<group>"; };
 		C727FDAE1B240A9000AF68A5 /* SearchUsersVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUsersVC.m; sourceTree = "<group>"; };
 		C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		C727FDB21B24188F00AF68A5 /* DiscoverPlaylistVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverPlaylistVC.h; sourceTree = "<group>"; };
-		C727FDB31B24188F00AF68A5 /* DiscoverPlaylistVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverPlaylistVC.m; sourceTree = "<group>"; };
+		C727FDB21B24188F00AF68A5 /* SongQueueCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongQueueCollectionVC.h; sourceTree = "<group>"; };
+		C727FDB31B24188F00AF68A5 /* SongQueueCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongQueueCollectionVC.m; sourceTree = "<group>"; };
 		C727FDB91B25535B00AF68A5 /* NetworkUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtilities.h; sourceTree = "<group>"; };
 		C727FDBA1B25535B00AF68A5 /* NetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtilities.m; sourceTree = "<group>"; };
 		C72FA2591B1C149D00BCBE19 /* Beatport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatport.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +76,10 @@
 		C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		C78A8CCA1B215A0D004EBF4D /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		C78A8CCB1B215A0D004EBF4D /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		C7B7B6D71B2AADFD00403609 /* SongQueueViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongQueueViewModel.h; sourceTree = "<group>"; };
+		C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongQueueViewModel.m; sourceTree = "<group>"; };
+		C7B7B6DA1B2AAF7500403609 /* CurrentSongSwipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSongSwipeVC.h; sourceTree = "<group>"; };
+		C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSongSwipeVC.m; sourceTree = "<group>"; };
 		C7D52C0C1B1ED10C00657D55 /* SearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarVC.h; sourceTree = "<group>"; };
 		C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarVC.m; sourceTree = "<group>"; };
 		C7D52C101B1ED4C000657D55 /* SearchBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewModel.h; sourceTree = "<group>"; };
@@ -148,8 +154,12 @@
 		C727FDB61B2545F600AF68A5 /* DiscoverPlaylistVC */ = {
 			isa = PBXGroup;
 			children = (
-				C727FDB31B24188F00AF68A5 /* DiscoverPlaylistVC.m */,
-				C727FDB21B24188F00AF68A5 /* DiscoverPlaylistVC.h */,
+				C727FDB31B24188F00AF68A5 /* SongQueueCollectionVC.m */,
+				C727FDB21B24188F00AF68A5 /* SongQueueCollectionVC.h */,
+				C7B7B6DA1B2AAF7500403609 /* CurrentSongSwipeVC.h */,
+				C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */,
+				C7B7B6D71B2AADFD00403609 /* SongQueueViewModel.h */,
+				C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */,
 			);
 			name = DiscoverPlaylistVC;
 			sourceTree = "<group>";
@@ -195,12 +205,9 @@
 		C72FA25B1B1C149D00BCBE19 /* Beatport */ = {
 			isa = PBXGroup;
 			children = (
+				C7B7B6D61B2AAD6C00403609 /* View Controllers */,
 				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
 				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
-				C72FA2881B1C157300BCBE19 /* LoginVC */,
-				C7D52C0F1B1ED11400657D55 /* SearchBarVC */,
-				C727FDB51B2545DE00AF68A5 /* SearchUsersVC */,
-				C727FDB61B2545F600AF68A5 /* DiscoverPlaylistVC */,
 				C727FD9E1B22CA6A00AF68A5 /* Models */,
 				C727FDB71B2546F500AF68A5 /* Utilities */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
@@ -250,6 +257,17 @@
 				C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */,
 			);
 			name = LoginVC;
+			sourceTree = "<group>";
+		};
+		C7B7B6D61B2AAD6C00403609 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C727FDB61B2545F600AF68A5 /* DiscoverPlaylistVC */,
+				C727FDB51B2545DE00AF68A5 /* SearchUsersVC */,
+				C7D52C0F1B1ED11400657D55 /* SearchBarVC */,
+				C72FA2881B1C157300BCBE19 /* LoginVC */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		C7D52C0F1B1ED11400657D55 /* SearchBarVC */ = {
@@ -403,9 +421,11 @@
 				C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */,
 				C727FDBB1B25535B00AF68A5 /* NetworkUtilities.m in Sources */,
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
+				C7B7B6DC1B2AAF7500403609 /* CurrentSongSwipeVC.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,
 				C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */,
+				C7B7B6D91B2AADFD00403609 /* SongQueueViewModel.m in Sources */,
 				C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */,
 				C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */,
 				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,
@@ -413,7 +433,7 @@
 				C72FA25F1B1C149D00BCBE19 /* main.m in Sources */,
 				C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */,
 				C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */,
-				C727FDB41B24188F00AF68A5 /* DiscoverPlaylistVC.m in Sources */,
+				C727FDB41B24188F00AF68A5 /* SongQueueCollectionVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

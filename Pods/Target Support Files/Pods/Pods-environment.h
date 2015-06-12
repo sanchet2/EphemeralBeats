@@ -60,3 +60,9 @@
 #define COCOAPODS_VERSION_MINOR_StreamingKit 1
 #define COCOAPODS_VERSION_PATCH_StreamingKit 25
 
+// SwipeView
+#define COCOAPODS_POD_AVAILABLE_SwipeView
+#define COCOAPODS_VERSION_MAJOR_SwipeView 1
+#define COCOAPODS_VERSION_MINOR_SwipeView 3
+#define COCOAPODS_VERSION_PATCH_SwipeView 2
+

@@ -12,7 +12,8 @@
 #import "SearchBarVC.h"
 #import <RNSwipeViewController/RNSwipeViewController.h>
 #import "SearchUsersVC.h"
-#import "DiscoverPlaylistVC.h"
+#import "SongQueueCollectionVC.h"
+#import "CurrentSongSwipeVC.h"
 
 @interface LoginViewController ()
 @property (nonatomic,strong) UITextField *userName;
@@ -83,11 +84,18 @@
     SearchBarVC *searchBar=[[SearchBarVC alloc]init];
     swipeVC.centerViewController=searchBar;
     
-    SearchUsersVC *simply=[[SearchUsersVC alloc]init];
-    swipeVC.leftViewController=simply;
+    SearchUsersVC *searchUsersVC=[[SearchUsersVC alloc]init];
+    swipeVC.leftViewController=searchUsersVC;
     
-    DiscoverPlaylistVC *playlistVC=[[DiscoverPlaylistVC alloc]init];
-    swipeVC.rightViewController=playlistVC;
+    SongQueueCollectionVC *playlistVC=[[SongQueueCollectionVC alloc]init];
+    playlistVC.title=@"SwipeView";
+    CurrentSongSwipeVC *songCollectionView=[[CurrentSongSwipeVC alloc]init];
+    songCollectionView.title=@"CollectionView";
+    
+    UITabBarController *tabVC=[[UITabBarController alloc]init];
+    NSArray *tabs=@[playlistVC,songCollectionView];
+    tabVC.viewControllers=tabs;
+    swipeVC.rightViewController=tabVC;
     
     [self.navigationController presentViewController:swipeVC animated:YES completion:nil];
     

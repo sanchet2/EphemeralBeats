@@ -120,9 +120,6 @@
     NSString *neededUrl=[NSString stringWithFormat:@"%@?client_id=4346c8125f4f5c40ad666bacd8e96498",song.stream_url];
     [self.player playSong:neededUrl];
 }
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
 
 
 #pragma mark - add bindings to viewModel

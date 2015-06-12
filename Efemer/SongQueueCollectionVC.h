@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DiscoverPlaylistVC : UIViewController
+@interface SongQueueCollectionVC : UIViewController
 
 @end

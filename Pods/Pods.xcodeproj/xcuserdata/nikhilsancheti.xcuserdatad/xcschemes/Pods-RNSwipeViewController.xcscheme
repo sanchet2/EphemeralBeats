@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CD77CE838919471E5E5ED9A0"
+               BlueprintIdentifier = "91EDAF2D015C40F107C90167"
                BuildableName = "libPods-RNSwipeViewController.a"
                BlueprintName = "Pods-RNSwipeViewController"
                ReferencedContainer = "container:Pods.xcodeproj">

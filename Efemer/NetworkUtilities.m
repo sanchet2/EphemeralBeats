@@ -13,6 +13,7 @@
 @end
 
 @implementation NetworkUtilities
+
 #pragma mark - Singleton Class
 + (id)sharedManager {
     static NetworkUtilities *sharedMyManager = nil;
