@@ -13,7 +13,6 @@
 @end
 
 @implementation NetworkUtilities
-
 #pragma mark - Singleton Class
 + (id)sharedManager {
     static NetworkUtilities *sharedMyManager = nil;
@@ -67,7 +66,9 @@
 #pragma mark - Fetch Image from url
 
 -(RACSignal *)downloadImage:(NSURL *)url{
+    @weakify(self);
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+        @strongify(self);
         [self downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
             if (succeeded) {
                 [subscriber sendNext:image];
