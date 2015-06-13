@@ -14,6 +14,8 @@
 #import "SearchUsersVC.h"
 #import "SongQueueCollectionVC.h"
 #import "CurrentSongSwipeVC.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "User.h"
 
 @interface LoginViewController ()
 @property (nonatomic,strong) UITextField *userName;
@@ -28,7 +30,7 @@
 {
     if(self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
-       
+        
         self.viewModel=[LoginViewModel sharedManager];
     }
     return self;
@@ -46,15 +48,21 @@
     self.userName.text=@"Hello World";
     [self.view addSubview:self.userName];
     
+    if([User MR_findFirst]){
+        User *user=[User MR_findFirst];
+        NSLog(@"%@",user);
+    }
+    
+    [self persistNewUser:@"nikhil" session:@"abcd" age:[NSDate date]];
+    
     
     self.button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.button addTarget:self
-               action:@selector(goToNewViewController)
-     forControlEvents:UIControlEventTouchUpInside];
+                    action:@selector(goToNewViewController)
+          forControlEvents:UIControlEventTouchUpInside];
     [self.button setTitle:@"Show View" forState:UIControlStateNormal];
     self.button.frame = CGRectMake(80.0, 300.0, 160.0, 40.0);
     [self.view addSubview:self.button];
-    
     [self bindToModelView];
 }
 
@@ -70,6 +78,16 @@
     RAC(self.viewModel,textInput)=self.userName.rac_textSignal;
     self.button.rac_command=self.viewModel.command;
     
+}
+- (void)persistNewUser:(NSString *)username session:(NSString *)session age:(NSDate *)age
+{
+    // Get the local context
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+    User *user    = [User MR_createEntityInContext:localContext];
+    user.username = username;
+    user.session  = session;
+    user.timestamp= age;
+    [localContext MR_saveToPersistentStoreAndWait];
 }
 
 #pragma mark - Swipe View Controller after login
@@ -102,13 +120,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

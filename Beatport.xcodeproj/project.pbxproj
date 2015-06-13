@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE33116FE28156059E2189AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 222D7AA0B36C141E6A25E493 /* libPods.a */; };
+		C7259B2E1B2CC1EA009A8592 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C7259B2D1B2CC1EA009A8592 /* User.m */; };
 		C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FD9C1B22CA6300AF68A5 /* Song.m */; };
 		C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */; };
 		C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDAE1B240A9000AF68A5 /* SearchUsersVC.m */; };
@@ -45,6 +46,8 @@
 		222D7AA0B36C141E6A25E493 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		42176A70E44ED983B1884D5D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8F92E34B593FD258087A439E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C7259B2C1B2CC1EA009A8592 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		C7259B2D1B2CC1EA009A8592 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C727FD9B1B22CA6300AF68A5 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		C727FD9C1B22CA6300AF68A5 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		C727FDA61B22E1AF00AF68A5 /* StreamingPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingPlayer.h; sourceTree = "<group>"; };
@@ -80,6 +83,8 @@
 		C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongQueueViewModel.m; sourceTree = "<group>"; };
 		C7B7B6DA1B2AAF7500403609 /* CurrentSongSwipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSongSwipeVC.h; sourceTree = "<group>"; };
 		C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSongSwipeVC.m; sourceTree = "<group>"; };
+		C7D359071B2CBA8A006096DA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		C7D359081B2CBA8A006096DA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C7D52C0C1B1ED10C00657D55 /* SearchBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarVC.h; sourceTree = "<group>"; };
 		C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarVC.m; sourceTree = "<group>"; };
 		C7D52C101B1ED4C000657D55 /* SearchBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewModel.h; sourceTree = "<group>"; };
@@ -118,6 +123,8 @@
 		C62774CF95663BCB4CA8BD0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7D359071B2CBA8A006096DA /* Fabric.framework */,
+				C7D359081B2CBA8A006096DA /* Crashlytics.framework */,
 				C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */,
 				222D7AA0B36C141E6A25E493 /* libPods.a */,
 			);
@@ -127,6 +134,8 @@
 		C727FD9E1B22CA6A00AF68A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C7259B2C1B2CC1EA009A8592 /* User.h */,
+				C7259B2D1B2CC1EA009A8592 /* User.m */,
 				C727FD9B1B22CA6300AF68A5 /* Song.h */,
 				C727FD9C1B22CA6300AF68A5 /* Song.m */,
 			);
@@ -205,11 +214,11 @@
 		C72FA25B1B1C149D00BCBE19 /* Beatport */ = {
 			isa = PBXGroup;
 			children = (
+				C727FD9E1B22CA6A00AF68A5 /* Models */,
 				C7B7B6D61B2AAD6C00403609 /* View Controllers */,
+				C727FDB71B2546F500AF68A5 /* Utilities */,
 				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
 				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
-				C727FD9E1B22CA6A00AF68A5 /* Models */,
-				C727FDB71B2546F500AF68A5 /* Utilities */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
 				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
@@ -422,6 +431,7 @@
 				C727FDBB1B25535B00AF68A5 /* NetworkUtilities.m in Sources */,
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C7B7B6DC1B2AAF7500403609 /* CurrentSongSwipeVC.m in Sources */,
+				C7259B2E1B2CC1EA009A8592 /* User.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,
 				C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */,
@@ -562,6 +572,10 @@
 			baseConfigurationReference = 8F92E34B593FD258087A439E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Efemer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -574,6 +588,10 @@
 			baseConfigurationReference = 42176A70E44ED983B1884D5D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Efemer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -588,6 +606,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -607,6 +626,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = EfemerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

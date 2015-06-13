@@ -57,6 +57,7 @@
     self.searchTable.backgroundColor=[UIColor clearColor];
     [self.view addSubview:self.searchTable];
     
+    //KVO on the array in view model that is updated
     
     @weakify(self);
     [RACObserve(self.viewModel, songs) subscribeNext:^(NSArray *songs){

@@ -1,4 +1,6 @@
 pod 'ReactiveCocoa'
+pod 'MagicalRecord'
+pod 'AFNetworking'
 pod 'SwipeView'
 pod 'Colours'
 pod 'StreamingKit'

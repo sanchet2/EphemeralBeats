@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+
+
 @interface AppDelegate ()
 
 @end
@@ -25,6 +27,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Efemer.sqlite"];
     return YES;
 }
 
@@ -49,7 +52,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
+    [MagicalRecord cleanUp];
 }
 
 #pragma mark - Core Data stack
@@ -131,5 +134,6 @@
         }
     }
 }
+
 
 @end

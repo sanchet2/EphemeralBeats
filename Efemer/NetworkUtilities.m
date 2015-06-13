@@ -7,12 +7,14 @@
 //
 
 #import "NetworkUtilities.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface NetworkUtilities()
 @property (nonatomic,strong)NSURLSession *session;
 @end
 
 @implementation NetworkUtilities
+
 #pragma mark - Singleton Class
 + (id)sharedManager {
     static NetworkUtilities *sharedMyManager = nil;
@@ -30,6 +32,21 @@
     return self;
 }
 
+#pragma mark - Post request AFNetworking
+-(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary :(NSString *)url{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:url parameters:dictionary success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"post json: %@", responseObject);
+        [subscriber sendNext:responseObject];
+        [subscriber sendCompleted];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"post Error: %@", error);
+        [subscriber sendError:error];
+    }];
+        return nil;
+    }];
+}
 #pragma mark - Fetch json from server GET request
 
 - (RACSignal *)fetchJSONFromURL:(NSURL *)url {
