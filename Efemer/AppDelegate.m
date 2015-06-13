@@ -27,7 +27,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"Efemer.sqlite"];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
     return YES;
 }
 
