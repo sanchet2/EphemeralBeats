@@ -72,7 +72,6 @@
 }
 
 #pragma mark - RAC bindings
-
 -(void)bindToModelView
 {
     RAC(self.viewModel,textInput)=self.userName.rac_textSignal;

@@ -101,7 +101,7 @@
         Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
         if (song.artwork_url) {
             NSString *url=[song.artwork_url absoluteString];
-            NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"crop"];
+            NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
             NSURL *neededurl=[NSURL URLWithString:finalurl];
             RAC(cell.bgImage,image)=[[self.util downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler];
         }
