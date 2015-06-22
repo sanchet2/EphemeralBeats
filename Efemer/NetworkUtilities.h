@@ -13,4 +13,5 @@
 + (id)sharedManager;
 - (RACSignal *)fetchJSONFromURL:(NSURL *)url;
 - (RACSignal *)downloadImage:(NSURL *)url;
+-(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url;
 @end

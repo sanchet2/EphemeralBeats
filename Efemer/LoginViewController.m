@@ -14,14 +14,14 @@
 #import "SearchUsersVC.h"
 #import "SongQueueCollectionVC.h"
 #import "CurrentSongSwipeVC.h"
-#import <MagicalRecord/MagicalRecord.h>
-#import "User.h"
+#import "NetworkUtilities.h"
 
 @interface LoginViewController ()
 @property (nonatomic,strong) UITextField *userName;
 @property (nonatomic,strong) UIButton *loginButton;
 @property (nonatomic,strong) LoginViewModel *viewModel;
 @property (nonatomic,strong) UIButton *button;
+@property (nonatomic,strong) NSString *text;
 @end
 
 @implementation LoginViewController
@@ -39,22 +39,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     
     self.userName= [[UITextField alloc] initWithFrame:CGRectMake(80, 200, 200, 40)];
     self.userName.textColor = [UIColor colorWithRed:0/256.0 green:84/256.0 blue:129/256.0 alpha:1.0];
     self.userName.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
-    self.userName.backgroundColor=[UIColor greenColor];
-    self.userName.text=@"Hello World";
+    self.userName.text=@"username";
     [self.view addSubview:self.userName];
-    
-    if([User MR_findFirst]){
-        User *user=[User MR_findFirst];
-        NSLog(@"%@",user);
-    }
-    
-    [self persistNewUser:@"nikhil" session:@"abcd" age:[NSDate date]];
-    
     
     self.button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.button addTarget:self
@@ -76,18 +68,10 @@
 {
     RAC(self.viewModel,textInput)=self.userName.rac_textSignal;
     self.button.rac_command=self.viewModel.command;
+    RAC(self, text) = RACObserve(self.viewModel, statusMessage);
     
 }
-- (void)persistNewUser:(NSString *)username session:(NSString *)session age:(NSDate *)age
-{
-    // Get the local context
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
-    User *user    = [User MR_createEntityInContext:localContext];
-    user.username = username;
-    user.session  = session;
-    user.timestamp= age;
-    [localContext MR_saveToPersistentStoreAndWait];
-}
+
 
 #pragma mark - Swipe View Controller after login
 

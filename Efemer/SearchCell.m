@@ -13,35 +13,39 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        self.backgroundColor=[UIColor clearColor];
-        
+        self.frame=CGRectMake(0, 0, self.frame.size.width, 150);
+        self.backgroundColor=[UIColor whiteColor];
         // Background image for search
-        
-        self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width-20, self.frame.size.height-20)];
-        self.bgImage.backgroundColor = [UIColor clearColor];
+        self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-50)];
+         self.bgImage.autoresizingMask = UIViewContentModeScaleAspectFill;
+        self.bgImage.backgroundColor = [UIColor blackColor];
         self.bgImage.opaque = NO;
-        self.bgImage.image = [UIImage imageNamed:@"placeholder"];
         [self.bgImage setClipsToBounds:true];
         self.bgImage.contentMode=UIViewContentModeScaleAspectFill;
         self.bgImage.layer.cornerRadius=1;
-        self.backgroundView = self.bgImage;
+        [self.contentView addSubview:self.bgImage];
         
+        self.backgroundColor=[UIColor blackColor];
         // Artist Name Label
-        self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, self.frame.size.width-5, 30)];
+        self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height-30, self.frame.size.width-5, 30)];
         self.artist.textColor = [UIColor whiteColor];
         [self.artist setFont:[UIFont boldSystemFontOfSize:16]];
-        
-        // Song Name Label
-        self.song = [[UILabel alloc] initWithFrame:CGRectMake(5, 40, 200, 30)];
-        self.song.textColor = [UIColor whiteColor];
-        
-        [self addSubview:self.artist];
-        [self addSubview:self.song];
-        
-        self.backgroundColor=[UIColor clearColor];
+        [self.contentView addSubview:self.artist];
+//
+////        // Song Name Label
+////        self.song = [[UILabel alloc] initWithFrame:CGRectMake(5, 120, 200, 30)];
+////        self.song.textColor = [UIColor whiteColor];
+//        
+//        [self addSubview:self.artist];
+////        [self addSubview:self.song];
         
     }
     return self;
+}
+- (void)setFrame:(CGRect)frame {
+    frame.origin.y += 4;
+    frame.size.height -= 2 * 4;
+    [super setFrame:frame];
 }
 
 

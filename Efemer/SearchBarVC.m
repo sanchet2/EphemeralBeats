@@ -53,10 +53,8 @@
     self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     self.searchTable.delegate=self;
     self.searchTable.dataSource=self;
-    self.searchTable.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.searchTable.backgroundColor=[UIColor clearColor];
     [self.view addSubview:self.searchTable];
-    
     //KVO on the array in view model that is updated
     
     @weakify(self);
@@ -90,6 +88,10 @@
 {
     return 1;//can add categories here later
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *simpleTableIdentifier = @"beatport cell";
@@ -111,10 +113,7 @@
 }
 
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 150;
-}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];

@@ -13,4 +13,5 @@
 + (id)sharedManager;
 @property (strong,nonatomic) RACSignal *textInput;
 @property (strong,nonatomic) RACCommand *command;
+@property (strong,nonatomic) NSString *statusMessage;
 @end

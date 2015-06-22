@@ -33,15 +33,13 @@
 }
 
 #pragma mark - Post request AFNetworking
--(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary :(NSString *)url{
+-(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:url parameters:dictionary success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"post json: %@", responseObject);
         [subscriber sendNext:responseObject];
         [subscriber sendCompleted];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"post Error: %@", error);
         [subscriber sendError:error];
     }];
         return nil;

@@ -214,11 +214,10 @@
 		C72FA25B1B1C149D00BCBE19 /* Beatport */ = {
 			isa = PBXGroup;
 			children = (
+				C7F523321B37CD2F00C40672 /* App Delegates */,
 				C727FD9E1B22CA6A00AF68A5 /* Models */,
 				C7B7B6D61B2AAD6C00403609 /* View Controllers */,
 				C727FDB71B2546F500AF68A5 /* Utilities */,
-				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
-				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
 				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
@@ -290,6 +289,15 @@
 				C78A8CCB1B215A0D004EBF4D /* SearchCell.m */,
 			);
 			name = SearchBarVC;
+			sourceTree = "<group>";
+		};
+		C7F523321B37CD2F00C40672 /* App Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				C72FA2601B1C149D00BCBE19 /* AppDelegate.h */,
+				C72FA2611B1C149D00BCBE19 /* AppDelegate.m */,
+			);
+			name = "App Delegates";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
