@@ -29,30 +29,37 @@
 {
     if (self=[super init]) {
         RAC(self,username)=RACObserve(self, textInput);
-        RACCommand *sig=[self subscribeCommand];
-        [sig.executionSignals subscribeNext:^(id val){
-           NSLog(@"%@",val);
+//        self.command=[[RACCommand alloc] initWithSignalBlock:^(id _){
+//            @strongify(self);
+//            return ;
+//        }];
+        
+        self.command = [[RACCommand alloc] initWithSignalBlock:^(id sender) {
+            // The hypothetical -logIn method returns a signal that sends a value when
+            // the network request finishes.
+            return [[NetworkUtilities sharedManager]postJsonToUrl:@{@"username":self.username} url:@"http://104.236.188.213:3000/user"];
         }];
-        RACSignal *completedMessageSource = [self.command.executionSignals flattenMap:^RACStream *(RACSignal *subscribeSignal) {
-            return [[[subscribeSignal materialize] filter:^BOOL(RACEvent *event) {
-                return event.eventType == RACEventTypeCompleted;
-            }] map:^id(id value) {
-                NSLog(@"%@",value);
-                return NSLocalizedString(@"Thanks", nil);
+        
+        // -executionSignals returns a signal that includes the signals returned from
+        // the above block, one for each time the command is executed.
+       
+        
+        RACSignal *sig=[self.command.executionSignals flatten];
+            [sig subscribeNext:^(id val){
+                NSLog(@"%@",val);
+            } error:^(NSError *error){
+                NSLog(@"%@",error);
             }];
-        }];
-        [completedMessageSource subscribeNext:^(id value){
-            NSLog(@"%@",value);
-        }];
+        
+        
+    
     }
     return self;
 }
 -(RACCommand *)subscribeCommand{
-    @weakify(self);
-     return [self.command initWithSignalBlock:^RACSignal *(id input){
-        @strongify(self);
-        return [[NetworkUtilities sharedManager]postJsonToUrl:@{@"username":self.username} url:@"http://104.236.188.213:3000/user"];
-     }];
+    
+    
+    return self.command;
 }
 
 - (void)persistNewUser:(NSString *)username session:(NSString *)session age:(NSDate *)age

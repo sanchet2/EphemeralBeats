@@ -16,13 +16,13 @@
         self.frame=CGRectMake(0, 0, self.frame.size.width, 150);
         self.backgroundColor=[UIColor whiteColor];
         // Background image for search
-        self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-50)];
+        self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-30)];
          self.bgImage.autoresizingMask = UIViewContentModeScaleAspectFill;
         self.bgImage.backgroundColor = [UIColor blackColor];
         self.bgImage.opaque = NO;
+        self.layer.cornerRadius=10;
         [self.bgImage setClipsToBounds:true];
         self.bgImage.contentMode=UIViewContentModeScaleAspectFill;
-        self.bgImage.layer.cornerRadius=1;
         [self.contentView addSubview:self.bgImage];
         
         self.backgroundColor=[UIColor blackColor];
@@ -43,8 +43,8 @@
     return self;
 }
 - (void)setFrame:(CGRect)frame {
-    frame.origin.y += 4;
-    frame.size.height -= 2 * 4;
+    frame.origin.y += 1;
+    frame.size.height -= 2 * 1;
     [super setFrame:frame];
 }
 

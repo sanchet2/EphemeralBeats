@@ -54,6 +54,7 @@
     self.searchTable.delegate=self;
     self.searchTable.dataSource=self;
     self.searchTable.backgroundColor=[UIColor clearColor];
+    self.searchTable.separatorColor=[UIColor clearColor];
     [self.view addSubview:self.searchTable];
     //KVO on the array in view model that is updated
     
@@ -105,7 +106,9 @@
             NSString *url=[song.artwork_url absoluteString];
             NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
             NSURL *neededurl=[NSURL URLWithString:finalurl];
-            RAC(cell.bgImage,image)=[[self.util downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler];
+            
+            
+            RAC(cell.bgImage,image)=[[[self.util downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
         }
         cell.artist.text=song.title;
     }

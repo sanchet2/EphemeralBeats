@@ -82,18 +82,19 @@
 
 -(RACSignal *)downloadImage:(NSURL *)url{
     @weakify(self);
-    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
         @strongify(self);
         [self downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
             if (succeeded) {
-                [subscriber sendNext:image];
+            [subscriber sendNext:image];
                 [subscriber sendCompleted];
             }
+            else{
+                NSError *error;
+                [subscriber sendError:error];
+            }
         }];
-        return [RACDisposable disposableWithBlock:^{
-        }];
-    }] doError:^(NSError *error) {
-        NSLog(@"%@",error);
+        return nil;
     }];
 }
 

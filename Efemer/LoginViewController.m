@@ -30,8 +30,8 @@
 {
     if(self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
-        
         self.viewModel=[LoginViewModel sharedManager];
+        
     }
     return self;
     
@@ -49,13 +49,15 @@
     [self.view addSubview:self.userName];
     
     self.button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.button addTarget:self
-                    action:@selector(goToNewViewController)
-          forControlEvents:UIControlEventTouchUpInside];
     [self.button setTitle:@"Show View" forState:UIControlStateNormal];
+    [self.button addTarget:self
+               action:@selector(goToNewViewController)
+     forControlEvents:UIControlEventTouchUpInside];
     self.button.frame = CGRectMake(80.0, 300.0, 160.0, 40.0);
     [self.view addSubview:self.button];
+    
     [self bindToModelView];
+    
 }
 
 - (void)didReceiveMemoryWarning {
