@@ -29,37 +29,22 @@
 {
     if (self=[super init]) {
         RAC(self,username)=RACObserve(self, textInput);
-//        self.command=[[RACCommand alloc] initWithSignalBlock:^(id _){
-//            @strongify(self);
-//            return ;
-//        }];
         
-        self.command = [[RACCommand alloc] initWithSignalBlock:^(id sender) {
-            // The hypothetical -logIn method returns a signal that sends a value when
-            // the network request finishes.
+        _command = [[RACCommand alloc] initWithSignalBlock:^(id sender) {
             return [[NetworkUtilities sharedManager]postJsonToUrl:@{@"username":self.username} url:@"http://104.236.188.213:3000/user"];
         }];
-        
-        // -executionSignals returns a signal that includes the signals returned from
-        // the above block, one for each time the command is executed.
-       
-        
-        RACSignal *sig=[self.command.executionSignals flatten];
-            [sig subscribeNext:^(id val){
-                NSLog(@"%@",val);
-            } error:^(NSError *error){
-                NSLog(@"%@",error);
-            }];
+        [[[_command executionSignals] flatten]subscribeNext:^(id x){
+            NSLog(@"%@",x);
+        }];
         
         
-    
+        
+        
+        
+        
+        
     }
     return self;
-}
--(RACCommand *)subscribeCommand{
-    
-    
-    return self.command;
 }
 
 - (void)persistNewUser:(NSString *)username session:(NSString *)session age:(NSDate *)age

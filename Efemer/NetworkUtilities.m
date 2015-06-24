@@ -36,7 +36,9 @@
 -(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager POST:url parameters:dictionary success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
         [subscriber sendNext:responseObject];
         [subscriber sendCompleted];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -9,7 +9,14 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import <MagicalRecord/MagicalRecord.h>
+#import "NetworkUtilities.h"
 #import "User.h"
+#import "LoginSuccess.h"
+#import <RNSwipeViewController/RNSwipeViewController.h>
+#import "SearchBarVC.h"
+#import "SearchUsersVC.h"
+#import "SongQueueCollectionVC.h"
+#import "CurrentSongSwipeVC.h"
 
 @interface AppDelegate ()
 
@@ -29,13 +36,56 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
+    
     NSArray *username=[User MR_findAllSortedBy:@"timestamp" ascending:NO];
+    
     if ([username firstObject]) {
         NSLog(@"%@",[[username firstObject]username]);
+        NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[[username firstObject]username]];
+        NSDictionary *session=@{@"session":[[username firstObject]session]};
+        @weakify(self)
+        [[[NetworkUtilities sharedManager]postJsonToUrl:session url:string] subscribeNext:^(id value){
+            @strongify(self);
+            NSError* err = nil;
+            LoginSuccess *success=[[LoginSuccess alloc]initWithString:value error:&err];
+            if ([success.done isEqualToString:@"continue"]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self goToNewViewController:navController];
+                });
+            }
+        }];
+        
     }
     return YES;
 }
 
+
+-(void)goToNewViewController:(UINavigationController *)controller{
+    
+    RNSwipeViewController *swipeVC=[[RNSwipeViewController alloc]init];
+    swipeVC.view.backgroundColor=[UIColor clearColor];
+    swipeVC.leftVisibleWidth=self.window.frame.size.width;
+    swipeVC.rightVisibleWidth=self.window.frame.size.width;
+    
+    SearchBarVC *searchBar=[[SearchBarVC alloc]init];
+    swipeVC.centerViewController=searchBar;
+    
+    SearchUsersVC *searchUsersVC=[[SearchUsersVC alloc]init];
+    swipeVC.leftViewController=searchUsersVC;
+    
+    SongQueueCollectionVC *playlistVC=[[SongQueueCollectionVC alloc]init];
+    playlistVC.title=@"SwipeView";
+    CurrentSongSwipeVC *songCollectionView=[[CurrentSongSwipeVC alloc]init];
+    songCollectionView.title=@"CollectionView";
+    
+    UITabBarController *tabVC=[[UITabBarController alloc]init];
+    NSArray *tabs=@[playlistVC,songCollectionView];
+    tabVC.viewControllers=tabs;
+    swipeVC.rightViewController=tabVC;
+    
+    [controller presentViewController:swipeVC animated:YES completion:nil];
+    
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

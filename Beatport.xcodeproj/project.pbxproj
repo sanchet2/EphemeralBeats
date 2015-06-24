@@ -30,6 +30,7 @@
 		C7B7B6DC1B2AAF7500403609 /* CurrentSongSwipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */; };
 		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
 		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
+		C7F523351B3A876800C40672 /* LoginSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523341B3A876800C40672 /* LoginSuccess.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,8 @@
 		C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarVC.m; sourceTree = "<group>"; };
 		C7D52C101B1ED4C000657D55 /* SearchBarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewModel.h; sourceTree = "<group>"; };
 		C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewModel.m; sourceTree = "<group>"; };
+		C7F523331B3A876800C40672 /* LoginSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSuccess.h; sourceTree = "<group>"; };
+		C7F523341B3A876800C40672 /* LoginSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSuccess.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 				C7259B2D1B2CC1EA009A8592 /* User.m */,
 				C727FD9B1B22CA6300AF68A5 /* Song.h */,
 				C727FD9C1B22CA6300AF68A5 /* Song.m */,
+				C7F523331B3A876800C40672 /* LoginSuccess.h */,
+				C7F523341B3A876800C40672 /* LoginSuccess.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C7B7B6DC1B2AAF7500403609 /* CurrentSongSwipeVC.m in Sources */,
 				C7259B2E1B2CC1EA009A8592 /* User.m in Sources */,
+				C7F523351B3A876800C40672 /* LoginSuccess.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,
 				C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */,

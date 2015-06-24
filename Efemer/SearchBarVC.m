@@ -106,8 +106,6 @@
             NSString *url=[song.artwork_url absoluteString];
             NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
             NSURL *neededurl=[NSURL URLWithString:finalurl];
-            
-            
             RAC(cell.bgImage,image)=[[[self.util downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
         }
         cell.artist.text=song.title;

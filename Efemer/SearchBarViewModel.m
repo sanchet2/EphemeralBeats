@@ -48,7 +48,7 @@
              return [input length]>2;
      }]     map:^NSString*(NSString *input){
              NSString *needed=[input stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-             return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&streamable=true&limit=20&state=finished",needed];
+             return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&streamable=true&limit=25&state=finished",needed];
      }]     throttle:0.5]
             map:^NSURL *(NSString *url){
              return [NSURL URLWithString:url];
