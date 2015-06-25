@@ -28,7 +28,6 @@
 -(id)init
 {
     if (self=[super init]) {
-        self.util=[NetworkUtilities sharedManager];
         RAC(self,songs)=[self addJsonToModel];
         
     }
@@ -53,7 +52,7 @@
             map:^NSURL *(NSString *url){
              return [NSURL URLWithString:url];
      }]     flattenMap:^(NSURL *url){
-             return [self.util fetchJSONFromURL:url];
+             return [NetworkUtilities fetchJSONFromURL:url];
      }];
 }
 

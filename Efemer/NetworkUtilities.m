@@ -10,30 +10,14 @@
 #import <AFNetworking/AFNetworking.h>
 
 @interface NetworkUtilities()
-@property (nonatomic,strong)NSURLSession *session;
+
 @end
 
 @implementation NetworkUtilities
 
-#pragma mark - Singleton Class
-+ (id)sharedManager {
-    static NetworkUtilities *sharedMyManager = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedMyManager = [[self alloc] init];
-    });
-    return sharedMyManager;
-}
--(id)init{
-    if (self=[super init]) {
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        self.session = [NSURLSession sessionWithConfiguration:config];
-    }
-    return self;
-}
 
 #pragma mark - Post request AFNetworking
--(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url{
++(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
@@ -53,10 +37,12 @@
 }
 #pragma mark - Fetch json from server GET request
 
-- (RACSignal *)fetchJSONFromURL:(NSURL *)url {
++ (RACSignal *)fetchJSONFromURL:(NSURL *)url {
     NSLog(@"Fetching: %@",url.absoluteString);
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+        NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if (! error) {
                 NSError *jsonError = nil;
                 id json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
@@ -86,7 +72,7 @@
 
 #pragma mark - Fetch Image from url
 
--(RACSignal *)downloadImage:(NSURL *)url{
++ (RACSignal *)downloadImage:(NSURL *)url{
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
         @strongify(self);

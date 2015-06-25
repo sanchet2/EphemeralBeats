@@ -10,8 +10,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface NetworkUtilities : NSObject
-+ (id)sharedManager;
-- (RACSignal *)fetchJSONFromURL:(NSURL *)url;
-- (RACSignal *)downloadImage:(NSURL *)url;
--(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url;
++ (RACSignal *)fetchJSONFromURL:(NSURL *)url;
++ (RACSignal *)downloadImage:(NSURL *)url;
++ (RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url;
 @end

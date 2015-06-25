@@ -19,7 +19,6 @@
 @property (nonatomic,strong) SearchBarViewModel *viewModel;
 @property (nonatomic,strong) UITableView *searchTable;
 @property (nonatomic,strong) StreamingPlayer *player;
-@property (strong,nonatomic) NetworkUtilities *util;
 @end
 
 @implementation SearchBarVC
@@ -31,7 +30,6 @@
         
         self.viewModel=[SearchBarViewModel sharedManager];
         self.player=[StreamingPlayer sharedManager];
-        self.util=[NetworkUtilities sharedManager];
     }
     return self;
     
@@ -106,7 +104,7 @@
             NSString *url=[song.artwork_url absoluteString];
             NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
             NSURL *neededurl=[NSURL URLWithString:finalurl];
-            RAC(cell.bgImage,image)=[[[self.util downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
+            RAC(cell.bgImage,image)=[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
         }
         cell.artist.text=song.title;
     }

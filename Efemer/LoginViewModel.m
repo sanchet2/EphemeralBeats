@@ -10,6 +10,7 @@
 #import "User.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "NetworkUtilities.h"
+#import "FirstLoginUser.h"
 @interface LoginViewModel()
 @property (strong,nonatomic) NSString *username;
 @end
@@ -31,10 +32,14 @@
         RAC(self,username)=RACObserve(self, textInput);
         
         _command = [[RACCommand alloc] initWithSignalBlock:^(id sender) {
-            return [[NetworkUtilities sharedManager]postJsonToUrl:@{@"username":self.username} url:@"http://104.236.188.213:3000/user"];
+            return [NetworkUtilities postJsonToUrl:@{@"username":self.username} url:@"http://104.236.188.213:3000/user"];
         }];
         [[[_command executionSignals] flatten]subscribeNext:^(id x){
-            NSLog(@"%@",x);
+            NSError *err=nil;
+            FirstLoginUser *user=[[FirstLoginUser alloc]initWithData:x error:&err];
+            [self persistNewUser:user.username session:user.session age:[NSDate dateWithTimeIntervalSince1970:[user.timestamp doubleValue]]];
+            NSLog(@"%@",user);
+            
         }];
         
         

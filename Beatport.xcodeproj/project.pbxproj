@@ -31,6 +31,7 @@
 		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
 		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
 		C7F523351B3A876800C40672 /* LoginSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523341B3A876800C40672 /* LoginSuccess.m */; };
+		C7F523381B3BD63300C40672 /* FirstLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523371B3BD63300C40672 /* FirstLoginUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewModel.m; sourceTree = "<group>"; };
 		C7F523331B3A876800C40672 /* LoginSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSuccess.h; sourceTree = "<group>"; };
 		C7F523341B3A876800C40672 /* LoginSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSuccess.m; sourceTree = "<group>"; };
+		C7F523361B3BD63300C40672 /* FirstLoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginUser.h; sourceTree = "<group>"; };
+		C7F523371B3BD63300C40672 /* FirstLoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 				C727FD9C1B22CA6300AF68A5 /* Song.m */,
 				C7F523331B3A876800C40672 /* LoginSuccess.h */,
 				C7F523341B3A876800C40672 /* LoginSuccess.m */,
+				C7F523361B3BD63300C40672 /* FirstLoginUser.h */,
+				C7F523371B3BD63300C40672 /* FirstLoginUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */,
 				C7B7B6D91B2AADFD00403609 /* SongQueueViewModel.m in Sources */,
 				C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */,
+				C7F523381B3BD63300C40672 /* FirstLoginUser.m in Sources */,
 				C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */,
 				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,
 				C72FA2681B1C149D00BCBE19 /* ViewController.m in Sources */,
