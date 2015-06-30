@@ -97,16 +97,34 @@
     SearchCell *cell = (SearchCell *)[self.searchTable dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil) {
         cell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+       
+        if (indexPath.row<[[self.viewModel songs]count]) {
+            Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
+            if (song.artwork_url) {
+                NSString *url=[song.artwork_url absoluteString];
+                NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
+                NSURL *neededurl=[NSURL URLWithString:finalurl];
+                RAC(cell.bgImage,image)=[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
+            }
+            
+            cell.artist.text=song.title;
+            
     }
-    if (indexPath.row<[[self.viewModel songs]count]) {
-        Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
-        if (song.artwork_url) {
-            NSString *url=[song.artwork_url absoluteString];
-            NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
-            NSURL *neededurl=[NSURL URLWithString:finalurl];
-            RAC(cell.bgImage,image)=[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
-        }
-        cell.artist.text=song.title;
+        
+        cell.share.tag=indexPath.row;
+        cell.incognito.tag=indexPath.row;
+        [[cell.share rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
+            CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
+            NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
+            NSLog(@"%ld",indexPath.row);
+        }];
+        [[cell.incognito rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
+            CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
+            NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
+            NSLog(@"%ld",indexPath.row);
+        }];
+    
+        
     }
     return cell;
 }
