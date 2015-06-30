@@ -9,5 +9,5 @@
 #import "JSONModel.h"
 
 @interface LoginSuccess : JSONModel
-@property (strong, nonatomic) NSString* done;
+@property (strong, nonatomic) NSString* status;
 @end

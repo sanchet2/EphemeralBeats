@@ -31,30 +31,26 @@
     
     LoginViewController *loginVC=[[LoginViewController alloc]init];
     UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
-    
+    self.window.rootViewController = navController;
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
     
     NSArray *username=[User MR_findAllSortedBy:@"timestamp" ascending:NO];
+    NSLog(@"%@",[[username firstObject]username]);
+    NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[[username firstObject]username]];
+    NSDictionary *session=@{@"session":[[username firstObject]session]};
+    @weakify(self)
+    [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
+        @strongify(self);
+        NSError* err = nil;
+        LoginSuccess *success=[[LoginSuccess alloc] initWithData:value error:&err];
+        if ([success.status isEqualToString:@"continue"])
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self goToNewViewController:navController];
+            });
+        }
+    }];
     
-    
-    if ([username firstObject]) {
-        NSLog(@"%@",[[username firstObject]username]);
-        NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[[username firstObject]username]];
-        NSDictionary *session=@{@"session":[[username firstObject]session]};
-        @weakify(self)
-        [[[NetworkUtilities postJsonToUrl:session url:string]flatten] subscribeNext:^(id value){
-            @strongify(self);
-            NSError* err = nil;
-            LoginSuccess *success=[[LoginSuccess alloc]initWithData:value error:&err];
-            if ([success.done isEqualToString:@"continue"]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self goToNewViewController:navController];
-                });
-            }
-        }];
-        
-    }
-    self.window.rootViewController = navController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -19,19 +19,21 @@
 #pragma mark - Post request AFNetworking
 +(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
-    [serializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [serializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    manager.requestSerializer = serializer;
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager POST:url parameters:dictionary success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
-        [subscriber sendNext:responseObject];
-        [subscriber sendCompleted];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [subscriber sendError:error];
-    }];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
+        [serializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [serializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        manager.requestSerializer = serializer;
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        NSLog(@"Posting");
+        [manager POST:url parameters:dictionary success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",responseObject);
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"failure %@",error);
+            [subscriber sendError:error];
+        }];
         return nil;
     }];
 }
@@ -73,12 +75,10 @@
 #pragma mark - Fetch Image from url
 
 + (RACSignal *)downloadImage:(NSURL *)url{
-    @weakify(self);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
-        @strongify(self);
-        [self downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
+        [NetworkUtilities downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
             if (succeeded) {
-            [subscriber sendNext:image];
+                [subscriber sendNext:image];
                 [subscriber sendCompleted];
             }
             else{
@@ -90,7 +90,7 @@
     }];
 }
 
-- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
++ (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request

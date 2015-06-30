@@ -30,23 +30,19 @@
 {
     if (self=[super init]) {
         RAC(self,username)=RACObserve(self, textInput);
-        
+        self.loggedIn=[NSNumber numberWithInt:false];
         _command = [[RACCommand alloc] initWithSignalBlock:^(id sender) {
             return [NetworkUtilities postJsonToUrl:@{@"username":self.username} url:@"http://104.236.188.213:3000/user"];
         }];
+        @weakify(self);
         [[[_command executionSignals] flatten]subscribeNext:^(id x){
+            @strongify(self);
             NSError *err=nil;
             FirstLoginUser *user=[[FirstLoginUser alloc]initWithData:x error:&err];
             [self persistNewUser:user.username session:user.session age:[NSDate dateWithTimeIntervalSince1970:[user.timestamp doubleValue]]];
             NSLog(@"%@",user);
-            
+            self.loggedIn=[NSNumber numberWithInt:true];
         }];
-        
-        
-        
-        
-        
-        
         
     }
     return self;
@@ -54,8 +50,6 @@
 
 - (void)persistNewUser:(NSString *)username session:(NSString *)session age:(NSDate *)age
 {
-    // Get the local context
-    
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     User *user    = [User MR_createEntityInContext:localContext];
     user.username = username;

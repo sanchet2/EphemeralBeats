@@ -50,14 +50,17 @@
     
     self.button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.button setTitle:@"Show View" forState:UIControlStateNormal];
-//    [self.button addTarget:self
-//               action:@selector(goToNewViewController)
-//     forControlEvents:UIControlEventTouchUpInside];
     self.button.frame = CGRectMake(80.0, 300.0, 160.0, 40.0);
     [self.view addSubview:self.button];
     
     [self bindToModelView];
-    
+    @weakify(self);
+    [RACObserve(self.viewModel, loggedIn) subscribeNext:^(id value) {
+        if ([value boolValue]) {
+            @strongify(self);
+            [self goToNewViewController];
+        };
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
