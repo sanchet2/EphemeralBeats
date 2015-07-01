@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AE33116FE28156059E2189AB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 222D7AA0B36C141E6A25E493 /* libPods.a */; };
-		C7259B2E1B2CC1EA009A8592 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C7259B2D1B2CC1EA009A8592 /* User.m */; };
 		C727FD9D1B22CA6300AF68A5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FD9C1B22CA6300AF68A5 /* Song.m */; };
 		C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */; };
 		C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDAE1B240A9000AF68A5 /* SearchUsersVC.m */; };
@@ -32,6 +31,9 @@
 		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
 		C7F523351B3A876800C40672 /* LoginSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523341B3A876800C40672 /* LoginSuccess.m */; };
 		C7F523381B3BD63300C40672 /* FirstLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523371B3BD63300C40672 /* FirstLoginUser.m */; };
+		C7F5233E1B43C0D600C40672 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F5233D1B43C0D600C40672 /* User.m */; };
+		C7F523411B43C0D600C40672 /* SongsQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523401B43C0D600C40672 /* SongsQueue.m */; };
+		C7F523441B44401200C40672 /* PlayerQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523431B44401200C40672 /* PlayerQueue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +50,6 @@
 		222D7AA0B36C141E6A25E493 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		42176A70E44ED983B1884D5D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8F92E34B593FD258087A439E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C7259B2C1B2CC1EA009A8592 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		C7259B2D1B2CC1EA009A8592 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C727FD9B1B22CA6300AF68A5 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		C727FD9C1B22CA6300AF68A5 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		C727FDA61B22E1AF00AF68A5 /* StreamingPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingPlayer.h; sourceTree = "<group>"; };
@@ -95,6 +95,12 @@
 		C7F523341B3A876800C40672 /* LoginSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSuccess.m; sourceTree = "<group>"; };
 		C7F523361B3BD63300C40672 /* FirstLoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginUser.h; sourceTree = "<group>"; };
 		C7F523371B3BD63300C40672 /* FirstLoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginUser.m; sourceTree = "<group>"; };
+		C7F5233C1B43C0D600C40672 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		C7F5233D1B43C0D600C40672 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		C7F5233F1B43C0D600C40672 /* SongsQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsQueue.h; sourceTree = "<group>"; };
+		C7F523401B43C0D600C40672 /* SongsQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsQueue.m; sourceTree = "<group>"; };
+		C7F523421B44401200C40672 /* PlayerQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerQueue.h; sourceTree = "<group>"; };
+		C7F523431B44401200C40672 /* PlayerQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +146,10 @@
 		C727FD9E1B22CA6A00AF68A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C7259B2C1B2CC1EA009A8592 /* User.h */,
-				C7259B2D1B2CC1EA009A8592 /* User.m */,
+				C7F5233F1B43C0D600C40672 /* SongsQueue.h */,
+				C7F523401B43C0D600C40672 /* SongsQueue.m */,
+				C7F5233C1B43C0D600C40672 /* User.h */,
+				C7F5233D1B43C0D600C40672 /* User.m */,
 				C727FD9B1B22CA6300AF68A5 /* Song.h */,
 				C727FD9C1B22CA6300AF68A5 /* Song.m */,
 				C7F523331B3A876800C40672 /* LoginSuccess.h */,
@@ -157,6 +165,8 @@
 			children = (
 				C727FDA61B22E1AF00AF68A5 /* StreamingPlayer.h */,
 				C727FDA71B22E1AF00AF68A5 /* StreamingPlayer.m */,
+				C7F523421B44401200C40672 /* PlayerQueue.h */,
+				C7F523431B44401200C40672 /* PlayerQueue.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -449,7 +459,6 @@
 				C727FDBB1B25535B00AF68A5 /* NetworkUtilities.m in Sources */,
 				C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */,
 				C7B7B6DC1B2AAF7500403609 /* CurrentSongSwipeVC.m in Sources */,
-				C7259B2E1B2CC1EA009A8592 /* User.m in Sources */,
 				C7F523351B3A876800C40672 /* LoginSuccess.m in Sources */,
 				C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */,
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,
@@ -458,9 +467,12 @@
 				C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */,
 				C7F523381B3BD63300C40672 /* FirstLoginUser.m in Sources */,
 				C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */,
+				C7F523441B44401200C40672 /* PlayerQueue.m in Sources */,
 				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,
 				C72FA2681B1C149D00BCBE19 /* ViewController.m in Sources */,
+				C7F523411B43C0D600C40672 /* SongsQueue.m in Sources */,
 				C72FA25F1B1C149D00BCBE19 /* main.m in Sources */,
+				C7F5233E1B43C0D600C40672 /* User.m in Sources */,
 				C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */,
 				C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */,
 				C727FDB41B24188F00AF68A5 /* SongQueueCollectionVC.m in Sources */,
