@@ -11,7 +11,8 @@
 
 @interface PlayerQueue : NSObject
 +(id) sharedManager;
-@property (strong,nonatomic) Song *currentSong;
+@property (strong,nonatomic) NSNumber *currentSong;
+@property (strong,nonatomic) NSMutableArray *songQueue;
 -(void) addSongToShareQueue: (Song *)song;
 -(void) addSongToIncognitoQueue: (Song *)song;
 -(void) removeSongFromShareQueue: (Song *)song;

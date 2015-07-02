@@ -45,6 +45,9 @@
 -(void)stop{
     [self.audioPlayer stop];
 }
+-(void)dragToPosition:(double)position{
+    [self.audioPlayer seekToTime:position];
+}
 
 #pragma mark - Audio player delegates
 
