@@ -4,15 +4,16 @@
         <attribute name="artwork_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stream_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="playlistSongs" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="session" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="playlistSongs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SongsQueue" syncable="YES"/>
+        <relationship name="playlistSongs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SongsQueue" inverseName="relationship" inverseEntity="SongsQueue" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-180" positionY="-9" width="144" height="103"/>
-        <element name="SongsQueue" positionX="252" positionY="-27" width="128" height="88"/>
+        <element name="SongsQueue" positionX="252" positionY="-27" width="128" height="105"/>
+        <element name="User" positionX="-180" positionY="-9" width="144" height="105"/>
     </elements>
 </model>

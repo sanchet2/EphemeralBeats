@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Colours.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,52 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0FE8EB63FF9ADF0122B08273</key>
+		<key>1B1EED256387BE43D8E0BE05</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1B6991389DA770CDB4035787</key>
+		<key>2C5D706CB39AAD5103057C61</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>488F83816896E545A25485E5</key>
+		<key>61E04D6F038B11FC63DBCC6D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5DD2061F192321AF6E9CAD01</key>
+		<key>70ED2D27BDD8C8D114DD559C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>644184CB6BCDFAC8DBB178C9</key>
+		<key>7A1D1EBBC338349E2433AF33</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A762DBD9A24C322BFEFADF1F</key>
+		<key>8A0518D53990BBACAC2D1025</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB3F6F37BBFF6CC3A8FD9C96</key>
+		<key>8C0E32A8EAA2B663EFBCBF89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CDF1A4A4BE93E76664C394D8</key>
+		<key>8F580EF3ECDCA9F32E28DF85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC22B204154F455FA7A097E6</key>
+		<key>9AD49F10712AFC3C23B23AA8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FD066F68D016BB8ECB22BA41</key>
+		<key>D67483EF534962656E226BBC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB8D2AB7AAC172EC6403BD46</key>
 		<dict>
 			<key>primary</key>
 			<true/>

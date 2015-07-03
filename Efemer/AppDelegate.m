@@ -17,25 +17,25 @@
 #import "SearchUsersVC.h"
 #import "SongQueueCollectionVC.h"
 #import "CurrentSongSwipeVC.h"
-
+#import <CocoaLumberjack/CocoaLumberjack.h>
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
+int ddLogLevel = DDLogLevelVerbose;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    [self setupCocoaLumberjack];
     LoginViewController *loginVC=[[LoginViewController alloc]init];
     UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
     self.window.rootViewController = navController;
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
-    
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
     User *user=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
-    NSLog(@"%@",user);
+    DDLogInfo(@"yo mama");
     if(user)
     {
     NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
@@ -58,7 +58,21 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
-
+-(void)setupCocoaLumberjack
+{
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];
+    fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    [DDLog addLogger:fileLogger];
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor greenColor] backgroundColor:nil forFlag:DDLogFlagVerbose];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor blackColor] backgroundColor:nil forFlag:DDLogFlagInfo];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor redColor] backgroundColor:nil forFlag:DDLogFlagError];
+    [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor yellowColor] backgroundColor:nil forFlag:DDLogFlagWarning];
+    
+}
 
 -(void)goToNewViewController:(UINavigationController *)controller{
     

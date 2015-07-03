@@ -1,4 +1,5 @@
 pod 'ReactiveCocoa'
+pod 'CocoaLumberjack'
 pod 'MagicalRecord'
 pod 'AFNetworking'
 pod 'SwipeView'

@@ -21,6 +21,14 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Canvas (0.1.2)
+  - CocoaLumberjack (2.0.1):
+    - CocoaLumberjack/Default (= 2.0.1)
+    - CocoaLumberjack/Extensions (= 2.0.1)
+  - CocoaLumberjack/Core (2.0.1)
+  - CocoaLumberjack/Default (2.0.1):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.0.1):
+    - CocoaLumberjack/Default
   - Colours (5.6.2)
   - JSONModel (1.1.0)
   - MagicalRecord (2.3.0)
@@ -38,6 +46,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - Canvas
+  - CocoaLumberjack
   - Colours
   - JSONModel
   - MagicalRecord
@@ -49,6 +58,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
+  CocoaLumberjack: 019d1361244274a6138c788c6cb80baabc13fb8f
   Colours: 0afd4c3429656880fd4cff350ca3bf0ab86ca348
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
