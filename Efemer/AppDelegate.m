@@ -19,7 +19,7 @@
 #import "CurrentSongSwipeVC.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 @interface AppDelegate ()
-
+@property (strong,nonatomic) UINavigationController *navController;
 @end
 
 @implementation AppDelegate
@@ -28,31 +28,20 @@ int ddLogLevel = DDLogLevelVerbose;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    //setup logging
     [self setupCocoaLumberjack];
+    
+    //Login Controller
     LoginViewController *loginVC=[[LoginViewController alloc]init];
-    UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
-    self.window.rootViewController = navController;
+   self.navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
+    self.window.rootViewController =self.navController;
+    
+    //Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
-    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-    User *user=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
-    DDLogInfo(@"yo mama");
-    if(user)
-    {
-    NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
-    NSDictionary *session=@{@"session":[user session]};
-    @weakify(self)
-    [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
-        @strongify(self);
-        NSError* err = nil;
-        LoginSuccess *success=[[LoginSuccess alloc] initWithData:value error:&err];
-        if ([success.status isEqualToString:@"continue"])
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self goToNewViewController:navController];
-            });
-        }
-    }];
-    }
+    
+    //Retrieve User Data and Check if its the right user
+    [self checkUserState];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -74,7 +63,30 @@ int ddLogLevel = DDLogLevelVerbose;
     
 }
 
--(void)goToNewViewController:(UINavigationController *)controller{
+-(void)checkUserState{
+    User *user=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
+    if(user)
+    {
+        NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
+        NSDictionary *session=@{@"session":[user session]};
+        @weakify(self)
+        [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
+            @strongify(self);
+            NSError* err = nil;
+            LoginSuccess *success=[[LoginSuccess alloc] initWithData:value error:&err];
+            if ([success.status isEqualToString:@"continue"])
+            {
+                DDLogVerbose(@"Successful Login");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    DDLogVerbose(@"Loading Search View Nav Controller");
+                    [self goToNewViewController];
+                });
+            }
+        }];
+    }
+}
+
+-(void)goToNewViewController{
     
     RNSwipeViewController *swipeVC=[[RNSwipeViewController alloc]init];
     swipeVC.view.backgroundColor=[UIColor clearColor];
@@ -97,7 +109,7 @@ int ddLogLevel = DDLogLevelVerbose;
     tabVC.viewControllers=tabs;
     swipeVC.rightViewController=tabVC;
     
-    [controller presentViewController:swipeVC animated:YES completion:nil];
+    [self.navController presentViewController:swipeVC animated:YES completion:nil];
     
 }
 
