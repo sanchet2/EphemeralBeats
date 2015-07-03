@@ -8,13 +8,14 @@
 
 #import "NetworkUtilities.h"
 #import <AFNetworking/AFNetworking.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import "Constants.h"
 
 @interface NetworkUtilities()
 
 @end
 
 @implementation NetworkUtilities
-
 
 #pragma mark - Post request AFNetworking
 +(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url{
@@ -25,13 +26,13 @@
         [serializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         manager.requestSerializer = serializer;
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        NSLog(@"Posting");
+        DDLogVerbose(@"%@ POST",url);
         [manager POST:url parameters:dictionary success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"%@",responseObject);
+            DDLogVerbose(@"Success");
             [subscriber sendNext:responseObject];
             [subscriber sendCompleted];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"failure %@",error);
+            DDLogError(@"%@ Error POST",error);
             [subscriber sendError:error];
         }];
         return nil;
@@ -40,7 +41,7 @@
 #pragma mark - Fetch json from server GET request
 
 + (RACSignal *)fetchJSONFromURL:(NSURL *)url {
-    NSLog(@"Fetching: %@",url.absoluteString);
+    DDLogVerbose(@"Fetching: %@",url.absoluteString);
     return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
@@ -53,10 +54,12 @@
                 }
                 else {
                     [subscriber sendError:jsonError];
+                    DDLogError(@"%@ Error GET",error);
                 }
             }
             else {
                 [subscriber sendError:error];
+                DDLogError(@"%@ Error GET",error);
             }
             
             [subscriber sendCompleted];
@@ -68,22 +71,25 @@
             [dataTask cancel];
         }];
     }] doError:^(NSError *error) {
-        NSLog(@"%@",error);
+        DDLogError(@"%@ Error GET",error);
     }];
 }
 
 #pragma mark - Fetch Image from url
 
 + (RACSignal *)downloadImage:(NSURL *)url{
+    DDLogVerbose(@"%@ IMAGE",url);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
         [NetworkUtilities downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
             if (succeeded) {
                 [subscriber sendNext:image];
                 [subscriber sendCompleted];
+                DDLogVerbose(@"SUCCESS IMAGE");
             }
             else{
                 NSError *error;
                 [subscriber sendError:error];
+                DDLogError(@"%@ Error IMAGE",error);
             }
         }];
         return nil;
@@ -92,6 +98,7 @@
 
 + (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {
+    DDLogVerbose(@"Success");
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]

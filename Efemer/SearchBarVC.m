@@ -13,6 +13,8 @@
 #import "StreamingPlayer.h"
 #import "SearchUsersVC.h"
 #import "NetworkUtilities.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import "Constants.h"
 
 @interface SearchBarVC ()
 @property (nonatomic,strong) UITextField *searchQuery;
@@ -58,7 +60,7 @@
     
     @weakify(self);
     [RACObserve(self.viewModel, songs) subscribeNext:^(NSArray *songs){
-        NSLog(@"%@",songs);
+        DDLogInfo(@"New Song List");
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
             [UIView animateWithDuration:1.0
@@ -69,7 +71,7 @@
                                  [self.searchTable reloadData];
                              }
                              completion:^(BOOL finished){
-                                 NSLog(@"Done!");
+                                 
                              }];
         });
     }];
@@ -100,12 +102,12 @@
         [[cell.share rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
             CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
             NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
-            NSLog(@"%ld",indexPath.row);
+            DDLogVerbose(@"SHARE %ld",(long)indexPath.row);
         }];
         [[cell.incognito rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
             CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
             NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
-            NSLog(@"%ld",indexPath.row);
+            DDLogVerbose(@"INCOGNITO %ld",(long)indexPath.row);
         }];
     }
     if (indexPath.row<[[self.viewModel songs]count]) {

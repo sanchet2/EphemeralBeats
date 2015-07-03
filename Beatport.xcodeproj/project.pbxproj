@@ -25,6 +25,7 @@
 		C72FA2871B1C156C00BCBE19 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2861B1C156C00BCBE19 /* LoginViewController.m */; };
 		C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */; };
 		C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A8CCB1B215A0D004EBF4D /* SearchCell.m */; };
+		C79FE4571B471F3A003DD88D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C79FE4561B471F3A003DD88D /* Constants.m */; };
 		C7B7B6D91B2AADFD00403609 /* SongQueueViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */; };
 		C7B7B6DC1B2AAF7500403609 /* CurrentSongSwipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */; };
 		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
@@ -81,6 +82,8 @@
 		C72FA28D1B1C17C100BCBE19 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		C78A8CCA1B215A0D004EBF4D /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		C78A8CCB1B215A0D004EBF4D /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		C79FE4551B471F39003DD88D /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C79FE4561B471F3A003DD88D /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		C7B7B6D71B2AADFD00403609 /* SongQueueViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongQueueViewModel.h; sourceTree = "<group>"; };
 		C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongQueueViewModel.m; sourceTree = "<group>"; };
 		C7B7B6DA1B2AAF7500403609 /* CurrentSongSwipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSongSwipeVC.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 		C727FDB71B2546F500AF68A5 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C79FE4551B471F39003DD88D /* Constants.h */,
+				C79FE4561B471F3A003DD88D /* Constants.m */,
 				C727FDBC1B25552800AF68A5 /* NetworkUtilities */,
 				C727FDA51B22E17700AF68A5 /* Player */,
 			);
@@ -466,6 +471,7 @@
 				C7B7B6D91B2AADFD00403609 /* SongQueueViewModel.m in Sources */,
 				C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */,
 				C7F523381B3BD63300C40672 /* FirstLoginUser.m in Sources */,
+				C79FE4571B471F3A003DD88D /* Constants.m in Sources */,
 				C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */,
 				C7F523441B44401200C40672 /* PlayerQueue.m in Sources */,
 				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,

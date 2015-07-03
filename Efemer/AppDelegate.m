@@ -18,12 +18,13 @@
 #import "SongQueueCollectionVC.h"
 #import "CurrentSongSwipeVC.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#import "Constants.h"
+
 @interface AppDelegate ()
 @property (strong,nonatomic) UINavigationController *navController;
 @end
 
 @implementation AppDelegate
-int ddLogLevel = DDLogLevelVerbose;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

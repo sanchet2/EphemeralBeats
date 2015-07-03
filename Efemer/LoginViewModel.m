@@ -11,11 +11,13 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "NetworkUtilities.h"
 #import "FirstLoginUser.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import "Constants.h"
+
 @interface LoginViewModel()
 @property (strong,nonatomic) NSString *username;
 @end
 @implementation LoginViewModel
-
 + (id)sharedManager {
     static LoginViewModel *sharedMyManager = nil;
     static dispatch_once_t onceToken;
@@ -40,7 +42,7 @@
             NSError *err=nil;
             FirstLoginUser *user=[[FirstLoginUser alloc]initWithData:x error:&err];
             [self persistNewUser:user.username session:user.session age:[NSDate dateWithTimeIntervalSince1970:[user.timestamp doubleValue]]];
-            NSLog(@"%@",user);
+            DDLogVerbose(@"%@",user);
             self.loggedIn=[NSNumber numberWithInt:true];
         }];
         
