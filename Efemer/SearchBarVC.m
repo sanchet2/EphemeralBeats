@@ -10,17 +10,17 @@
 #import "SearchBarViewModel.h"
 #import "SearchCell.h"
 #import "Song.h"
-#import "StreamingPlayer.h"
 #import "SearchUsersVC.h"
 #import "NetworkUtilities.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "Constants.h"
+#import "PlayerQueue.h"
 
 @interface SearchBarVC ()
 @property (nonatomic,strong) UITextField *searchQuery;
 @property (nonatomic,strong) SearchBarViewModel *viewModel;
 @property (nonatomic,strong) UITableView *searchTable;
-@property (nonatomic,strong) StreamingPlayer *player;
+@property (nonatomic,strong) PlayerQueue *player;
 @end
 
 @implementation SearchBarVC
@@ -31,7 +31,7 @@
     {
         
         self.viewModel=[SearchBarViewModel sharedManager];
-        self.player=[StreamingPlayer sharedManager];
+        self.player=[PlayerQueue sharedManager];
     }
     return self;
     
@@ -115,11 +115,16 @@
             CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
             NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
             DDLogVerbose(@"SHARE %ld",(long)indexPath.row);
+            Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
+            [self.player addSongToShareQueue:song];
+            
         }];
         [[cell.incognito rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
             CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
             NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
             DDLogVerbose(@"INCOGNITO %ld",(long)indexPath.row);
+            Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
+            [self.player addSongToIncognitoQueue:song];
         }];
     }
     if (indexPath.row<[[self.viewModel songs]count]) {
@@ -140,9 +145,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
-    NSString *neededUrl=[NSString stringWithFormat:@"%@?client_id=4346c8125f4f5c40ad666bacd8e96498",song.stream_url];
-    [self.player playSong:neededUrl];
+    
 }
 
 

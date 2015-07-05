@@ -36,9 +36,6 @@
 -(void)playSong:(NSString *)url{
     [self.audioPlayer play:url];
 }
--(void)addSongToQueue:(NSString *)url{
-    [self.audioPlayer queue:url];
-}
 -(void)pause{
     [self.audioPlayer pause];
 }
