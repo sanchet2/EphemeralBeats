@@ -48,6 +48,7 @@
     self.searchQuery.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
     self.searchQuery.backgroundColor=[UIColor colorWithWhite:1.0 alpha:0.8];
     self.searchQuery.text=@"c";
+    self.searchQuery.delegate=self;
     [self.view addSubview:self.searchQuery];
     
     self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
@@ -75,6 +76,17 @@
                              }];
         });
     }];
+    [self.searchQuery.rac_textSignal subscribeNext:^(NSString *input){
+        @strongify(self);
+        if ([input length]==0) {
+            [self.searchTable setHidden:YES];
+        }
+        else {
+            [self.searchTable setHidden:NO];
+        }
+    }];
+    
+    
     [self bindToModelView];
     
 }
@@ -139,6 +151,7 @@
 -(void)bindToModelView
 {
     RAC(self.viewModel,textInput)=self.searchQuery.rac_textSignal;
+    
     
 }
 
