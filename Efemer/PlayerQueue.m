@@ -49,10 +49,13 @@
     [post1Ref setValue: post1];
     
     //Store to disk
-    SongsQueue *queue=[SongsQueue MR_createEntity];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+    SongsQueue *queue    = [SongsQueue MR_createEntityInContext:localContext];
     queue.title=[song title];
     queue.stream_url=[song stream_url];
     queue.artwork_url=[[song artwork_url]absoluteString];
+    [localContext MR_saveToPersistentStoreAndWait];
+    
     [self.currentUser addPlaylistSongsObject:queue];
     
 }
@@ -62,10 +65,12 @@
     [self.songQueue addObject:song];
     
     //Store to disk
-    SongsQueue *queue=[SongsQueue MR_createEntity];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+    SongsQueue *queue    = [SongsQueue MR_createEntityInContext:localContext];
     queue.title=[song title];
     queue.stream_url=[song stream_url];
     queue.artwork_url=[[song artwork_url]absoluteString];
+    
     [self.currentUser addPlaylistSongsObject:queue];
     
 }

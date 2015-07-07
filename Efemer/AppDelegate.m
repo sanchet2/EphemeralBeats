@@ -40,7 +40,6 @@
     
     //Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
-    
     //Retrieve User Data and Check if its the right user
     [self checkUserState];
     
@@ -66,6 +65,9 @@
 
 -(void)checkUserState{
     User *user=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
+    NSArray *myArray = [user.playlistSongs allObjects];
+    NSString *str = [myArray componentsJoinedByString:@", "];
+    NSLog(@"%@",str);
     if(user)
     {
         NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
