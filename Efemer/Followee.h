@@ -1,5 +1,5 @@
 //
-//  SongsQueue.h
+//  Followee.h
 //  Beatport
 //
 //  Created by Nikhil Sancheti on 7/6/15.
@@ -11,11 +11,10 @@
 
 @class User;
 
-@interface SongsQueue : NSManagedObject
+@interface Followee : NSManagedObject
 
-@property (nonatomic, retain) NSString * artwork_url;
-@property (nonatomic, retain) NSString * stream_url;
-@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * username;
+@property (nonatomic, retain) NSString * timestamp;
 @property (nonatomic, retain) User *relationship;
 
 @end

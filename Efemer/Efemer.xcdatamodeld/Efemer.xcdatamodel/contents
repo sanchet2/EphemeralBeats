@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Followee" representedClassName="Followee" syncable="YES">
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="folowees" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="SongsQueue" representedClassName="SongsQueue" syncable="YES">
         <attribute name="artwork_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stream_url" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,10 +15,12 @@
         <attribute name="session" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="folowees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Followee" inverseName="relationship" inverseEntity="Followee" syncable="YES"/>
         <relationship name="playlistSongs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SongsQueue" inverseName="relationship" inverseEntity="SongsQueue" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SongsQueue" positionX="252" positionY="-27" width="128" height="105"/>
-        <element name="User" positionX="-180" positionY="-9" width="144" height="105"/>
+        <element name="SongsQueue" positionX="79" positionY="93" width="128" height="105"/>
+        <element name="User" positionX="-180" positionY="-9" width="144" height="120"/>
+        <element name="Followee" positionX="9" positionY="-288" width="128" height="88"/>
     </elements>
 </model>

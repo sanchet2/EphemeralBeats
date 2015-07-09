@@ -1,20 +1,19 @@
 //
-//  SongsQueue.m
+//  Followee.m
 //  Beatport
 //
 //  Created by Nikhil Sancheti on 7/6/15.
 //  Copyright (c) 2015 Nikhil Sancheti. All rights reserved.
 //
 
-#import "SongsQueue.h"
+#import "Followee.h"
 #import "User.h"
 
 
-@implementation SongsQueue
+@implementation Followee
 
-@dynamic artwork_url;
-@dynamic stream_url;
-@dynamic title;
+@dynamic username;
+@dynamic timestamp;
 @dynamic relationship;
 
 @end

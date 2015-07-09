@@ -2,7 +2,7 @@
 //  User.m
 //  Beatport
 //
-//  Created by Nikhil Sancheti on 6/30/15.
+//  Created by Nikhil Sancheti on 7/6/15.
 //  Copyright (c) 2015 Nikhil Sancheti. All rights reserved.
 //
 
@@ -16,5 +16,6 @@
 @dynamic timestamp;
 @dynamic username;
 @dynamic playlistSongs;
+@dynamic folowees;
 
 @end
