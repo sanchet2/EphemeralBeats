@@ -57,7 +57,12 @@
     user.username = username;
     user.session  = session;
     user.timestamp= age;
-    [localContext MR_saveToPersistentStoreAndWait];
-}
+    [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
+        if(contextDidSave){
+            DDLogVerbose(@"Successfully Persisted User");
+        }
+    }];
+
+    }
 
 @end

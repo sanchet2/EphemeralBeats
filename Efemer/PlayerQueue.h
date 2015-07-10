@@ -14,7 +14,6 @@
 @interface PlayerQueue : NSObject
 +(id) sharedManager;
 @property (strong,nonatomic) NSNumber *currentSong;
-@property (strong,nonatomic) NSMutableArray *songQueue;
 @property (strong,nonatomic) StreamingPlayer *player;
 @property (strong,nonatomic) User *currentUser;
 -(void) addSongToShareQueue: (Song *)song;

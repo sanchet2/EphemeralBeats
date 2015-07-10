@@ -49,7 +49,6 @@
 -(void) addSongToShareQueue: (Song *)song{
     //Add Song To Song Queue
     [self.player playSong:[NSString stringWithFormat:@"%@?client_id=4346c8125f4f5c40ad666bacd8e96498",song.stream_url]];
-    [self.songQueue addObject:song];
     
     //Firebase POST
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://torid-fire-8399.firebaseio.com/"];
@@ -68,7 +67,6 @@
 -(void) addSongToIncognitoQueue: (Song *)song{
     //Add Song To Song Queue
     [self.player playSong:[NSString stringWithFormat:@"%@?client_id=4346c8125f4f5c40ad666bacd8e96498",song.stream_url]];
-    [self.songQueue addObject:song];
     
     //Store to disk
     [self addSongToDisk:song];
