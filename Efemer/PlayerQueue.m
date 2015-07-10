@@ -33,17 +33,8 @@
     {
         self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
         self.player=[StreamingPlayer sharedManager];
-        [self setTimestampOfUser];
     }
     return self;
-}
--(void)setTimestampOfUser{
-    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://torid-fire-8399.firebaseio.com/"];
-    Firebase *postRef = [ref childByAppendingPath: @"posts"];
-    Firebase *userRef = [postRef childByAppendingPath:self.currentUser.username];
-    Firebase *timestampRef=[userRef childByAppendingPath:@"timestamp"];
-    NSNumber *num=[NSNumber numberWithDouble:[self.currentUser.timestamp timeIntervalSince1970] ];
-    [timestampRef setValue:num];
 }
 
 -(void) addSongToShareQueue: (Song *)song{
@@ -54,7 +45,11 @@
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://torid-fire-8399.firebaseio.com/"];
     Firebase *postRef = [ref childByAppendingPath: @"posts"];
     Firebase *userRef = [postRef childByAppendingPath:self.currentUser.username];
-    Firebase *songRef=[userRef childByAppendingPath:@"song"];
+    Firebase *timestampRef=[userRef childByAppendingPath:@"timestamp"];
+    NSNumber *num=[NSNumber numberWithDouble:[self.currentUser.timestamp timeIntervalSince1970] ];
+    Firebase *tref=[timestampRef childByAppendingPath:[num stringValue]];
+    Firebase *songRef=[tref childByAppendingPath:@"song"];
+    
     NSDictionary *post1 = [song toDictionary];
     Firebase *post1Ref = [songRef childByAutoId];
     [post1Ref setValue: post1];

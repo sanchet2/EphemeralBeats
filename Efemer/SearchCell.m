@@ -38,12 +38,14 @@
         self.share = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.share setTitle:@"Add" forState:UIControlStateNormal];
         self.share.frame = CGRectMake(self.frame.size.width-20, self.frame.size.height/2, 40.0, 40.0);
+        [self.share setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.contentView addSubview:self.share];
         
         
         self.incognito=[UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.incognito setTitle:@"Incog" forState:UIControlStateNormal];
         self.incognito.frame = CGRectMake(self.frame.size.width-65, self.frame.size.height/2, 40.0, 40.0);
+        [self.incognito setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.contentView addSubview:self.incognito];
     }
     return self;
