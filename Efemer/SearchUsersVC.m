@@ -9,6 +9,7 @@
 #import "SearchUsersVC.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "SearchUsersViewModel.h"
+#import "UserSearch.h"
 
 @interface SearchUsersVC ()
 @property (strong,nonatomic) UITableView *tableView;
@@ -32,12 +33,17 @@
     [self.view addSubview:self.searchQuery];
     
     
-    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 400) style:UITableViewStyleGrouped];
+    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 400) style:UITableViewStyleGrouped];
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     self.tableView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:self.tableView];
     RAC(self,userSearch)=[self.viewModel getUserList];
+    [RACObserve(self, userSearch) subscribeNext:^(NSArray *x){
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        });
+    }];
     [self bindToModelView];
 }
 
@@ -50,14 +56,18 @@
     // Dispose of any resources that can be recreated.
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.userSearch.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"userSearchCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userSearchCell"];
+    UserSearch *userObject=[self.userSearch objectAtIndex:indexPath.row];
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    cell.textLabel.text=userObject.username;
+    cell.detailTextLabel.text=[userObject timestamp];
     return cell;
 }
 
