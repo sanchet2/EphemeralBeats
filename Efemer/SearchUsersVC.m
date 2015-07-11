@@ -10,6 +10,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "SearchUsersViewModel.h"
 #import "UserSearch.h"
+#import "FollowersFirebase.h"
 
 @interface SearchUsersVC ()
 @property (strong,nonatomic) UITableView *tableView;
@@ -78,8 +79,8 @@
         [self.share setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [cell.contentView addSubview:self.share];
         [[self.share rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
-            CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
-            NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+            UserSearch *selectedUser=[self.userSearch objectAtIndex:indexPath.row];
+            [[FollowersFirebase sharedManager]addReference:selectedUser];
             
         }];
         

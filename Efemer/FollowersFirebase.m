@@ -7,11 +7,15 @@
 //
 
 #import "FollowersFirebase.h"
-#import <Firebase/Firebase.h>
+#import "PlayerQueue.h"
+#import "Song.h"
+#import "FirebaseHelper.h"
+
 @interface FollowersFirebase()
 @property (strong,nonatomic) NSMutableDictionary *fFollowees;
-@property (strong,nonatomic) Firebase *ref;
+@property (strong,nonatomic) PlayerQueue *playerQueue;
 @end
+
 @implementation FollowersFirebase
 
 +(id) sharedManager{
@@ -27,16 +31,15 @@
 {
     if(self=[super init])
     {
-        self.ref = [[Firebase alloc] initWithUrl: @"https://torid-fire-8399.firebaseio.com/"];
         self.fFollowees=[[NSMutableDictionary alloc]init];
+        self.playerQueue=[PlayerQueue sharedManager];
     }
     return self;
 }
-
--(void)addFollowees:(NSString *)user timestamp:(NSString *)timestamp{
-    FirebaseHandle handle = [self.ref observeEventType:FEventTypeValue withBlock:^(FDatasnapshot* snapshot) {
-    }];
+-(void)addReference:(UserSearch *)user{
+    FirebaseHelper *helper=[[FirebaseHelper alloc]initWithUser:user];
+    [self.fFollowees setObject:helper forKey:user];
     
-    [self.ref removeObserverWithHandle:handle];
 }
+
 @end

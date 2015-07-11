@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserSearch.h"
 
 @interface FollowersFirebase : NSObject
++(id) sharedManager;
+-(void)addReference:(UserSearch *)user;
 
 @end
