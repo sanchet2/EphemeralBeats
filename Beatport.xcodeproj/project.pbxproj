@@ -34,6 +34,7 @@
 		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
 		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
 		C7DCE1351B4E50C50021D1D1 /* SearchUsersViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DCE1341B4E50C50021D1D1 /* SearchUsersViewModel.m */; };
+		C7F480001B51A25700010772 /* UserSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F47FFF1B51A25700010772 /* UserSearch.m */; };
 		C7F4DCB11B4FA3D700A2BEBF /* FollowersFirebase.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F4DCB01B4FA3D700A2BEBF /* FollowersFirebase.m */; };
 		C7F523351B3A876800C40672 /* LoginSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523341B3A876800C40672 /* LoginSuccess.m */; };
 		C7F523381B3BD63300C40672 /* FirstLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F523371B3BD63300C40672 /* FirstLoginUser.m */; };
@@ -106,6 +107,8 @@
 		C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewModel.m; sourceTree = "<group>"; };
 		C7DCE1331B4E50C50021D1D1 /* SearchUsersViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUsersViewModel.h; sourceTree = "<group>"; };
 		C7DCE1341B4E50C50021D1D1 /* SearchUsersViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUsersViewModel.m; sourceTree = "<group>"; };
+		C7F47FFE1B51A25700010772 /* UserSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSearch.h; sourceTree = "<group>"; };
+		C7F47FFF1B51A25700010772 /* UserSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSearch.m; sourceTree = "<group>"; };
 		C7F4DCAF1B4FA3D700A2BEBF /* FollowersFirebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowersFirebase.h; sourceTree = "<group>"; };
 		C7F4DCB01B4FA3D700A2BEBF /* FollowersFirebase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowersFirebase.m; sourceTree = "<group>"; };
 		C7F523331B3A876800C40672 /* LoginSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSuccess.h; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				C7F523341B3A876800C40672 /* LoginSuccess.m */,
 				C7F523361B3BD63300C40672 /* FirstLoginUser.h */,
 				C7F523371B3BD63300C40672 /* FirstLoginUser.m */,
+				C7F47FFE1B51A25700010772 /* UserSearch.h */,
+				C7F47FFF1B51A25700010772 /* UserSearch.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				C79FE4571B471F3A003DD88D /* Constants.m in Sources */,
 				C78A8CCC1B215A0D004EBF4D /* SearchCell.m in Sources */,
 				C7F523441B44401200C40672 /* PlayerQueue.m in Sources */,
+				C7F480001B51A25700010772 /* UserSearch.m in Sources */,
 				C72FA28E1B1C17C100BCBE19 /* LoginViewModel.m in Sources */,
 				C72FA2681B1C149D00BCBE19 /* ViewController.m in Sources */,
 				C72FA25F1B1C149D00BCBE19 /* main.m in Sources */,

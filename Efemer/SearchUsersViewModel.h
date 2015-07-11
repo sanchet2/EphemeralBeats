@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface SearchUsersViewModel : NSObject
-
+@property (strong,nonatomic) NSString *textInput;
+-(RACSignal *)getUserList;
++ (id)sharedManager;
 @end

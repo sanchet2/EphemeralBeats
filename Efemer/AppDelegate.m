@@ -40,6 +40,7 @@
     
     //Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
+    
     //Retrieve User Data and Check if its the right user
     [self checkUserState];
     
