@@ -9,9 +9,11 @@
 #import "FollowersFirebase.h"
 #import <Firebase/Firebase.h>
 @interface FollowersFirebase()
-@property (strong,nonatomic) NSArray *references;
+@property (strong,nonatomic) NSMutableDictionary *fFollowees;
+@property (strong,nonatomic) Firebase *ref;
 @end
 @implementation FollowersFirebase
+
 +(id) sharedManager{
     static FollowersFirebase *sharedMyManager = nil;
     static dispatch_once_t onceToken;
@@ -20,15 +22,21 @@
     });
     return sharedMyManager;
 }
+
 -(id)init
 {
     if(self=[super init])
     {
-     
+        self.ref = [[Firebase alloc] initWithUrl: @"https://torid-fire-8399.firebaseio.com/"];
+        self.fFollowees=[[NSMutableDictionary alloc]init];
     }
     return self;
 }
--(void)addFollowees:(NSString *)user{
+
+-(void)addFollowees:(NSString *)user timestamp:(NSString *)timestamp{
+    FirebaseHandle handle = [self.ref observeEventType:FEventTypeValue withBlock:^(FDatasnapshot* snapshot) {
+    }];
     
+    [self.ref removeObserverWithHandle:handle];
 }
 @end

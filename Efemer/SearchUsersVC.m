@@ -16,6 +16,7 @@
 @property (strong,nonatomic) UITextField *searchQuery;
 @property (strong,nonatomic) SearchUsersViewModel *viewModel;
 @property (strong,nonatomic) NSArray *userSearch;
+@property (strong,nonatomic) UIButton *share;
 @end
 
 @implementation SearchUsersVC
@@ -58,16 +59,39 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.userSearch.count;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"userSearchCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userSearchCell"];
-    UserSearch *userObject=[self.userSearch objectAtIndex:indexPath.row];
+    
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        self.share = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.share setTitle:@"Add" forState:UIControlStateNormal];
+        self.share.frame = CGRectMake(cell.frame.size.width-40, cell.frame.size.height/2, 40.0, 40.0);
+        [self.share setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [cell.contentView addSubview:self.share];
+        [[self.share rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
+            CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+            NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+            
+        }];
+        
     }
+    UserSearch *userObject=[self.userSearch objectAtIndex:indexPath.row];
     cell.textLabel.text=userObject.username;
-    cell.detailTextLabel.text=[userObject timestamp];
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[userObject.timestamp integerValue]];
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:date
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterFullStyle];
+    cell.detailTextLabel.text=dateString;
     return cell;
 }
 

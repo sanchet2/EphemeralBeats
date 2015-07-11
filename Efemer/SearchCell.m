@@ -22,7 +22,6 @@
         self.bgImage.opaque = NO;
         [self.bgImage setClipsToBounds:true];
         self.bgImage.contentMode=UIViewContentModeScaleAspectFill;
-        self.bgImage.alpha=0.5;
         [self.contentView addSubview:self.bgImage];
         
         self.backgroundColor=[UIColor colorWithWhite:0.1 alpha:0.8];
