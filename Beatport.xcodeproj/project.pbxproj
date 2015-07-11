@@ -169,12 +169,7 @@
 		C727FD9E1B22CA6A00AF68A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C79FE45E1B4B9B62003DD88D /* SongsQueue.h */,
-				C79FE45F1B4B9B62003DD88D /* SongsQueue.m */,
-				C79FE45B1B4B9B62003DD88D /* Followee.h */,
-				C79FE45C1B4B9B62003DD88D /* Followee.m */,
-				C79FE4581B4B9B61003DD88D /* User.h */,
-				C79FE4591B4B9B61003DD88D /* User.m */,
+				C7F480081B51D9B500010772 /* NSManagedObject */,
 				C727FD9B1B22CA6300AF68A5 /* Song.h */,
 				C727FD9C1B22CA6300AF68A5 /* Song.m */,
 				C7F523331B3A876800C40672 /* LoginSuccess.h */,
@@ -370,6 +365,19 @@
 				C7F480061B51D25300010772 /* FirebaseHelper.m */,
 			);
 			name = FollowerLogic;
+			sourceTree = "<group>";
+		};
+		C7F480081B51D9B500010772 /* NSManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				C79FE45B1B4B9B62003DD88D /* Followee.h */,
+				C79FE45C1B4B9B62003DD88D /* Followee.m */,
+				C79FE45E1B4B9B62003DD88D /* SongsQueue.h */,
+				C79FE45F1B4B9B62003DD88D /* SongsQueue.m */,
+				C79FE4581B4B9B61003DD88D /* User.h */,
+				C79FE4591B4B9B61003DD88D /* User.m */,
+			);
+			name = NSManagedObject;
 			sourceTree = "<group>";
 		};
 		C7F523321B37CD2F00C40672 /* App Delegates */ = {

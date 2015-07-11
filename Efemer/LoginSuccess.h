@@ -9,5 +9,6 @@
 #import "JSONModel.h"
 
 @interface LoginSuccess : JSONModel
+//Remove this file its bloat
 @property (strong, nonatomic) NSString* status;
 @end
