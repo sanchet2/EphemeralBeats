@@ -76,6 +76,7 @@
     queue.title=[song title];
     queue.stream_url=[song stream_url];
     queue.artwork_url=[[song artwork_url]absoluteString];
+    queue.relationship=self.currentUser;
     [self.currentUser addPlaylistSongsObject:queue];
     [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
         if(contextDidSave){
