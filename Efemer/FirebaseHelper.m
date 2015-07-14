@@ -27,6 +27,9 @@
         Firebase *song=[stamp childByAppendingPath:@"song"];
         [song observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot* snapshot) {
             NSLog(@"%@",snapshot.value);
+            Song *song=[[Song alloc]initWithDictionary:snapshot.value error:nil];
+            [[PlayerQueue sharedManager]addSongToQueue:song];
+            //TODO: need to set this in the player queue and a
         }];
         
     }

@@ -47,7 +47,7 @@
     self.searchQuery.textColor = [UIColor colorWithRed:0/256.0 green:84/256.0 blue:129/256.0 alpha:1.0];
     self.searchQuery.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
     self.searchQuery.backgroundColor=[UIColor colorWithWhite:1.0 alpha:0.8];
-    self.searchQuery.text=@"c";
+    self.searchQuery.text=@"beatles";
     self.searchQuery.delegate=self;
     [self.view addSubview:self.searchQuery];
     
@@ -142,20 +142,11 @@
 }
 
 
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
-
-
 #pragma mark - add bindings to viewModel
 
 -(void)bindToModelView
 {
     RAC(self.viewModel,textInput)=self.searchQuery.rac_textSignal;
-    
-    
 }
 
 

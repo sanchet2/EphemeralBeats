@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <StreamingKit/STKAudioPlayer.h>
+#import "Song.h"
 
 @interface StreamingPlayer : NSObject <STKAudioPlayerDelegate>
 //Singleton
@@ -15,6 +16,7 @@
 
 //Player functions;
 -(void)playSong:(NSString *)url;
+-(void)addSongToQueue:(Song *)song;
 -(void)pause;
 -(void)stop;
 -(void)dragToPosition:(double)position;

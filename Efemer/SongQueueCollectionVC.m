@@ -7,9 +7,16 @@
 //
 
 #import "SongQueueCollectionVC.h"
+#import "User.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "NetworkUtilities.h"
+#import "SongsQueue.h"
+
 
 @interface SongQueueCollectionVC () <UICollectionViewDelegate,UICollectionViewDataSource>
-
+@property (strong,nonatomic) User *currentUser;
+@property (strong,nonatomic) UICollectionView *collectionView;
+@property (strong,nonatomic) NSArray *songs;
 @end
 
 @implementation SongQueueCollectionVC
@@ -17,17 +24,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
     self.view.backgroundColor=[UIColor whiteColor];
     CGRect size=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50);
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
     layout.minimumInteritemSpacing=0.5f;
     layout.minimumLineSpacing=0.8f;
     layout.scrollDirection=UICollectionViewScrollDirectionVertical;
-    UICollectionView *collectionView=[[UICollectionView alloc]initWithFrame:size collectionViewLayout:layout];
-    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
-    collectionView.delegate=self;
-    collectionView.dataSource=self;
-    [self.view addSubview:collectionView];
+     self.collectionView=[[UICollectionView alloc]initWithFrame:size collectionViewLayout:layout];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
+    self.collectionView.delegate=self;
+    self.collectionView.dataSource=self;
+    [self.view addSubview:self.collectionView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,17 +46,25 @@
 #pragma mark - CollectionView Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 30;
+    return self.currentUser.playlistSongs.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-    UIImage *backimage=[UIImage imageNamed:@"muse"];
-    UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/3-3, 120)];
-    imgView.image=backimage;
-    cell.backgroundView=imgView;
+    SongsQueue *song=[self.songs objectAtIndex:indexPath.row];
+    if (song.artwork_url) {
+        NSString *url=song.artwork_url;
+        NSURL *neededurl=[NSURL URLWithString:url];
+        @weakify(self);
+        [[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]]subscribeNext:^(UIImage *img){
+            @strongify(self);
+            UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/3-3, 120)];
+            imgView.image=img;
+            cell.backgroundView=imgView;
+        }];;
+    }
     return cell;
 }
 
@@ -56,6 +72,11 @@
 {
     return CGSizeMake(self.view.frame.size.width/3-3, 120);
 }
+-(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return YES;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -65,5 +86,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)viewWillAppear:(BOOL)animated {
+    self.songs=[self.currentUser.playlistSongs allObjects];
+    [self.collectionView reloadData];
+}
 
 @end

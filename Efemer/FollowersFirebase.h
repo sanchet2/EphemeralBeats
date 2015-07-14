@@ -11,6 +11,5 @@
 
 @interface FollowersFirebase : NSObject
 +(id) sharedManager;
--(void)addReference:(UserSearch *)user;
-
+-(void)addFolloweeToDisk:(UserSearch *)user;
 @end

@@ -35,7 +35,7 @@
 }
 -(RACSignal *)addJsonToModel
 {
-    return [[[[[[RACObserve(self, textInput)
+    return [[[[[[RACObserve(self, textInput) throttle:0.5]
                  filter:^BOOL(NSString *input){
                      return [input length]>0;
                  }]
@@ -43,7 +43,6 @@
                      NSString *needed=[input stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
                      return [NSString stringWithFormat:@"http://api.soundcloud.com/tracks.json?client_id=4346c8125f4f5c40ad666bacd8e96498&q=%@&streamable=true&limit=25&state=finished&downloadable=true",needed];
                  }]
-                throttle:0.5]
                 map:^NSURL *(NSString *url){
                   return [NSURL URLWithString:url];
                 }]

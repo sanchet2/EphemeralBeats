@@ -80,8 +80,7 @@
         [cell.contentView addSubview:self.share];
         [[self.share rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
             UserSearch *selectedUser=[self.userSearch objectAtIndex:indexPath.row];
-            [[FollowersFirebase sharedManager]addReference:selectedUser];
-            
+            [[FollowersFirebase sharedManager] addFolloweeToDisk:selectedUser];
         }];
         
     }
@@ -95,15 +94,5 @@
     cell.detailTextLabel.text=dateString;
     return cell;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

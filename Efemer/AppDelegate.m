@@ -40,7 +40,6 @@
     
     //Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
-    
     //Retrieve User Data and Check if its the right user
     [self checkUserState];
     
@@ -85,6 +84,9 @@
                     DDLogVerbose(@"Loading Search View Nav Controller");
                     [self goToNewViewController];
                 });
+            }
+            else{
+                [User MR_truncateAll];
             }
         }];
     }

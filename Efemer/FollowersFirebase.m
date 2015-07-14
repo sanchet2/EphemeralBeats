@@ -10,10 +10,16 @@
 #import "PlayerQueue.h"
 #import "Song.h"
 #import "FirebaseHelper.h"
+#import "User.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "Followee.h"
+#import "Constants.h"
+#import <MagicalRecord/MagicalRecord.h>
 
 @interface FollowersFirebase()
 @property (strong,nonatomic) NSMutableDictionary *fFollowees;
 @property (strong,nonatomic) PlayerQueue *playerQueue;
+@property (strong,nonatomic) User *currentUser;
 @end
 
 @implementation FollowersFirebase
@@ -33,6 +39,12 @@
     {
         self.fFollowees=[[NSMutableDictionary alloc]init];
         self.playerQueue=[PlayerQueue sharedManager];
+        //Add All Current references
+        self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
+        for (Followee* followee in self.currentUser.folowees) {
+            [self addReferenceFromCoreData:followee];
+        }
+        
     }
     return self;
 }
@@ -41,5 +53,32 @@
     [self.fFollowees setObject:helper forKey:user];
     
 }
+-(void)addReferenceFromCoreData:(Followee *)folowee{
+    UserSearch *user=[[UserSearch alloc]init];
+    user.timestamp=folowee.timestamp;
+    user.username=folowee.username;
+    [self addReference:user];
+}
+-(void)addFolloweeToDisk:(UserSearch *)user
+{
+    //Store to disk
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+    Followee *queue    = [Followee MR_createEntityInContext:localContext];
+    queue.username=[user username];
+    queue.timestamp=[user timestamp];
+    
+    //Add CoreData Reference
+    [self addReferenceFromCoreData:queue];
+    
+    queue.relationship=self.currentUser;
+    [self.currentUser addFoloweesObject:queue];
+    [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
+        if(contextDidSave){
+            DDLogVerbose(@"Successfully Followed Followee");
+            
+        }
+    }];
+}
+
 
 @end
