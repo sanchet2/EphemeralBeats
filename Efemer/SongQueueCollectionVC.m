@@ -38,7 +38,8 @@
     self.collectionView.backgroundView.backgroundColor=[UIColor whiteColor];
     self.songs=[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]];
     
-    
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.collectionView];
 }
 
