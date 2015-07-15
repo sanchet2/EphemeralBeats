@@ -35,6 +35,10 @@
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
+    self.collectionView.backgroundView.backgroundColor=[UIColor whiteColor];
+    self.songs=[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]];
+    
+    
     [self.view addSubview:self.collectionView];
 }
 
@@ -46,7 +50,7 @@
 #pragma mark - CollectionView Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.currentUser.playlistSongs.count;
+    return self.songs.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -65,6 +69,13 @@
             cell.backgroundView=imgView;
         }];;
     }
+    cell.alpha = 0.0f;
+    [UIView animateWithDuration:0.5 animations:^() {
+        cell.alpha = 1.0f;
+    }];
+
+    
+    
     return cell;
 }
 
@@ -76,6 +87,15 @@
 {
     return YES;
 }
+- (UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
+{
+    UICollectionViewLayoutAttributes *attr = [self.collectionView layoutAttributesForItemAtIndexPath:itemIndexPath];
+    
+    attr.transform = CGAffineTransformRotate(CGAffineTransformMakeScale(0.2, 0.2), M_PI);
+    attr.center = CGPointMake(CGRectGetMidX(self.collectionView.bounds), CGRectGetMaxY(self.collectionView.bounds));
+    
+    return attr;
+}
 
 /*
 #pragma mark - Navigation
@@ -86,9 +106,9 @@
     // Pass the selected object to the new view controller.
 }
 */
--(void)viewWillAppear:(BOOL)animated {
-    self.songs=[self.currentUser.playlistSongs allObjects];
-    [self.collectionView reloadData];
-}
+//-(void)viewWillAppear:(BOOL)animated {
+//    self.songs=[self.currentUser.playlistSongs allObjects];
+//    [self.collectionView reloadData];
+//}
 
 @end

@@ -13,6 +13,7 @@
 
 @interface FirebaseHelper()
 @property (strong,nonatomic) Firebase *ref;
+@property (strong,nonatomic) PlayerQueue *queue;
 @end
 @implementation FirebaseHelper
 
@@ -25,10 +26,15 @@
         Firebase *tstamp=[userFbase childByAppendingPath:@"timestamp"];
         Firebase *stamp=[tstamp childByAppendingPath:user.timestamp];
         Firebase *song=[stamp childByAppendingPath:@"song"];
+        self.queue=[PlayerQueue sharedManager];
         [song observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot* snapshot) {
             NSLog(@"%@",snapshot.value);
-            Song *song=[[Song alloc]initWithDictionary:snapshot.value error:nil];
-            [[PlayerQueue sharedManager]addSongToQueue:song];
+            NSError *err=nil;
+            Song *song=[[Song alloc] initWithDictionary:snapshot.value error:&err];
+            if (song) {
+                 [self.queue addSongToIncognitoQueue:song];
+            }
+           
             //TODO: need to set this in the player queue and a
         }];
         

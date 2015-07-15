@@ -16,8 +16,8 @@
 
 //Player functions;
 -(void)playSong:(NSString *)url;
--(void)addSongToQueue:(Song *)song;
 -(void)pause;
 -(void)stop;
 -(void)dragToPosition:(double)position;
+-(void)addSongToQueue:(Song *)song;
 @end
