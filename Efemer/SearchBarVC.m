@@ -88,7 +88,14 @@
     
     
     [self bindToModelView];
+    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [tapBackground setNumberOfTapsRequired:1];
+    [self.searchTable addGestureRecognizer:tapBackground];
     
+}
+-(void) dismissKeyboard:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Table View Delegates

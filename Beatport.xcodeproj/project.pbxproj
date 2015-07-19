@@ -435,6 +435,7 @@
 				TargetAttributes = {
 					C72FA2581B1C149D00BCBE19 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = C4F5K4C6C6;
 					};
 					C72FA2741B1C149D00BCBE19 = {
 						CreatedOnToolsVersion = 6.4;
@@ -674,6 +675,9 @@
 			baseConfigurationReference = 8F92E34B593FD258087A439E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -684,6 +688,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Beatport;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -692,6 +697,9 @@
 			baseConfigurationReference = 42176A70E44ED983B1884D5D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -702,6 +710,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Beatport;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

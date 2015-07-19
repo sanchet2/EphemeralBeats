@@ -52,7 +52,7 @@
     [self.button setTitle:@"Show View" forState:UIControlStateNormal];
     self.button.frame = CGRectMake(80.0, 300.0, 160.0, 40.0);
     [self.view addSubview:self.button];
-    
+    self.navigationController.navigationBar.hidden = YES;
     [self bindToModelView];
     @weakify(self);
     [RACObserve(self.viewModel, loggedIn) subscribeNext:^(id value) {
@@ -93,15 +93,10 @@
     SearchUsersVC *searchUsersVC=[[SearchUsersVC alloc]init];
     swipeVC.leftViewController=searchUsersVC;
     
-    SongQueueCollectionVC *playlistVC=[[SongQueueCollectionVC alloc]init];
-    playlistVC.title=@"SwipeView";
-    CurrentSongSwipeVC *songCollectionView=[[CurrentSongSwipeVC alloc]init];
+    SongQueueCollectionVC *songCollectionView=[[SongQueueCollectionVC alloc]init];
     songCollectionView.title=@"CollectionView";
     
-    UITabBarController *tabVC=[[UITabBarController alloc]init];
-    NSArray *tabs=@[playlistVC,songCollectionView];
-    tabVC.viewControllers=tabs;
-    swipeVC.rightViewController=tabVC;
+    swipeVC.rightViewController=songCollectionView;
     
     [self.navigationController presentViewController:swipeVC animated:YES completion:nil];
     

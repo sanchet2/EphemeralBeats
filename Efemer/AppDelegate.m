@@ -19,6 +19,7 @@
 #import "CurrentSongSwipeVC.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "Constants.h"
+#import "SongsQueue.h"
 
 @interface AppDelegate ()
 @property (strong,nonatomic) UINavigationController *navController;
@@ -35,11 +36,12 @@
     
     //Login Controller
     LoginViewController *loginVC=[[LoginViewController alloc]init];
-   self.navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
+    self.navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
     self.window.rootViewController =self.navController;
     
     //Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
+    
     //Retrieve User Data and Check if its the right user
     [self checkUserState];
     
@@ -65,31 +67,40 @@
 
 -(void)checkUserState{
     User *user=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
-    NSArray *myArray = [user.playlistSongs allObjects];
-    NSString *str = [myArray componentsJoinedByString:@", "];
-    NSLog(@"%@",str);
+    
     if(user)
     {
         NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
         NSDictionary *session=@{@"session":[user session]};
         @weakify(self)
-        [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
-            @strongify(self);
-            NSError* err = nil;
-            LoginSuccess *success=[[LoginSuccess alloc] initWithData:value error:&err];
-            if ([success.status isEqualToString:@"continue"])
-            {
-                DDLogVerbose(@"Successful Login");
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    DDLogVerbose(@"Loading Search View Nav Controller");
-                    [self goToNewViewController];
-                });
-            }
-            else{
-                [User MR_truncateAll];
-            }
-        }];
+        if ([self validateUrl:string]) {
+            
+            [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
+                @strongify(self);
+                NSError* err = nil;
+                LoginSuccess *success=[[LoginSuccess alloc] initWithData:value error:&err];
+                if ([success.status isEqualToString:@"continue"])
+                {
+                    DDLogVerbose(@"Successful Login");
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        DDLogVerbose(@"Loading Search View Nav Controller");
+                        [self goToNewViewController];
+                    });
+                }
+                else{
+                    [User MR_truncateAll];
+                    [SongsQueue MR_truncateAll];
+                }
+            }];
+            
+        }
     }
+}
+
+- (BOOL)validateUrl:(NSString *)candidate {
+    NSString *urlRegEx = @"(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+";
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    return [urlTest evaluateWithObject:candidate];
 }
 
 -(void)goToNewViewController{

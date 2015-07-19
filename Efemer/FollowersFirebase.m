@@ -72,12 +72,9 @@
     
     queue.relationship=self.currentUser;
     [self.currentUser addFoloweesObject:queue];
-    [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
-        if(contextDidSave){
+    
+
             DDLogVerbose(@"Successfully Followed Followee");
-            
-        }
-    }];
 }
 
 

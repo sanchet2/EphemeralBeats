@@ -15,7 +15,7 @@
 #import "UserSearch.h"
 
 @interface PlayerQueue()
-
+@property (strong,nonatomic) NSManagedObjectContext *localContext;
 @end
 @implementation PlayerQueue
 
@@ -33,6 +33,7 @@
     {
         self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
         self.player=[StreamingPlayer sharedManager];
+           self.localContext = [NSManagedObjectContext MR_defaultContext];
     }
     return self;
 }
@@ -75,18 +76,13 @@
 -(void)addSongToDisk:(Song *)song
 {
     //Store to disk
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
-    SongsQueue *queue    = [SongsQueue MR_createEntityInContext:localContext];
+    SongsQueue *queue    = [SongsQueue MR_createEntityInContext:self.localContext];
     queue.title=[song title];
     queue.stream_url=[song stream_url];
     queue.artwork_url=[song artwork_url];
     queue.relationship=self.currentUser;
+    
     [self.currentUser addPlaylistSongsObject:queue];
-    [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
-        if(contextDidSave){
-            DDLogVerbose(@"Successfully Saved song");
-        }
-    }];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:[song toDictionary]];
 }
 -(void) removeSongFromShareQueue: (Song *)song{

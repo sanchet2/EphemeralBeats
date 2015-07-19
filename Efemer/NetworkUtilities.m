@@ -19,7 +19,7 @@
 
 #pragma mark - Post request AFNetworking
 +(RACSignal *)postJsonToUrl:(NSDictionary *)dictionary url:(NSString *)url{
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
         [serializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -36,13 +36,13 @@
             [subscriber sendError:error];
         }];
         return nil;
-    }];
+    }]subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]];
 }
 #pragma mark - Fetch json from server GET request
 
 + (RACSignal *)fetchJSONFromURL:(NSURL *)url {
     DDLogVerbose(@"Fetching: %@",url.absoluteString);
-    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
         NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -72,14 +72,14 @@
         }];
     }] doError:^(NSError *error) {
         DDLogError(@"%@ Error GET",error);
-    }];
+    }]subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]];
 }
 
 #pragma mark - Fetch Image from url
 
 + (RACSignal *)downloadImage:(NSURL *)url{
     DDLogVerbose(@"%@ IMAGE",url);
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
         [NetworkUtilities downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
             if (succeeded) {
                 [subscriber sendNext:image];
@@ -93,7 +93,7 @@
             }
         }];
         return nil;
-    }];
+    }]subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]];
 }
 
 + (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
