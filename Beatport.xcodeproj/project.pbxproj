@@ -202,8 +202,8 @@
 		C727FDB61B2545F600AF68A5 /* DiscoverPlaylistVC */ = {
 			isa = PBXGroup;
 			children = (
-				C727FDB31B24188F00AF68A5 /* SongQueueCollectionVC.m */,
 				C727FDB21B24188F00AF68A5 /* SongQueueCollectionVC.h */,
+				C727FDB31B24188F00AF68A5 /* SongQueueCollectionVC.m */,
 				C7B7B6DA1B2AAF7500403609 /* CurrentSongSwipeVC.h */,
 				C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */,
 				C7B7B6D71B2AADFD00403609 /* SongQueueViewModel.h */,

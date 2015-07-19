@@ -64,8 +64,8 @@
         DDLogInfo(@"New Song List");
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
-            [UIView animateWithDuration:1.0
-                                  delay:1.5
+            [UIView animateWithDuration:0.5
+                                  delay:0.1
                                 options: UIViewAnimationOptionCurveEaseIn
                              animations:^{
                                  
@@ -130,7 +130,7 @@
     if (indexPath.row<[[self.viewModel songs]count]) {
         Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
         if (song.artwork_url) {
-            NSString *url=[song.artwork_url absoluteString];
+            NSString *url=song.artwork_url;
             NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
             NSURL *neededurl=[NSURL URLWithString:finalurl];
             RAC(cell.bgImage,image)=[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];

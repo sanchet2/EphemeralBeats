@@ -14,5 +14,5 @@
 @interface Song : JSONModel
 @property (strong,nonatomic) NSString *title;
 @property (strong,nonatomic) NSString *stream_url;
-@property (strong,nonatomic) NSURL<Optional>* artwork_url;
+@property (strong,nonatomic) NSString<Optional>* artwork_url;
 @end

@@ -79,7 +79,7 @@
     SongsQueue *queue    = [SongsQueue MR_createEntityInContext:localContext];
     queue.title=[song title];
     queue.stream_url=[song stream_url];
-    queue.artwork_url=[[song artwork_url]absoluteString];
+    queue.artwork_url=[song artwork_url];
     queue.relationship=self.currentUser;
     [self.currentUser addPlaylistSongsObject:queue];
     [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
@@ -87,6 +87,7 @@
             DDLogVerbose(@"Successfully Saved song");
         }
     }];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:[song toDictionary]];
 }
 -(void) removeSongFromShareQueue: (Song *)song{
     

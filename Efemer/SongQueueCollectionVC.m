@@ -11,12 +11,13 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "NetworkUtilities.h"
 #import "SongsQueue.h"
+#import "Song.h"
 
 
 @interface SongQueueCollectionVC () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong,nonatomic) User *currentUser;
 @property (strong,nonatomic) UICollectionView *collectionView;
-@property (strong,nonatomic) NSArray *songs;
+@property (strong,nonatomic) NSMutableArray *songs;
 @end
 
 @implementation SongQueueCollectionVC
@@ -36,11 +37,26 @@
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
     self.collectionView.backgroundView.backgroundColor=[UIColor whiteColor];
-    self.songs=[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]];
+    self.songs=[[NSMutableArray alloc]init];
+    [self.songs addObjectsFromArray:[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]]];
     
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.collectionView];
+    @weakify(self);
+    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"BeatportAddSongToQueue" object:nil]subscribeNext:^(NSDictionary *dict){
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            NSError *err;
+            [self.songs addObject:[[Song alloc]initWithDictionary:[dict valueForKey:@"userInfo"] error:&err]];
+            NSMutableArray *indexPathsToLoad = [NSMutableArray new];
+            [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.songs.count-1 inSection:0]];
+            [self.collectionView insertItemsAtIndexPaths:indexPathsToLoad];
+//            [self.collectionView reloadItemsAtIndexPaths:indexPathsToLoad];
+        });
+       
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

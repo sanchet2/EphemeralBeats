@@ -46,7 +46,7 @@
     [self.audioPlayer seekToTime:position];
 }
 -(void)addSongToQueue:(Song *)song{
-    [self.audioPlayer queue:[NSString stringWithFormat:@"%@?client_id=4346c8125f4f5c40ad666bacd8e96498",song.stream_url]];
+    [self.audioPlayer queue:[NSString stringWithFormat:@"%@?client_id=a9010b5801cb1b535f9783959e8a5bbb",song.stream_url]];
 }
 
 #pragma mark - Audio player delegates
