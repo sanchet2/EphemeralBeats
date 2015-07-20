@@ -33,7 +33,7 @@
     {
         self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
         self.player=[StreamingPlayer sharedManager];
-           self.localContext = [NSManagedObjectContext MR_defaultContext];
+        self.localContext = [NSManagedObjectContext MR_defaultContext];
     }
     return self;
 }
@@ -41,7 +41,16 @@
 -(void) addSongToShareQueue: (Song *)song{
     //Add Song To Song Queue
     [self.player addSongToQueue:song];
+    [self postToFirebase:song];
+    [self addSongToDisk:song];
     
+}
+-(void)playSong:(Song *)song{
+    [self.player playSong:song];
+    [self postToFirebase:song];
+    [self addSongToDisk:song];
+}
+-(void)postToFirebase:(Song *)song{
     //Firebase POST
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://torid-fire-8399.firebaseio.com/"];
     Firebase *postRef = [ref childByAppendingPath: @"posts"];
@@ -54,11 +63,6 @@
     NSDictionary *post1 = [song toDictionary];
     Firebase *post1Ref = [songRef childByAutoId];
     [post1Ref setValue: post1];
-
-    [self addSongToDisk:song];
-    
-   
-    
 }
 -(void) addSongToIncognitoQueue: (Song *)song{
     //Add Song To Song Queue
@@ -75,15 +79,19 @@
 
 -(void)addSongToDisk:(Song *)song
 {
-    //Store to disk
-    SongsQueue *queue    = [SongsQueue MR_createEntityInContext:self.localContext];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:[song toDictionary]];
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
+    SongsQueue *queue    = [SongsQueue MR_createEntityInContext:localContext];
     queue.title=[song title];
     queue.stream_url=[song stream_url];
     queue.artwork_url=[song artwork_url];
     queue.relationship=self.currentUser;
-    
     [self.currentUser addPlaylistSongsObject:queue];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:[song toDictionary]];
+    [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
+        if(contextDidSave){
+            DDLogVerbose(@"Successfully Saved song");
+        }
+    }];
 }
 -(void) removeSongFromShareQueue: (Song *)song{
     

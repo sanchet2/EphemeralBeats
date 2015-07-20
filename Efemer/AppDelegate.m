@@ -44,7 +44,7 @@
     
     //Retrieve User Data and Check if its the right user
     [self checkUserState];
-    
+    [UIApplication sharedApplication].statusBarHidden = YES;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
@@ -71,10 +71,9 @@
     if(user)
     {
         NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
+        string=[string stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         NSDictionary *session=@{@"session":[user session]};
         @weakify(self)
-        if ([self validateUrl:string]) {
-            
             [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
                 @strongify(self);
                 NSError* err = nil;
@@ -92,8 +91,7 @@
                     [SongsQueue MR_truncateAll];
                 }
             }];
-            
-        }
+   
     }
 }
 
@@ -117,14 +115,7 @@
     swipeVC.leftViewController=searchUsersVC;
     
     SongQueueCollectionVC *playlistVC=[[SongQueueCollectionVC alloc]init];
-    playlistVC.title=@"SwipeView";
-    CurrentSongSwipeVC *songCollectionView=[[CurrentSongSwipeVC alloc]init];
-    songCollectionView.title=@"CollectionView";
-    
-    UITabBarController *tabVC=[[UITabBarController alloc]init];
-    NSArray *tabs=@[playlistVC,songCollectionView];
-    tabVC.viewControllers=tabs;
-    swipeVC.rightViewController=tabVC;
+    swipeVC.rightViewController=playlistVC;
     
     [self.navController presentViewController:swipeVC animated:YES completion:nil];
     

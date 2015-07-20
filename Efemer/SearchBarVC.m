@@ -15,6 +15,7 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "Constants.h"
 #import "PlayerQueue.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SearchBarVC ()
 @property (nonatomic,strong) UITextField *searchQuery;
@@ -112,6 +113,14 @@
 {
     return 150;
 }
+//- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath {
+//    Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
+//    [self.player playSong:song];
+//}
+//-(void) tableView: (UITableView *) tableView accessoryButtonTappedForRowWithIndexPath: (NSIndexPath *) indexPath{
+//    Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
+//    [self.player playSong:song];
+// }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *simpleTableIdentifier = @"beatport cell";
@@ -133,6 +142,14 @@
             Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
             [self.player addSongToIncognitoQueue:song];
         }];
+        [[cell.play rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
+            CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
+            NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
+            DDLogVerbose(@"PLAY %ld",(long)indexPath.row);
+            Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
+            [self.player playSong:song];
+        }];
+        
     }
     if (indexPath.row<[[self.viewModel songs]count]) {
         Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
@@ -140,7 +157,15 @@
             NSString *url=song.artwork_url;
             NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
             NSURL *neededurl=[NSURL URLWithString:finalurl];
+            
+            UIImage *memoryImage=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
+            if (memoryImage) {
+                cell.bgImage.image=memoryImage;
+            }
+            else
+            {
             RAC(cell.bgImage,image)=[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
+            }
         }
         cell.artist.text=song.title;
         
@@ -155,6 +180,7 @@
 {
     RAC(self.viewModel,textInput)=self.searchQuery.rac_textSignal;
 }
+
 
 
 - (void)didReceiveMemoryWarning {

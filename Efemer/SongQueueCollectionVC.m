@@ -12,7 +12,7 @@
 #import "NetworkUtilities.h"
 #import "SongsQueue.h"
 #import "Song.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SongQueueCollectionVC () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong,nonatomic) User *currentUser;
@@ -27,12 +27,12 @@
     // Do any additional setup after loading the view.
     self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
     self.view.backgroundColor=[UIColor whiteColor];
-    CGRect size=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-50);
+    CGRect size=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
     layout.minimumInteritemSpacing=0.5f;
     layout.minimumLineSpacing=0.8f;
     layout.scrollDirection=UICollectionViewScrollDirectionVertical;
-     self.collectionView=[[UICollectionView alloc]initWithFrame:size collectionViewLayout:layout];
+    self.collectionView=[[UICollectionView alloc]initWithFrame:size collectionViewLayout:layout];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
@@ -53,9 +53,9 @@
             NSMutableArray *indexPathsToLoad = [NSMutableArray new];
             [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.songs.count-1 inSection:0]];
             [self.collectionView insertItemsAtIndexPaths:indexPathsToLoad];
-//            [self.collectionView reloadItemsAtIndexPaths:indexPathsToLoad];
+            //            [self.collectionView reloadItemsAtIndexPaths:indexPathsToLoad];
         });
-       
+        
     }];
 }
 
@@ -76,21 +76,30 @@
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     SongsQueue *song=[self.songs objectAtIndex:indexPath.row];
     if (song.artwork_url) {
-        NSString *url=song.artwork_url;
-        NSURL *neededurl=[NSURL URLWithString:url];
-        @weakify(self);
-        [[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]]subscribeNext:^(UIImage *img){
-            @strongify(self);
-            UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/3-3, 120)];
-            imgView.image=img;
+        NSString *url=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
+        UIImage *memoryImage=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
+        if (memoryImage) {
+            UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/3-3, self.view.frame.size.width/3-3)];
+            imgView.image=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
             cell.backgroundView=imgView;
-        }];;
+        }
+        else
+        {
+            NSURL *neededurl=[NSURL URLWithString:url];
+            @weakify(self);
+            [[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]]subscribeNext:^(UIImage *img){
+                @strongify(self);
+                UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/3-3, self.view.frame.size.width/3-3)];
+                imgView.image=img;
+                cell.backgroundView=imgView;
+            }];;
+        }
     }
     cell.alpha = 0.0f;
     [UIView animateWithDuration:0.5 animations:^() {
         cell.alpha = 1.0f;
     }];
-
+    
     
     
     return cell;
@@ -98,7 +107,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.view.frame.size.width/3-3, 120);
+    return CGSizeMake(self.view.frame.size.width/3-3, self.view.frame.size.width/3-3);
 }
 -(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
 {
@@ -115,14 +124,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 //-(void)viewWillAppear:(BOOL)animated {
 //    self.songs=[self.currentUser.playlistSongs allObjects];
 //    [self.collectionView reloadData];

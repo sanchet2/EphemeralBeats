@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "Constants.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface NetworkUtilities()
 
@@ -79,38 +80,38 @@
 
 + (RACSignal *)downloadImage:(NSURL *)url{
     DDLogVerbose(@"%@ IMAGE",url);
-    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
-        [NetworkUtilities downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
-            if (succeeded) {
-                [subscriber sendNext:image];
-                [subscriber sendCompleted];
-                DDLogVerbose(@"SUCCESS IMAGE");
-            }
-            else{
-                NSError *error;
-                [subscriber sendError:error];
-                DDLogError(@"%@ Error IMAGE",error);
-            }
-        }];
+    RACSignal *signal= [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+        [SDWebImageDownloader.sharedDownloader downloadImageWithURL:url
+                                                            options:0
+                                                           progress:^(NSInteger receivedSize, NSInteger expectedSize)
+         {
+             // progression tracking code
+         }
+                                                          completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+         {
+             if (image && finished)
+             {
+                 // do something with image
+                 [[SDImageCache sharedImageCache] storeImage:image forKey:[url absoluteString]];
+                 [subscriber sendNext:image];
+                 [subscriber sendCompleted];
+                 
+             }
+             else{
+                 [subscriber sendError:error];
+             }
+         }];
+        
+        
         return nil;
-    }]subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]];
+    }] subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]];
+    
+    return [signal
+     catch:^(NSError *error) {
+         NSLog(@"Error doing thing! %@", error);
+         return [RACSignal empty];
+     }];
 }
 
-+ (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
-{
-    DDLogVerbose(@"Success");
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               if ( !error )
-                               {
-                                   UIImage *image = [[UIImage alloc] initWithData:data];
-                                   completionBlock(YES,image);
-                               } else{
-                                   completionBlock(NO,nil);
-                               }
-                           }];
-}
 
 @end

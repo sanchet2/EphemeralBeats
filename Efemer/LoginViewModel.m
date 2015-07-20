@@ -34,6 +34,7 @@
         RAC(self,username)=RACObserve(self, textInput);
         self.loggedIn=[NSNumber numberWithInt:false];
         _command = [[RACCommand alloc] initWithSignalBlock:^(id sender) {
+            self.username=[self.username stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
             return [NetworkUtilities postJsonToUrl:@{@"username":self.username} url:@"http://104.236.188.213:3000/user"];
         }];
         @weakify(self);

@@ -15,7 +15,7 @@
 + (id)sharedManager;
 
 //Player functions;
--(void)playSong:(NSString *)url;
+-(void)playSong:(Song *)song;
 -(void)pause;
 -(void)stop;
 -(void)dragToPosition:(double)position;

@@ -1,4 +1,5 @@
 pod 'ReactiveCocoa'
+pod 'SDWebImage'
 pod 'Firebase'
 pod 'CocoaLumberjack'
 pod 'MagicalRecord'

@@ -14,4 +14,5 @@
 @property (strong,nonatomic) UILabel *song;
 @property (strong,nonatomic) UIButton *incognito;
 @property (strong,nonatomic) UIButton *share;
+@property (strong,nonatomic) UIButton *play;
 @end
