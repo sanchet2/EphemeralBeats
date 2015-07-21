@@ -27,6 +27,7 @@
     if (self=[super init]) {
         self.audioPlayer=[[STKAudioPlayer alloc]init];
         self.audioPlayer.delegate=self;
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     }
     return self;
 }

@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "UserSearch.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface PlayerQueue()
 @property (strong,nonatomic) NSManagedObjectContext *localContext;
@@ -34,6 +35,23 @@
         self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
         self.player=[StreamingPlayer sharedManager];
         self.localContext = [NSManagedObjectContext MR_defaultContext];
+        self.songs=[[NSMutableArray alloc]init];
+        [self.songs addObjectsFromArray:[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]]];
+        self.songs=[NSMutableArray arrayWithArray:[[NSSet setWithArray:self.songs]allObjects] ];
+        
+        @weakify(self);
+        [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"BeatportAddSongToQueue" object:nil]subscribeNext:^(NSDictionary *dict){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @strongify(self);
+                NSError *err;
+                [self.songs addObject:[[Song alloc]initWithDictionary:[dict valueForKey:@"userInfo"] error:&err]];
+                
+                //            [self.collectionView reloadItemsAtIndexPaths:indexPathsToLoad];
+            });
+            
+        }];
+        
     }
     return self;
 }
@@ -44,6 +62,9 @@
     [self postToFirebase:song];
     [self addSongToDisk:song];
     
+}
+-(void)playSongWithoutExtras:(Song *)song{
+    [self.player playSong:song];
 }
 -(void)playSong:(Song *)song{
     [self.player playSong:song];

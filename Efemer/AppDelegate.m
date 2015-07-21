@@ -20,7 +20,7 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "Constants.h"
 #import "SongsQueue.h"
-
+#import <AVFoundation/AVFoundation.h>
 @interface AppDelegate ()
 @property (strong,nonatomic) UINavigationController *navController;
 @end
@@ -47,6 +47,11 @@
     [UIApplication sharedApplication].statusBarHidden = YES;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    NSError* error;
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
     return YES;
 }
 -(void)setupCocoaLumberjack

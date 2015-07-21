@@ -37,6 +37,7 @@ NSString *const urlsearch = @"http://104.236.188.213:3000/user/query/";
         return [input length]>1;
     }]
       map:^NSURL*(NSString *input){
+          input=[input stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
           return [NSURL URLWithString:[urlsearch stringByAppendingString:input]];
       }]
      flattenMap:^(NSURL *url){

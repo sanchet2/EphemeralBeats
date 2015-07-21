@@ -14,6 +14,7 @@
 		C727FDB11B240EEC00AF68A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C727FDB01B240EEC00AF68A5 /* QuartzCore.framework */; };
 		C727FDB41B24188F00AF68A5 /* SongQueueCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDB31B24188F00AF68A5 /* SongQueueCollectionVC.m */; };
 		C727FDBB1B25535B00AF68A5 /* NetworkUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C727FDBA1B25535B00AF68A5 /* NetworkUtilities.m */; };
+		C72EA7B91B5CBB150007D93F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72EA7B81B5CBB150007D93F /* AVFoundation.framework */; };
 		C72FA25F1B1C149D00BCBE19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA25E1B1C149D00BCBE19 /* main.m */; };
 		C72FA2621B1C149D00BCBE19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2611B1C149D00BCBE19 /* AppDelegate.m */; };
 		C72FA2651B1C149D00BCBE19 /* Efemer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C72FA2631B1C149D00BCBE19 /* Efemer.xcdatamodeld */; };
@@ -67,6 +68,7 @@
 		C727FDB31B24188F00AF68A5 /* SongQueueCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongQueueCollectionVC.m; sourceTree = "<group>"; };
 		C727FDB91B25535B00AF68A5 /* NetworkUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtilities.h; sourceTree = "<group>"; };
 		C727FDBA1B25535B00AF68A5 /* NetworkUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtilities.m; sourceTree = "<group>"; };
+		C72EA7B81B5CBB150007D93F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C72FA2591B1C149D00BCBE19 /* Beatport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beatport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72FA25D1B1C149D00BCBE19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72FA25E1B1C149D00BCBE19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72EA7B91B5CBB150007D93F /* AVFoundation.framework in Frameworks */,
 				AE33116FE28156059E2189AB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +157,7 @@
 		C62774CF95663BCB4CA8BD0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C72EA7B81B5CBB150007D93F /* AVFoundation.framework */,
 				C79FE4611B4B9BEE003DD88D /* CoreData.framework */,
 				C7D359071B2CBA8A006096DA /* Fabric.framework */,
 				C7D359081B2CBA8A006096DA /* Crashlytics.framework */,
@@ -436,6 +440,11 @@
 					C72FA2581B1C149D00BCBE19 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = C4F5K4C6C6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					C72FA2741B1C149D00BCBE19 = {
 						CreatedOnToolsVersion = 6.4;

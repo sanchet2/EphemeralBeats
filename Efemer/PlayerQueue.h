@@ -16,9 +16,11 @@
 @property (strong,nonatomic) NSNumber *currentSong;
 @property (strong,nonatomic) StreamingPlayer *player;
 @property (strong,nonatomic) User *currentUser;
+@property (strong,nonatomic) NSMutableArray *songs;
 -(void) playSong:(Song *)song;
 -(void) addSongToShareQueue: (Song *)song;
 -(void) addSongToIncognitoQueue: (Song *)song;
 -(void) removeSongFromShareQueue: (Song *)song;
+-(void)playSongWithoutExtras:(Song *)song;
 -(void) clearQueue;
 @end

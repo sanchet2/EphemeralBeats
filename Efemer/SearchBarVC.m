@@ -127,7 +127,9 @@
     SearchCell *cell = (SearchCell *)[self.searchTable dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil) {
         cell = [[SearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        @weakify(self);
         [[cell.share rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
+            @strongify(self);
             CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
             NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
             DDLogVerbose(@"SHARE %ld",(long)indexPath.row);
@@ -136,13 +138,16 @@
             
         }];
         [[cell.incognito rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
+            @strongify(self);
             CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
             NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
             DDLogVerbose(@"INCOGNITO %ld",(long)indexPath.row);
             Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
             [self.player addSongToIncognitoQueue:song];
         }];
+        
         [[cell.play rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
+            @strongify(self);
             CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
             NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
             DDLogVerbose(@"PLAY %ld",(long)indexPath.row);
@@ -173,6 +178,10 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+}
 
 #pragma mark - add bindings to viewModel
 

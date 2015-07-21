@@ -13,11 +13,12 @@
 #import "SongsQueue.h"
 #import "Song.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "PlayerQueue.h"
 
 @interface SongQueueCollectionVC () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong,nonatomic) User *currentUser;
 @property (strong,nonatomic) UICollectionView *collectionView;
-@property (strong,nonatomic) NSMutableArray *songs;
+@property (strong,nonatomic) PlayerQueue *queue;
 @end
 
 @implementation SongQueueCollectionVC
@@ -25,7 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
+    self.queue=[PlayerQueue sharedManager];
+    
     self.view.backgroundColor=[UIColor whiteColor];
     CGRect size=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
@@ -37,8 +39,7 @@
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
     self.collectionView.backgroundView.backgroundColor=[UIColor whiteColor];
-    self.songs=[[NSMutableArray alloc]init];
-    [self.songs addObjectsFromArray:[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]]];
+    
     
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -48,10 +49,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
-            NSError *err;
-            [self.songs addObject:[[Song alloc]initWithDictionary:[dict valueForKey:@"userInfo"] error:&err]];
             NSMutableArray *indexPathsToLoad = [NSMutableArray new];
-            [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.songs.count-1 inSection:0]];
+            [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.queue.songs.count-1 inSection:0]]; 
             [self.collectionView insertItemsAtIndexPaths:indexPathsToLoad];
             //            [self.collectionView reloadItemsAtIndexPaths:indexPathsToLoad];
         });
@@ -67,19 +66,20 @@
 #pragma mark - CollectionView Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.songs.count;
+    return self.queue.songs.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-    SongsQueue *song=[self.songs objectAtIndex:indexPath.row];
+    cell.backgroundColor=[UIColor colorWithWhite:0.8 alpha:0.7];
+    SongsQueue *song=[self.queue.songs objectAtIndex:indexPath.row];
     if (song.artwork_url) {
         NSString *url=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
         UIImage *memoryImage=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
         if (memoryImage) {
-            UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/3-3, self.view.frame.size.width/3-3)];
+            UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-3, self.view.frame.size.width/2-3)];
             imgView.image=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
             cell.backgroundView=imgView;
         }
@@ -89,9 +89,11 @@
             @weakify(self);
             [[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]]subscribeNext:^(UIImage *img){
                 @strongify(self);
-                UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/3-3, self.view.frame.size.width/3-3)];
+                if (img) {
+                UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-3, self.view.frame.size.width/2-3)];
                 imgView.image=img;
                 cell.backgroundView=imgView;
+                }
             }];;
         }
     }
@@ -107,7 +109,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.view.frame.size.width/3-3, self.view.frame.size.width/3-3);
+    return CGSizeMake(self.view.frame.size.width/2-3, self.view.frame.size.width/2-3);
 }
 -(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
 {
@@ -121,6 +123,13 @@
     attr.center = CGPointMake(CGRectGetMidX(self.collectionView.bounds), CGRectGetMaxY(self.collectionView.bounds));
     
     return attr;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    [self.queue playSongWithoutExtras:[self.queue.songs objectAtIndex:indexPath.row]];
+    
 }
 
 /*
