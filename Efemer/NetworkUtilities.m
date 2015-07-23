@@ -86,31 +86,32 @@
             [subscriber sendNext:img];
             [subscriber sendCompleted];
         }
-        
-        
-        [SDWebImageDownloader.sharedDownloader downloadImageWithURL:url
-                                                            options:SDWebImageDownloaderHighPriority
-                                                           progress:^(NSInteger receivedSize, NSInteger expectedSize)
-         {
-             // progression tracking code
-         }
-                                                          completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
-         {
-             if (image && finished)
+        else
+        {
+            
+            [SDWebImageDownloader.sharedDownloader downloadImageWithURL:url
+                                                                options:SDWebImageDownloaderHighPriority
+                                                               progress:^(NSInteger receivedSize, NSInteger expectedSize)
              {
-                 [[SDWebImageManager sharedManager] saveImageToCache:image forURL:url];
-                 [subscriber sendNext:image];
-                 [subscriber sendCompleted];
-                 
+                 // progression tracking code
              }
-             else if(error){
-                 [subscriber sendError:error];
-             }
-             else{
-                 [subscriber sendCompleted];
-             }
-         }];
-        
+                                                              completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished)
+             {
+                 if (image && finished)
+                 {
+                     [[SDWebImageManager sharedManager] saveImageToCache:image forURL:url];
+                     [subscriber sendNext:image];
+                     [subscriber sendCompleted];
+                     
+                 }
+                 else if(error){
+                     [subscriber sendError:error];
+                 }
+                 else{
+                     [subscriber sendCompleted];
+                 }
+             }];
+        }
         
         return nil;
     }] deliverOn:[RACScheduler mainThreadScheduler]];
