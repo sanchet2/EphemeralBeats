@@ -81,8 +81,15 @@
 + (RACSignal *)downloadImage:(NSURL *)url{
     DDLogVerbose(@"%@ IMAGE",url);
     RACSignal *signal= [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber){
+        UIImage *img=[[SDImageCache sharedImageCache]imageFromDiskCacheForKey:[url absoluteString]];
+        if (img) {
+            [subscriber sendNext:img];
+            [subscriber sendCompleted];
+        }
+        
+        
         [SDWebImageDownloader.sharedDownloader downloadImageWithURL:url
-                                                            options:0
+                                                            options:SDWebImageDownloaderHighPriority
                                                            progress:^(NSInteger receivedSize, NSInteger expectedSize)
          {
              // progression tracking code
@@ -91,26 +98,28 @@
          {
              if (image && finished)
              {
-                 // do something with image
-                 [[SDImageCache sharedImageCache] storeImage:image forKey:[url absoluteString]];
+                 [[SDWebImageManager sharedManager] saveImageToCache:image forURL:url];
                  [subscriber sendNext:image];
                  [subscriber sendCompleted];
                  
              }
-             else{
+             else if(error){
                  [subscriber sendError:error];
+             }
+             else{
+                 [subscriber sendCompleted];
              }
          }];
         
         
         return nil;
-    }] subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]];
-    
+    }] deliverOn:[RACScheduler mainThreadScheduler]];
     return [signal
-     catch:^(NSError *error) {
-         NSLog(@"Error doing thing! %@", error);
-         return [RACSignal empty];
-     }];
+            catch:^(NSError *error) {
+                NSLog(@"Error doing thing! %@", error);
+                return [RACSignal empty];
+            }];
+    
 }
 
 

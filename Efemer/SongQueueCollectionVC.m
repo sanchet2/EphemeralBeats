@@ -75,30 +75,12 @@
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     cell.backgroundColor=[UIColor colorWithWhite:0.8 alpha:0.7];
     SongsQueue *song=[self.queue.songs objectAtIndex:indexPath.row];
-    if (song.artwork_url) {
-        NSString *url=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
-        UIImage *memoryImage=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
-        if (memoryImage) {
-            UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-1, self.view.frame.size.width/2-1)];
-            imgView.image=memoryImage;
-            cell.backgroundView=imgView;
-        }
-        else
-        {
-            NSURL *neededurl=[NSURL URLWithString:url];
-            @weakify(self);
-            [[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]]subscribeNext:^(UIImage *img){
-                if (img) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                          @strongify(self);
-                        UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-1, self.view.frame.size.width/2-1)];
-                        imgView.image=img;
-                        cell.backgroundView=imgView;
-                    });
-                }
-            }];;
-        }
-    }
+    NSString *url=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
+    NSURL *neededurl=[NSURL URLWithString:url];
+    UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-1, self.view.frame.size.width/2-1)];
+    RAC(imgView,image)=[NetworkUtilities downloadImage:neededurl];
+    
+    cell.backgroundView=imgView;
     cell.alpha = 0.0f;
     [UIView animateWithDuration:0.5 animations:^() {
         cell.alpha = 1.0f;

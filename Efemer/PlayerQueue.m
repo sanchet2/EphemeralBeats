@@ -38,20 +38,6 @@
         self.songs=[[NSMutableArray alloc]init];
         [self.songs addObjectsFromArray:[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]]];
         self.songs=[NSMutableArray arrayWithArray:[[NSSet setWithArray:self.songs]allObjects] ];
-        
-        @weakify(self);
-        [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"BeatportAddSongToQueue" object:nil]subscribeNext:^(NSDictionary *dict){
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                @strongify(self);
-                NSError *err;
-                [self.songs addObject:[[Song alloc]initWithDictionary:[dict valueForKey:@"userInfo"] error:&err]];
-                
-                //            [self.collectionView reloadItemsAtIndexPaths:indexPathsToLoad];
-            });
-            
-        }];
-        
     }
     return self;
 }
@@ -100,7 +86,7 @@
 
 -(void)addSongToDisk:(Song *)song
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:[song toDictionary]];
+  
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     SongsQueue *queue    = [SongsQueue MR_createEntityInContext:localContext];
     queue.title=[song title];
@@ -108,9 +94,11 @@
     queue.artwork_url=[song artwork_url];
     queue.relationship=self.currentUser;
     [self.currentUser addPlaylistSongsObject:queue];
+    [self.songs addObject:song];
     [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
         if(contextDidSave){
             DDLogVerbose(@"Successfully Saved song");
+             [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:nil];
         }
     }];
 }

@@ -162,22 +162,30 @@
             NSString *url=song.artwork_url;
             NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
             NSURL *neededurl=[NSURL URLWithString:finalurl];
-            
-            UIImage *memoryImage=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
-            if (memoryImage) {
-                cell.bgImage.image=memoryImage;
-            }
-            else
-            {
-            RAC(cell.bgImage,image)=[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
-            }
+            RAC(cell.bgImage,image)=[[NetworkUtilities downloadImage:neededurl] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
+        }
+        else{
+            cell.bgImage.image=[self imageWithColor:[UIColor blackColor]];
         }
         cell.artist.text=song.title;
         
     }
     return cell;
 }
-
+- (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     

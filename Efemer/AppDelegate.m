@@ -34,6 +34,7 @@
     //setup logging
     [self setupCocoaLumberjack];
     
+    
     //Login Controller
     LoginViewController *loginVC=[[LoginViewController alloc]init];
     self.navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
@@ -41,7 +42,7 @@
     
     //Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
-    
+    [self deleteAllEntities:@"User"];
     //Retrieve User Data and Check if its the right user
     [self checkUserState];
     [UIApplication sharedApplication].statusBarHidden = YES;
@@ -73,6 +74,21 @@
     NSString *urlRegEx = @"(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+";
     NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
     return [urlTest evaluateWithObject:candidate];
+}
+- (void)deleteAllEntities:(NSString *)nameEntity
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:nameEntity];
+    [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSError *error;
+    NSArray *fetchedObjects = [[NSManagedObjectContext MR_defaultContext] executeFetchRequest:fetchRequest error:&error];
+    for (NSManagedObject *object in fetchedObjects)
+    {
+        [[NSManagedObjectContext MR_defaultContext] deleteObject:object];
+    }
+    
+    error = nil;
+    [[NSManagedObjectContext MR_defaultContext] save:&error];
 }
 
 -(void)checkUserState{
