@@ -34,8 +34,6 @@
             if (song) {
                  [self.queue addSongToIncognitoQueue:song];
             }
-           
-            //TODO: need to set this in the player queue and a
         }];
         
     }

@@ -50,7 +50,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
             NSMutableArray *indexPathsToLoad = [NSMutableArray new];
-            [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.queue.songs.count-1 inSection:0]]; 
+            [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.queue.songs.count-1 inSection:0]];
             [self.collectionView insertItemsAtIndexPaths:indexPathsToLoad];
             //            [self.collectionView reloadItemsAtIndexPaths:indexPathsToLoad];
         });
@@ -79,8 +79,8 @@
         NSString *url=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
         UIImage *memoryImage=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
         if (memoryImage) {
-            UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-3, self.view.frame.size.width/2-3)];
-            imgView.image=[[SDImageCache sharedImageCache]imageFromMemoryCacheForKey:url];
+            UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-1, self.view.frame.size.width/2-1)];
+            imgView.image=memoryImage;
             cell.backgroundView=imgView;
         }
         else
@@ -88,11 +88,13 @@
             NSURL *neededurl=[NSURL URLWithString:url];
             @weakify(self);
             [[[[NetworkUtilities downloadImage:neededurl] deliverOn:RACScheduler.mainThreadScheduler] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]]subscribeNext:^(UIImage *img){
-                @strongify(self);
                 if (img) {
-                UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-3, self.view.frame.size.width/2-3)];
-                imgView.image=img;
-                cell.backgroundView=imgView;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                          @strongify(self);
+                        UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-1, self.view.frame.size.width/2-1)];
+                        imgView.image=img;
+                        cell.backgroundView=imgView;
+                    });
                 }
             }];;
         }
@@ -109,7 +111,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.view.frame.size.width/2-3, self.view.frame.size.width/2-3);
+    return CGSizeMake(self.view.frame.size.width/2-1, self.view.frame.size.width/2-1);
 }
 -(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
 {
@@ -127,7 +129,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     [self.queue playSongWithoutExtras:[self.queue.songs objectAtIndex:indexPath.row]];
     
 }

@@ -69,6 +69,11 @@
     [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor yellowColor] backgroundColor:nil forFlag:DDLogFlagWarning];
     
 }
+- (BOOL)validateUrl:(NSString *)candidate {
+    NSString *urlRegEx = @"(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+";
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
+    return [urlTest evaluateWithObject:candidate];
+}
 
 -(void)checkUserState{
     User *user=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
@@ -77,6 +82,7 @@
     {
         NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
         string=[string stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        
         NSDictionary *session=@{@"session":[user session]};
         @weakify(self)
             [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
@@ -96,16 +102,10 @@
                     [SongsQueue MR_truncateAll];
                 }
             }];
+        
    
     }
 }
-
-- (BOOL)validateUrl:(NSString *)candidate {
-    NSString *urlRegEx = @"(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+";
-    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", urlRegEx];
-    return [urlTest evaluateWithObject:candidate];
-}
-
 -(void)goToNewViewController{
     
     RNSwipeViewController *swipeVC=[[RNSwipeViewController alloc]init];

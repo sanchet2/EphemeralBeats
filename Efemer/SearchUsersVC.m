@@ -79,7 +79,9 @@
         self.share.frame = CGRectMake(cell.frame.size.width-40, cell.frame.size.height/2, 40.0, 40.0);
         [self.share setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [cell.contentView addSubview:self.share];
+        @weakify(self);
         [[self.share rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
+            @strongify(self);
             UserSearch *selectedUser=[self.userSearch objectAtIndex:indexPath.row];
             [[FollowersFirebase sharedManager] addFolloweeToDisk:selectedUser];
         }];

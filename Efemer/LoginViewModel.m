@@ -33,11 +33,13 @@
     if (self=[super init]) {
         RAC(self,username)=RACObserve(self, textInput);
         self.loggedIn=[NSNumber numberWithInt:false];
+        @weakify(self);
         _command = [[RACCommand alloc] initWithSignalBlock:^(id sender) {
+            @strongify(self);
             self.username=[self.username stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+            self.username=[self.username lowercaseString];
             return [NetworkUtilities postJsonToUrl:@{@"username":self.username} url:@"http://104.236.188.213:3000/user"];
         }];
-        @weakify(self);
         [[[_command executionSignals] flatten]subscribeNext:^(id x){
             @strongify(self);
             NSError *err=nil;
