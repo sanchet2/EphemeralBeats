@@ -16,7 +16,7 @@
         self.frame=CGRectMake(0, 0, self.frame.size.width, 150);
         self.backgroundColor=[UIColor whiteColor];
         // Background image for search
-        self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-30)];
          self.bgImage.autoresizingMask = UIViewContentModeScaleAspectFill;
         self.bgImage.backgroundColor = [UIColor blackColor];
         self.bgImage.opaque = NO;
@@ -34,7 +34,7 @@
         self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height-30, self.frame.size.width-5, 30)];
         self.artist.textColor = [UIColor whiteColor];
         [self.artist setFont:[UIFont boldSystemFontOfSize:16]];
-        [self.bgImage addSubview:self.artist];
+        [self.contentView addSubview:self.artist];
         
         
         

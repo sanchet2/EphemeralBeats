@@ -42,6 +42,7 @@
     
     //Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
+    [self deleteAllEntities:@"User"];
     //Retrieve User Data and Check if its the right user
     [self checkUserState];
     [UIApplication sharedApplication].statusBarHidden = YES;

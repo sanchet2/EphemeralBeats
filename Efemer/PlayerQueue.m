@@ -87,6 +87,7 @@
 -(void)addSongToDisk:(Song *)song
 {
   
+    
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
     SongsQueue *queue    = [SongsQueue MR_createEntityInContext:localContext];
     queue.title=[song title];
@@ -94,11 +95,12 @@
     queue.artwork_url=[song artwork_url];
     queue.relationship=self.currentUser;
     [self.currentUser addPlaylistSongsObject:queue];
-    [self.songs addObject:song];
+    
     [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
         if(contextDidSave){
             DDLogVerbose(@"Successfully Saved song");
-             [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:nil];
+            [self.songs addObject:song];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:[song toDictionary]];
         }
     }];
 }

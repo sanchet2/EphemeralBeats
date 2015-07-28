@@ -19,6 +19,7 @@
 @property (strong,nonatomic) User *currentUser;
 @property (strong,nonatomic) UICollectionView *collectionView;
 @property (strong,nonatomic) PlayerQueue *queue;
+@property (strong,nonatomic) NSMutableArray *songArr;
 @end
 
 @implementation SongQueueCollectionVC
@@ -39,21 +40,20 @@
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
     self.collectionView.backgroundView.backgroundColor=[UIColor whiteColor];
-    
-    
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.collectionView];
+    self.songArr=[[NSMutableArray alloc]init];
+    [self.songArr addObjectsFromArray:self.queue.songs];
+    
     @weakify(self);
     [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"BeatportAddSongToQueue" object:nil]subscribeNext:^(NSDictionary *dict){
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            @strongify(self);
-            NSMutableArray *indexPathsToLoad = [NSMutableArray new];
-            [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.queue.songs.count-1 inSection:0]];
-            [self.collectionView insertItemsAtIndexPaths:indexPathsToLoad];
-            //            [self.collectionView reloadItemsAtIndexPaths:indexPathsToLoad];
-        });
+        @strongify(self);
+        NSError *err;
+        [self.songArr addObject:[[Song alloc]initWithDictionary:[dict valueForKey:@"userInfo"] error:&err]];
+        NSMutableArray *indexPathsToLoad = [NSMutableArray new];
+        [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.songArr.count-1 inSection:0]];
+        [self.collectionView insertItemsAtIndexPaths:indexPathsToLoad];
         
     }];
 }
@@ -85,9 +85,8 @@
     [UIView animateWithDuration:0.5 animations:^() {
         cell.alpha = 1.0f;
     }];
-    
-    
-    
+    cell.layer.shouldRasterize = YES;
+    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     return cell;
 }
 
