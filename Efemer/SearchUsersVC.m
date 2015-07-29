@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModel=[SearchUsersViewModel sharedManager];
-    [FollowersFirebase sharedManager];
+    
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
     self.searchQuery= [[UITextField alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width-40, 40)];

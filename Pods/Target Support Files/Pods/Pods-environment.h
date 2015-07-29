@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
+// BFPaperButton
+#define COCOAPODS_POD_AVAILABLE_BFPaperButton
+#define COCOAPODS_VERSION_MAJOR_BFPaperButton 2
+#define COCOAPODS_VERSION_MINOR_BFPaperButton 0
+#define COCOAPODS_VERSION_PATCH_BFPaperButton 18
+
 // CocoaLumberjack
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack
 #define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 2
@@ -143,4 +149,10 @@
 #define COCOAPODS_VERSION_MAJOR_SwipeView 1
 #define COCOAPODS_VERSION_MINOR_SwipeView 3
 #define COCOAPODS_VERSION_PATCH_SwipeView 2
+
+// UIColor+BFPaperColors
+#define COCOAPODS_POD_AVAILABLE_UIColor_BFPaperColors
+#define COCOAPODS_VERSION_MAJOR_UIColor_BFPaperColors 1
+#define COCOAPODS_VERSION_MINOR_UIColor_BFPaperColors 7
+#define COCOAPODS_VERSION_PATCH_UIColor_BFPaperColors 1
 

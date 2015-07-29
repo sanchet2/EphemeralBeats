@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-BFPaperButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-UIColor+BFPaperColors.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,52 +67,62 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3749C851E437BB926C422ACD</key>
+		<key>04EA5B36C44D81AD31366506</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D9A724935238EB943A26B74</key>
+		<key>0B0A48682D5055F662551DBB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7412ECB270EA50E01D3EA719</key>
+		<key>2820D72AB5186D0AF6081A3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>896ED680512A280E5803C066</key>
+		<key>4C0BC2EA475E533603D2007D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A44068A8ABD2E69542AA94F5</key>
+		<key>50897D3684D29CBFE9A26169</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C667EDB9D410B5E39D72B0D6</key>
+		<key>7135C19F3503DF00490C2386</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD682766BA0A667FDBF54A14</key>
+		<key>815C7A34B947A5863B27AD21</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D716EFF617864A87A6BF1344</key>
+		<key>D1EA89D1DA8415DCE0A7B621</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E52A3240B6A395285521247B</key>
+		<key>D24B6A7432F8F16DF194773A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F4A845AFD669CB7201359017</key>
+		<key>DC05153D3F016FD941671983</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5B68F085817CA3283BBD53A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE1E433A148072E61A1E164E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -13,7 +13,7 @@
 #import "Constants.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "UserSearch.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+
 
 @interface PlayerQueue()
 @property (strong,nonatomic) NSManagedObjectContext *localContext;
@@ -35,9 +35,6 @@
         self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
         self.player=[StreamingPlayer sharedManager];
         self.localContext = [NSManagedObjectContext MR_defaultContext];
-        self.songs=[[NSMutableArray alloc]init];
-        [self.songs addObjectsFromArray:[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]]];
-        self.songs=[NSMutableArray arrayWithArray:[[NSSet setWithArray:self.songs]allObjects] ];
     }
     return self;
 }
@@ -86,23 +83,18 @@
 
 -(void)addSongToDisk:(Song *)song
 {
-  
-    
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_defaultContext];
-    SongsQueue *queue    = [SongsQueue MR_createEntityInContext:localContext];
-    queue.title=[song title];
-    queue.stream_url=[song stream_url];
-    queue.artwork_url=[song artwork_url];
-    queue.relationship=self.currentUser;
-    [self.currentUser addPlaylistSongsObject:queue];
-    
-    [localContext MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
-        if(contextDidSave){
-            DDLogVerbose(@"Successfully Saved song");
-            [self.songs addObject:song];
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"BeatportAddSongToQueue" object:nil userInfo:[song toDictionary]];
-        }
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SongsQueue *queue    = [SongsQueue MR_createEntity];
+        queue.title=[song title];
+        queue.stream_url=[song stream_url];
+        queue.artwork_url=[song artwork_url];
+        queue.relationship=self.currentUser;
+        [self.currentUser addPlaylistSongsObject:queue];
+        
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+                DDLogVerbose(@"Successfully Saved song");
+                self.addedSong=song;
+    });
 }
 -(void) removeSongFromShareQueue: (Song *)song{
     

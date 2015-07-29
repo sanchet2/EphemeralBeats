@@ -42,8 +42,9 @@
     
     //Setup Core Data
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Efemer.sqlite"];
-    [self deleteAllEntities:@"User"];
     //Retrieve User Data and Check if its the right user
+//    [User MR_truncateAll];
+//    [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
     [self checkUserState];
     [UIApplication sharedApplication].statusBarHidden = YES;
     self.window.backgroundColor = [UIColor whiteColor];

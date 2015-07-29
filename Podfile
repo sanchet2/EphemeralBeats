@@ -1,4 +1,5 @@
 pod 'ReactiveCocoa'
+pod 'BFPaperButton'
 pod 'SDWebImage'
 pod 'Firebase'
 pod 'CocoaLumberjack'

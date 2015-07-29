@@ -14,12 +14,13 @@
 #import "Song.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PlayerQueue.h"
+#import "FollowersFirebase.h"
 
 @interface SongQueueCollectionVC () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (strong,nonatomic) User *currentUser;
 @property (strong,nonatomic) UICollectionView *collectionView;
 @property (strong,nonatomic) PlayerQueue *queue;
-@property (strong,nonatomic) NSMutableArray *songArr;
+@property (strong,nonatomic) NSMutableArray *songs;
 @end
 
 @implementation SongQueueCollectionVC
@@ -28,7 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.queue=[PlayerQueue sharedManager];
-    
+    [FollowersFirebase sharedManager];
     self.view.backgroundColor=[UIColor whiteColor];
     CGRect size=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
@@ -43,19 +44,23 @@
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.collectionView];
-    self.songArr=[[NSMutableArray alloc]init];
-    [self.songArr addObjectsFromArray:self.queue.songs];
+    self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
+    self.songs=[[NSMutableArray alloc]init];
+    [self.songs addObjectsFromArray:[SongsQueue MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY relationship == %@",self.currentUser]]];
+    self.songs=[NSMutableArray arrayWithArray:[[NSSet setWithArray:self.songs]allObjects] ];
     
-    @weakify(self);
-    [[[NSNotificationCenter defaultCenter]rac_addObserverForName:@"BeatportAddSongToQueue" object:nil]subscribeNext:^(NSDictionary *dict){
-        @strongify(self);
-        NSError *err;
-        [self.songArr addObject:[[Song alloc]initWithDictionary:[dict valueForKey:@"userInfo"] error:&err]];
-        NSMutableArray *indexPathsToLoad = [NSMutableArray new];
-        [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.songArr.count-1 inSection:0]];
-        [self.collectionView insertItemsAtIndexPaths:indexPathsToLoad];
-        
+    [RACObserve(self.queue, addedSong) subscribeNext:^(Song *song){
+        if (song!=nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.songs addObject:song];
+                NSMutableArray *indexPathsToLoad = [NSMutableArray new];
+                [indexPathsToLoad addObject:[NSIndexPath indexPathForItem:self.songs.count-1 inSection:0]];
+                [self.collectionView insertItemsAtIndexPaths:indexPathsToLoad];
+            });
+        }
     }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +71,7 @@
 #pragma mark - CollectionView Methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.queue.songs.count;
+    return self.songs.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -74,7 +79,7 @@
 {
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     cell.backgroundColor=[UIColor colorWithWhite:0.8 alpha:0.7];
-    SongsQueue *song=[self.queue.songs objectAtIndex:indexPath.row];
+    SongsQueue *song=[self.songs objectAtIndex:indexPath.row];
     NSString *url=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
     NSURL *neededurl=[NSURL URLWithString:url];
     UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-1, self.view.frame.size.width/2-1)];
@@ -111,7 +116,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [self.queue playSongWithoutExtras:[self.queue.songs objectAtIndex:indexPath.row]];
+    [self.queue playSongWithoutExtras:[self.songs objectAtIndex:indexPath.row]];
     
 }
 

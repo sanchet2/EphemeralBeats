@@ -10,13 +10,14 @@
 #import "Song.h"
 #import "StreamingPlayer.h"
 #import "User.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface PlayerQueue : NSObject
 +(id) sharedManager;
 @property (strong,nonatomic) NSNumber *currentSong;
 @property (strong,nonatomic) StreamingPlayer *player;
 @property (strong,nonatomic) User *currentUser;
-@property (strong,nonatomic) NSMutableArray *songs;
+@property (strong,nonatomic) Song *addedSong;
 -(void) playSong:(Song *)song;
 -(void) addSongToShareQueue: (Song *)song;
 -(void) addSongToIncognitoQueue: (Song *)song;

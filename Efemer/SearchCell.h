@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BFPaperButton/BFPaperButton.h>
 
 @interface SearchCell : UITableViewCell
 @property (strong,nonatomic) UIImageView *bgImage;
@@ -15,4 +16,5 @@
 @property (strong,nonatomic) UIButton *incognito;
 @property (strong,nonatomic) UIButton *share;
 @property (strong,nonatomic) UIButton *play;
+
 @end
