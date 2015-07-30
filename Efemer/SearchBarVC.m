@@ -158,36 +158,16 @@
     }
     if (indexPath.row<[[self.viewModel songs]count]) {
         Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
-        if (song.artwork_url) {
-            NSString *url=song.artwork_url;
-            NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
-            NSURL *neededurl=[NSURL URLWithString:finalurl];
-            RAC(cell.bgImage,image)=[[NetworkUtilities downloadImage:neededurl] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
-            
-        }
-        else{
-            cell.bgImage.image=[self imageWithColor:[UIColor blackColor]];
-        }
+        NSString *url=song.artwork_url;
+        NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
+        NSURL *neededurl=[NSURL URLWithString:finalurl];
+        RAC(cell.bgImage,image)=[[NetworkUtilities downloadImage:neededurl] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
         cell.artist.text=song.title;
         cell.layer.shouldRasterize = YES;
         cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         
     }
     return cell;
-}
-- (UIImage *)imageWithColor:(UIColor *)color
-{
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 

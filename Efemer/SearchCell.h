@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BFPaperButton/BFPaperButton.h>
 
 @interface SearchCell : UITableViewCell
 @property (strong,nonatomic) UIImageView *bgImage;
