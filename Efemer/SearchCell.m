@@ -16,7 +16,8 @@
         self.frame=CGRectMake(0, 0, self.frame.size.width, 150);
         self.backgroundColor=[UIColor whiteColor];
         // Background image for search
-        self.bgImage= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        self.bgImage= [[ASImageNode alloc]init];
+        self.bgImage.frame=CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
         
         
          self.bgImage.autoresizingMask = UIViewContentModeScaleAspectFill;
@@ -29,8 +30,8 @@
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         [blurEffectView setFrame:CGRectMake(0, self.frame.size.height-30, self.frame.size.width, 30)];
-        [self.bgImage addSubview:blurEffectView];
-        [self.contentView addSubview:self.bgImage];
+        [self.bgImage.view addSubview:blurEffectView];
+        [self.contentView addSubview:self.bgImage.view];
         
         
         self.play = [UIButton buttonWithType:UIButtonTypeCustom];

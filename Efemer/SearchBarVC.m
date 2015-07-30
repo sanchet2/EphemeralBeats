@@ -163,8 +163,6 @@
         NSURL *neededurl=[NSURL URLWithString:finalurl];
         RAC(cell.bgImage,image)=[[NetworkUtilities downloadImage:neededurl] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
         cell.artist.text=song.title;
-        cell.layer.shouldRasterize = YES;
-        cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         
     }
     return cell;

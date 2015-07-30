@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-AsyncDisplayKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-BFPaperButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,62 +72,67 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04EA5B36C44D81AD31366506</key>
+		<key>446926440AB0D766E1EC4EAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0B0A48682D5055F662551DBB</key>
+		<key>65F4844457F66CF7D19F436E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2820D72AB5186D0AF6081A3D</key>
+		<key>674DBCA53A0025A2CDDE44ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C0BC2EA475E533603D2007D</key>
+		<key>698FAB45A0FE618AAEAC1D9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>50897D3684D29CBFE9A26169</key>
+		<key>6B2AE89945339EABBC7E93C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7135C19F3503DF00490C2386</key>
+		<key>930D01154BD49E6D452AD95F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>815C7A34B947A5863B27AD21</key>
+		<key>A26B86F245588EC4E399BB92</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1EA89D1DA8415DCE0A7B621</key>
+		<key>AEB6ECFF5288181370F47F5A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D24B6A7432F8F16DF194773A</key>
+		<key>CCF39AB36D0437ADB5C19248</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC05153D3F016FD941671983</key>
+		<key>CD93C774AD6CE1BB3B77B376</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F5B68F085817CA3283BBD53A</key>
+		<key>D720FB70EA8BF968BF801562</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE1E433A148072E61A1E164E</key>
+		<key>E64EA688539A18705DC46D52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0DE349D531CC458947D0F97</key>
 		<dict>
 			<key>primary</key>
 			<true/>

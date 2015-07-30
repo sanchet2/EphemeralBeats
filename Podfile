@@ -1,4 +1,5 @@
 pod 'ReactiveCocoa'
+pod 'AsyncDisplayKit'
 pod 'BFPaperButton'
 pod 'SDWebImage'
 pod 'Firebase'

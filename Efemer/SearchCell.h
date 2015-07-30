@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @interface SearchCell : UITableViewCell
-@property (strong,nonatomic) UIImageView *bgImage;
+@property (strong,nonatomic) ASImageNode *bgImage;
 @property (strong,nonatomic) UILabel *artist;
 @property (strong,nonatomic) UILabel *song;
 @property (strong,nonatomic) UIButton *incognito;

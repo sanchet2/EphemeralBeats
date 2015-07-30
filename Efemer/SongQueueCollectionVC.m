@@ -14,6 +14,7 @@
 #import "Song.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PlayerQueue.h"
+#import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "FollowersFirebase.h"
 
 @interface SongQueueCollectionVC () <UICollectionViewDelegate,UICollectionViewDataSource>
@@ -82,10 +83,11 @@
     SongsQueue *song=[self.songs objectAtIndex:indexPath.row];
     NSString *url=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
     NSURL *neededurl=[NSURL URLWithString:url];
-    UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/2-1, self.view.frame.size.width/2-1)];
+    ASImageNode *imgView=[[ASImageNode alloc]init];
+    imgView.frame=CGRectMake(0, 0, self.view.frame.size.width/2-1, self.view.frame.size.width/2-1);
     RAC(imgView,image)=[NetworkUtilities downloadImage:neededurl];
     
-    cell.backgroundView=imgView;
+    cell.backgroundView=imgView.view;
     cell.alpha = 0.0f;
     [UIView animateWithDuration:0.5 animations:^() {
         cell.alpha = 1.0f;

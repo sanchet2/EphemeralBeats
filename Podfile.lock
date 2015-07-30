@@ -20,6 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AsyncDisplayKit (1.2.3):
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.2.3)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.2.3)
   - BFPaperButton (2.0.18):
     - UIColor+BFPaperColors
   - CocoaLumberjack (2.0.1):
@@ -50,6 +53,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AsyncDisplayKit
   - BFPaperButton
   - CocoaLumberjack
   - Firebase
@@ -63,6 +67,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  AsyncDisplayKit: 5c8f38225f7478e39c48196cec0dd0d2ac3455ed
   BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
   CocoaLumberjack: 019d1361244274a6138c788c6cb80baabc13fb8f
   Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
