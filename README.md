@@ -1,5 +1,5 @@
 # beatport
-
+The objective of this project is to dabble in Reactive Cocoa and Magical Record and build an ephemeral music sharing player.
 1. Open beatport.xcworkspace
 2. Profit
 ![alt text][logo]
