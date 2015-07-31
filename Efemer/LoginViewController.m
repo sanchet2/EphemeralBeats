@@ -49,7 +49,7 @@
     [self.view addSubview:self.userName];
     
     self.button= [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.button setTitle:@"Show View" forState:UIControlStateNormal];
+    [self.button setTitle:@"Login" forState:UIControlStateNormal];
     self.button.frame = CGRectMake(80.0, 300.0, 160.0, 40.0);
     [self.view addSubview:self.button];
     self.navigationController.navigationBar.hidden = YES;

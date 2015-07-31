@@ -162,7 +162,15 @@
         NSString *finalurl=[url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
         NSURL *neededurl=[NSURL URLWithString:finalurl];
         RAC(cell.bgImage,image)=[[NetworkUtilities downloadImage:neededurl] takeUntil:[cell rac_signalForSelector:@selector(prepareForReuse)]];
-        cell.artist.text=song.title;
+        NSArray *titles=[song.title componentsSeparatedByString:@"-"];
+        if (titles.count>=2) {
+            cell.song.text=[titles objectAtIndex:0];
+            cell.artist.text=[titles objectAtIndex:1];
+        }
+        else{
+          cell.artist.text=song.title;
+        }
+        
         
     }
     return cell;

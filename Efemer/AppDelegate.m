@@ -23,7 +23,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import "DummyVC.h"
 @interface AppDelegate ()
 @property (strong,nonatomic) UINavigationController *navController;
 @end

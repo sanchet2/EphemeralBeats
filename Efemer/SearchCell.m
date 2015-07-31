@@ -27,11 +27,12 @@
         self.bgImage.tintColor=[UIColor blackColor];
         self.bgImage.contentMode=UIViewContentModeScaleAspectFill;
         self.bgImage.tintColor=[UIColor blackColor];
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        [blurEffectView setFrame:CGRectMake(0, self.frame.size.height-30, self.frame.size.width, 30)];
-        [self.bgImage.view addSubview:blurEffectView];
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        [blurEffectView setFrame:CGRectMake(0, self.frame.size.height-70 , screenRect.size.width, 70)];
         [self.contentView addSubview:self.bgImage.view];
+        [self.contentView addSubview:blurEffectView];
         
         
         self.play = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -40,23 +41,28 @@
         self.backgroundColor=[UIColor colorWithWhite:0.1 alpha:0.8];
         
         
-        self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height-30, self.frame.size.width-5, 30)];
+        self.artist = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height-60, self.frame.size.width-5, 30)];
         self.artist.textColor = [UIColor whiteColor];
-        [self.artist setFont:[UIFont boldSystemFontOfSize:16]];
+        [self.artist setFont:[UIFont fontWithName:@"Future Bk BT" size:25]];
         [self.contentView addSubview:self.artist];
         
-        self.share = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.share setTitle:@"Add" forState:UIControlStateNormal];
-        self.share.frame = CGRectMake(self.frame.size.width-40, self.frame.size.height/2, 40.0, 40.0);
-        [self.share setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.contentView addSubview:self.share];
+        self.song = [[UILabel alloc] initWithFrame:CGRectMake(5, self.frame.size.height-30, self.frame.size.width-5, 30)];
+        self.song.textColor = [UIColor whiteColor];
+        [self.song setFont:[UIFont fontWithName:@"Future Bk BT" size:25]];
+        [self.contentView addSubview:self.song];
         
-        
-        self.incognito=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.incognito setTitle:@"Incog" forState:UIControlStateNormal];
-        self.incognito.frame = CGRectMake(self.frame.size.width-80, self.frame.size.height/2, 40.0, 40.0);
-        [self.incognito setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.contentView addSubview:self.incognito];
+//        self.share = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        [self.share setTitle:@"Add" forState:UIControlStateNormal];
+//        self.share.frame = CGRectMake(self.frame.size.width-40, self.frame.size.height/2, 40.0, 40.0);
+//        [self.share setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [self.contentView addSubview:self.share];
+//        
+//        
+//        self.incognito=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        [self.incognito setTitle:@"Incog" forState:UIControlStateNormal];
+//        self.incognito.frame = CGRectMake(self.frame.size.width-80, self.frame.size.height/2, 40.0, 40.0);
+//        [self.incognito setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [self.contentView addSubview:self.incognito];
         
     }
     return self;
