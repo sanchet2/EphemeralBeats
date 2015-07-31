@@ -23,6 +23,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "DummyVC.h"
 @interface AppDelegate ()
 @property (strong,nonatomic) UINavigationController *navController;
 @end
@@ -140,7 +141,9 @@
     
     SongQueueCollectionVC *playlistVC=[[SongQueueCollectionVC alloc]init];
     swipeVC.rightViewController=playlistVC;
-    
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, self.window.frame.size.height-70, self.window.frame.size.width,70)];
+    view.backgroundColor=[UIColor blackColor];
+    [swipeVC.view addSubview:view];
     [self.navController presentViewController:swipeVC animated:YES completion:nil];
     
 }

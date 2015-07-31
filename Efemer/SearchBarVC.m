@@ -52,7 +52,7 @@
     self.searchQuery.delegate=self;
     [self.view addSubview:self.searchQuery];
     
-    self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-70) style:UITableViewStyleGrouped];
     self.searchTable.delegate=self;
     self.searchTable.dataSource=self;
     self.searchTable.backgroundColor=[UIColor clearColor];
