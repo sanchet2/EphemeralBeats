@@ -21,6 +21,8 @@
 #import "Constants.h"
 #import "SongsQueue.h"
 #import <AVFoundation/AVFoundation.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 @interface AppDelegate ()
 @property (strong,nonatomic) UINavigationController *navController;
 @end
@@ -33,7 +35,7 @@
     
     //setup logging
     [self setupCocoaLumberjack];
-    
+    [Fabric with:@[CrashlyticsKit]];
     
     //Login Controller
     LoginViewController *loginVC=[[LoginViewController alloc]init];

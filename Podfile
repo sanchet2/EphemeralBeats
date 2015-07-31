@@ -1,4 +1,6 @@
 pod 'ReactiveCocoa'
+pod 'Fabric'
+pod 'Crashlytics'
 pod 'AsyncDisplayKit'
 pod 'BFPaperButton'
 pod 'SDWebImage'

@@ -33,6 +33,10 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.0.1):
     - CocoaLumberjack/Default
+  - Crashlytics (3.1.0)
+  - Fabric (1.2.8):
+    - Fabric/Base (= 1.2.8)
+  - Fabric/Base (1.2.8)
   - Firebase (2.3.3)
   - JSONModel (1.1.0)
   - MagicalRecord (2.3.0)
@@ -56,6 +60,8 @@ DEPENDENCIES:
   - AsyncDisplayKit
   - BFPaperButton
   - CocoaLumberjack
+  - Crashlytics
+  - Fabric
   - Firebase
   - JSONModel
   - MagicalRecord
@@ -70,6 +76,8 @@ SPEC CHECKSUMS:
   AsyncDisplayKit: 5c8f38225f7478e39c48196cec0dd0d2ac3455ed
   BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
   CocoaLumberjack: 019d1361244274a6138c788c6cb80baabc13fb8f
+  Crashlytics: ef9a58a4e806b316a1748c06432f6f847ba09ac6
+  Fabric: a9eabe53915e9f1db55a84dd2838737928675878
   Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
