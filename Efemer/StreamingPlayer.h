@@ -18,6 +18,8 @@
 -(void)playSong:(Song *)song;
 -(void)pause;
 -(void)stop;
+-(void)resume;
 -(void)dragToPosition:(double)position;
 -(void)addSongToQueue:(Song *)song;
+-(BOOL)isPlaying;
 @end

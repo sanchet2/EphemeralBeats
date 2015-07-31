@@ -30,7 +30,7 @@
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
         UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         CGRect screenRect = [[UIScreen mainScreen] bounds];
-        [blurEffectView setFrame:CGRectMake(0, self.frame.size.height-70 , screenRect.size.width, 70)];
+        [blurEffectView setFrame:CGRectMake(0, self.frame.size.height-62 , screenRect.size.width, 62)];
         [self.contentView addSubview:self.bgImage.view];
         [self.contentView addSubview:blurEffectView];
         

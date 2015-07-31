@@ -37,6 +37,9 @@
 -(void)playSong:(Song *)song{
     [self.audioPlayer play:[NSString stringWithFormat:@"%@?client_id=a9010b5801cb1b535f9783959e8a5bbb",song.stream_url]];
 }
+-(void)resume{
+    [self.audioPlayer resume];
+}
 -(void)pause{
     [self.audioPlayer pause];
 }
@@ -49,7 +52,9 @@
 -(void)addSongToQueue:(Song *)song{
     [self.audioPlayer queue:[NSString stringWithFormat:@"%@?client_id=a9010b5801cb1b535f9783959e8a5bbb",song.stream_url]];
 }
-
+-(BOOL)isPlaying{
+    return self.audioPlayer.state==STKAudioPlayerStatePlaying;
+}
 #pragma mark - Audio player delegates
 
 -(void)audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode {

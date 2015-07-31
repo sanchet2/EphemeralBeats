@@ -23,6 +23,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "StreamingPlayer.h"
 @interface AppDelegate ()
 @property (strong,nonatomic) UINavigationController *navController;
 @end
@@ -140,11 +141,28 @@
     
     SongQueueCollectionVC *playlistVC=[[SongQueueCollectionVC alloc]init];
     swipeVC.rightViewController=playlistVC;
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, self.window.frame.size.height-70, self.window.frame.size.width,70)];
-    view.backgroundColor=[UIColor blackColor];
-    [swipeVC.view addSubview:view];
+    
+    CurrentSongSwipeVC *playview=[[CurrentSongSwipeVC alloc]init];
+    playview.view.frame=CGRectMake(0, self.window.frame.size.height-70, self.window.frame.size.width, 70);
+    [swipeVC addChildViewController:playview];
+    [swipeVC.view addSubview:playview.view];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame = CGRectMake(0, self.window.frame.size.height-60, 70, 70);
+    [btn setTitle:@"Pause" forState:UIControlStateNormal];\
+    [btn addTarget:self
+               action:@selector(pause)
+     forControlEvents:UIControlEventTouchUpInside];
+    [swipeVC.view addSubview:btn];
     [self.navController presentViewController:swipeVC animated:YES completion:nil];
     
+}
+-(void)pause{
+    if ([[StreamingPlayer sharedManager]isPlaying]) {
+        [[StreamingPlayer sharedManager]pause];
+    }
+    else{
+        [[StreamingPlayer sharedManager]resume];
+    }
 }
 
 
