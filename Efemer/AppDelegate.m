@@ -146,13 +146,7 @@
     playview.view.frame=CGRectMake(0, self.window.frame.size.height-70, self.window.frame.size.width, 70);
     [swipeVC addChildViewController:playview];
     [swipeVC.view addSubview:playview.view];
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btn.frame = CGRectMake(0, self.window.frame.size.height-60, 70, 70);
-    [btn setTitle:@"Pause" forState:UIControlStateNormal];\
-    [btn addTarget:self
-               action:@selector(pause)
-     forControlEvents:UIControlEventTouchUpInside];
-    [swipeVC.view addSubview:btn];
+    
     [self.navController presentViewController:swipeVC animated:YES completion:nil];
     
 }

@@ -19,7 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor=[UIColor colorWithWhite:0.1 alpha:0.5];
+    self.view.backgroundColor=[UIColor colorWithWhite:0.1 alpha:0.9];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame = CGRectMake(0, 0, 70, 70);
+    [btn setTitle:@"Pause" forState:UIControlStateNormal];\
+    [btn addTarget:self
+            action:@selector(pause)
+  forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
     
 }
 
