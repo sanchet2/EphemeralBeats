@@ -98,6 +98,11 @@
     
     swipeVC.rightViewController=songCollectionView;
     
+    
+    CurrentSongSwipeVC *playview=[[CurrentSongSwipeVC alloc]init];
+    playview.view.frame=CGRectMake(0, self.view.frame.size.height-70, self.view.frame.size.width, 70);
+    [swipeVC addChildViewController:playview];
+    [swipeVC.view addSubview:playview.view];
     [self.navigationController presentViewController:swipeVC animated:YES completion:nil];
     
 }

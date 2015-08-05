@@ -22,4 +22,5 @@
 -(void)dragToPosition:(double)position;
 -(void)addSongToQueue:(Song *)song;
 -(BOOL)isPlaying;
+-(void)forward;
 @end

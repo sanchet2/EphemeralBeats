@@ -55,6 +55,9 @@
 -(BOOL)isPlaying{
     return self.audioPlayer.state==STKAudioPlayerStatePlaying;
 }
+-(void)forward{
+    [self.audioPlayer seekToTime:self.audioPlayer.duration];
+}
 #pragma mark - Audio player delegates
 
 -(void)audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode {
