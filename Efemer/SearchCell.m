@@ -51,18 +51,18 @@
         [self.song setFont:[UIFont fontWithName:@"Future Bk BT" size:25]];
         [self.contentView addSubview:self.song];
         
-//        self.share = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//        [self.share setTitle:@"Add" forState:UIControlStateNormal];
-//        self.share.frame = CGRectMake(self.frame.size.width-40, self.frame.size.height/2, 40.0, 40.0);
-//        [self.share setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        [self.contentView addSubview:self.share];
+        self.share = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.share setTitle:@"Add" forState:UIControlStateNormal];
+        self.share.frame = CGRectMake(self.frame.size.width-40, self.frame.size.height/2-30, 40.0, 40.0);
+        [self.share setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.contentView addSubview:self.share];
+//
 //        
-//        
-//        self.incognito=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-//        [self.incognito setTitle:@"Incog" forState:UIControlStateNormal];
-//        self.incognito.frame = CGRectMake(self.frame.size.width-80, self.frame.size.height/2, 40.0, 40.0);
-//        [self.incognito setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        [self.contentView addSubview:self.incognito];
+        self.incognito=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.incognito setTitle:@"Incog" forState:UIControlStateNormal];
+        self.incognito.frame = CGRectMake(self.frame.size.width-80, self.frame.size.height/2-30, 40.0, 40.0);
+        [self.incognito setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.contentView addSubview:self.incognito];
         
     }
     return self;

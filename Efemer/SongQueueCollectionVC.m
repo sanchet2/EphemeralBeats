@@ -42,7 +42,7 @@
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
     self.collectionView.backgroundView.backgroundColor=[UIColor whiteColor];
-    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.collectionView];
     self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
