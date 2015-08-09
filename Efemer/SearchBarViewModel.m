@@ -29,16 +29,6 @@
 {
     if (self=[super init]) {
         RAC(self,songs)=[self addJsonToModel];
-        [[self addJsonToModel]subscribeNext:^(NSArray *songs){
-            RACSignal *sig=[[songs.rac_sequence map:^RACSignal *(Song *song){
-                NSString *finalurl=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
-                NSURL *neededurl=[NSURL URLWithString:finalurl];
-                return [NetworkUtilities downloadImage:neededurl];
-            }]signal];
-            [[sig flatten] subscribeNext:^(UIImage *img){
-                
-            }];
-        }];
     }
     return self;
 }

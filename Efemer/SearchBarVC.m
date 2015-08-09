@@ -33,6 +33,7 @@
         
         self.viewModel=[SearchBarViewModel sharedManager];
         self.player=[PlayerQueue sharedManager];
+        [[SDImageCache sharedImageCache]setMaxMemoryCountLimit:30];
     }
     return self;
     
@@ -76,6 +77,13 @@
                                  
                              }];
         });
+        for(Song *song in songs)
+        {
+            NSString *finalurl=[song.artwork_url stringByReplacingOccurrencesOfString:@"large" withString:@"t300x300"];
+            NSURL *neededurl=[NSURL URLWithString:finalurl];
+            [[NetworkUtilities downloadImage:neededurl]subscribeCompleted:^{DDLogVerbose(@"more cells");}];
+        }
+        
     }];
     [self.searchQuery.rac_textSignal subscribeNext:^(NSString *input){
         @strongify(self);
