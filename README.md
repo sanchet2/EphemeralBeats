@@ -1,6 +1,18 @@
-# beatport
+Ephemeral Beats
+====================
+
 1. Open beatport.xcworkspace
 2. Profit
-![alt text][logo]
 
-[logo]: http://frenchculture.org/sites/default/files/david-guetta-sues-over-parody-youredm-1_0.jpg "Logo Title Text 2"
+Purpose
+---------------------
+
+> To explore the world of functional reactive programming and magical record.
+
+> Interact with the Soundcloud API to stream music and get metadata. Dont abuse the key please. 
+
+> Build something cool that interacts with my own server
+
+
+
+
