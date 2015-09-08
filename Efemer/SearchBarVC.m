@@ -33,7 +33,7 @@
         
         self.viewModel=[SearchBarViewModel sharedManager];
         self.player=[PlayerQueue sharedManager];
-        [[SDImageCache sharedImageCache]setMaxMemoryCountLimit:30];
+        [[SDImageCache sharedImageCache]setMaxMemoryCountLimit:150];
     }
     return self;
     
@@ -53,7 +53,7 @@
     self.searchQuery.delegate=self;
     [self.view addSubview:self.searchQuery];
     
-    self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-90) style:UITableViewStyleGrouped];
+    self.searchTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     self.searchTable.delegate=self;
     self.searchTable.dataSource=self;
     self.searchTable.backgroundColor=[UIColor clearColor];
@@ -121,14 +121,7 @@
 {
     return 150;
 }
-//- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath {
-//    Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
-//    [self.player playSong:song];
-//}
-//-(void) tableView: (UITableView *) tableView accessoryButtonTappedForRowWithIndexPath: (NSIndexPath *) indexPath{
-//    Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
-//    [self.player playSong:song];
-// }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *simpleTableIdentifier = @"beatport cell";

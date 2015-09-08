@@ -32,7 +32,7 @@
     self.queue=[PlayerQueue sharedManager];
     [FollowersFirebase sharedManager];
     self.view.backgroundColor=[UIColor whiteColor];
-    CGRect size=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-70);
+    CGRect size=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
     layout.minimumInteritemSpacing=0.5f;
     layout.minimumLineSpacing=0.8f;

@@ -10,8 +10,6 @@
 #import "LoginViewController.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "NetworkUtilities.h"
-#import "User.h"
-#import "LoginSuccess.h"
 #import <RNSwipeViewController/RNSwipeViewController.h>
 #import "SearchBarVC.h"
 #import "SearchUsersVC.h"
@@ -19,11 +17,11 @@
 #import "CurrentSongSwipeVC.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "Constants.h"
-#import "SongsQueue.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "StreamingPlayer.h"
+#import "User.h"
 @interface AppDelegate ()
 @property (strong,nonatomic) UINavigationController *navController;
 @end
@@ -48,7 +46,7 @@
     //Retrieve User Data and Check if its the right user
 //    [User MR_truncateAll];
 //    [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
-    [self checkUserState];
+    
     [UIApplication sharedApplication].statusBarHidden = YES;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -95,37 +93,7 @@
     [[NSManagedObjectContext MR_defaultContext] save:&error];
 }
 
--(void)checkUserState{
-    User *user=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
-    
-    if(user)
-    {
-        NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
-        string=[string stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-        
-        NSDictionary *session=@{@"session":[user session]};
-        @weakify(self)
-            [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
-                @strongify(self);
-                NSError* err = nil;
-                LoginSuccess *success=[[LoginSuccess alloc] initWithData:value error:&err];
-                if ([success.status isEqualToString:@"continue"])
-                {
-                    DDLogVerbose(@"Successful Login");
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        DDLogVerbose(@"Loading Search View Nav Controller");
-                        [self goToNewViewController];
-                    });
-                }
-                else{
-                    [User MR_truncateAll];
-                    [SongsQueue MR_truncateAll];
-                }
-            }];
-        
-   
-    }
-}
+
 -(void)goToNewViewController{
     
     RNSwipeViewController *swipeVC=[[RNSwipeViewController alloc]init];
@@ -141,11 +109,6 @@
     
     SongQueueCollectionVC *playlistVC=[[SongQueueCollectionVC alloc]init];
     swipeVC.rightViewController=playlistVC;
-    
-    CurrentSongSwipeVC *playview=[[CurrentSongSwipeVC alloc]init];
-    playview.view.frame=CGRectMake(0, self.window.frame.size.height-40, self.window.frame.size.width, 40);
-    [swipeVC addChildViewController:playview];
-    [swipeVC.view addSubview:playview.view];
     
     [self.navController presentViewController:swipeVC animated:YES completion:nil];
     

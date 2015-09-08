@@ -36,6 +36,7 @@
 		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
 		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
 		C7DCE1351B4E50C50021D1D1 /* SearchUsersViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DCE1341B4E50C50021D1D1 /* SearchUsersViewModel.m */; };
+		C7EADEF31B9E9C4A0077B56D /* slideshare.png in Resources */ = {isa = PBXBuildFile; fileRef = C7EADEF21B9E9C4A0077B56D /* slideshare.png */; };
 		C7F480001B51A25700010772 /* UserSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F47FFF1B51A25700010772 /* UserSearch.m */; };
 		C7F480071B51D25300010772 /* FirebaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F480061B51D25300010772 /* FirebaseHelper.m */; };
 		C7F4DCB11B4FA3D700A2BEBF /* FollowersFirebase.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F4DCB01B4FA3D700A2BEBF /* FollowersFirebase.m */; };
@@ -112,6 +113,7 @@
 		C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewModel.m; sourceTree = "<group>"; };
 		C7DCE1331B4E50C50021D1D1 /* SearchUsersViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUsersViewModel.h; sourceTree = "<group>"; };
 		C7DCE1341B4E50C50021D1D1 /* SearchUsersViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUsersViewModel.m; sourceTree = "<group>"; };
+		C7EADEF21B9E9C4A0077B56D /* slideshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideshare.png; sourceTree = "<group>"; };
 		C7F47FFE1B51A25700010772 /* UserSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSearch.h; sourceTree = "<group>"; };
 		C7F47FFF1B51A25700010772 /* UserSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSearch.m; sourceTree = "<group>"; };
 		C7F480051B51D25300010772 /* FirebaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseHelper.h; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				C727FDB71B2546F500AF68A5 /* Utilities */,
 				C72FA2671B1C149D00BCBE19 /* ViewController.m */,
 				C72FA2661B1C149D00BCBE19 /* ViewController.h */,
+				C7EADEF21B9E9C4A0077B56D /* slideshare.png */,
 				C72FA2691B1C149D00BCBE19 /* Main.storyboard */,
 				C72FA26C1B1C149D00BCBE19 /* Images.xcassets */,
 				C72FA26E1B1C149D00BCBE19 /* LaunchScreen.xib */,
@@ -483,6 +486,7 @@
 				C72FA26B1B1C149D00BCBE19 /* Main.storyboard in Resources */,
 				C72EA7BC1B60B7ED0007D93F /* placeholder.png in Resources */,
 				C72FA2701B1C149D00BCBE19 /* LaunchScreen.xib in Resources */,
+				C7EADEF31B9E9C4A0077B56D /* slideshare.png in Resources */,
 				C72FA26D1B1C149D00BCBE19 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

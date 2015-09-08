@@ -34,7 +34,7 @@
     {
         self.currentUser=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
         self.player=[StreamingPlayer sharedManager];
-        self.localContext = [NSManagedObjectContext MR_defaultContext];
+        self.localContext = [NSManagedObjectContext MR_contextWithParent:[NSManagedObjectContext MR_defaultContext]];
     }
     return self;
 }
@@ -84,12 +84,13 @@
 -(void)addSongToDisk:(Song *)song
 {
     dispatch_async(dispatch_get_main_queue(), ^{
+        User *needed=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
         SongsQueue *queue    = [SongsQueue MR_createEntity];
         queue.title=[song title];
         queue.stream_url=[song stream_url];
         queue.artwork_url=[song artwork_url];
-        queue.relationship=self.currentUser;
-        [self.currentUser addPlaylistSongsObject:queue];
+        queue.relationship=needed;
+        [needed addPlaylistSongsObject:queue];
         
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
                 DDLogVerbose(@"Successfully Saved song");

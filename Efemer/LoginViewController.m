@@ -15,6 +15,12 @@
 #import "SongQueueCollectionVC.h"
 #import "CurrentSongSwipeVC.h"
 #import "NetworkUtilities.h"
+#import "User.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import "LoginSuccess.h"
+#import "Constants.h"
+#import "SongsQueue.h"
+
 
 @interface LoginViewController ()
 @property (nonatomic,strong) UITextField *userName;
@@ -41,7 +47,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    
+    [self checkUserState];
     self.userName= [[UITextField alloc] initWithFrame:CGRectMake(80, 200, 200, 40)];
     self.userName.textColor = [UIColor colorWithRed:0/256.0 green:84/256.0 blue:129/256.0 alpha:1.0];
     self.userName.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
@@ -61,6 +67,37 @@
             [self goToNewViewController];
         };
     }];
+}
+-(void)checkUserState{
+    User *user=[User MR_findFirstOrderedByAttribute:@"timestamp" ascending:NO];
+    
+    if(user)
+    {
+        NSString *string=[NSString stringWithFormat:@"http://104.236.188.213:3000/user/%@",[user username]];
+        string=[string stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        
+        NSDictionary *session=@{@"session":[user session]};
+        @weakify(self)
+        [[NetworkUtilities postJsonToUrl:session url:string]subscribeNext:^(id value){
+            @strongify(self);
+            NSError* err = nil;
+            LoginSuccess *success=[[LoginSuccess alloc] initWithData:value error:&err];
+            if ([success.status isEqualToString:@"continue"])
+            {
+                DDLogVerbose(@"Successful Login");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    DDLogVerbose(@"Loading Search View Nav Controller");
+                    [self goToNewViewController];
+                });
+            }
+            else{
+                [User MR_truncateAll];
+                [SongsQueue MR_truncateAll];
+            }
+        }];
+        
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,11 +135,6 @@
     
     swipeVC.rightViewController=songCollectionView;
     
-    
-    CurrentSongSwipeVC *playview=[[CurrentSongSwipeVC alloc]init];
-    playview.view.frame=CGRectMake(0, self.view.frame.size.height-30, self.view.frame.size.width, 30);
-    [swipeVC addChildViewController:playview];
-    [swipeVC.view addSubview:playview.view];
     [self.navigationController presentViewController:swipeVC animated:YES completion:nil];
     
 }

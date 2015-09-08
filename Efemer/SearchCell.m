@@ -13,6 +13,8 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        [self addGestureRecognizer:tapGesture];
         self.frame=CGRectMake(0, 0, self.frame.size.width, 150);
         self.backgroundColor=[UIColor whiteColor];
         // Background image for search
@@ -52,14 +54,16 @@
         [self.contentView addSubview:self.song];
         
         self.share = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.share setTitle:@"Add" forState:UIControlStateNormal];
+        [self.share setImage:[UIImage imageNamed:@"slideshare"] forState:UIControlStateNormal];
+        self.share.tintColor=[UIColor whiteColor];
         self.share.frame = CGRectMake(self.frame.size.width-40, self.frame.size.height/2-30, 40.0, 40.0);
         [self.share setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
+        
         [self.contentView addSubview:self.share];
-//
-//        
         self.incognito=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.incognito setTitle:@"Incog" forState:UIControlStateNormal];
+        [self.incognito setImage:[UIImage imageNamed:@"incognito"] forState:UIControlStateNormal];
+        self.incognito.tintColor=[UIColor whiteColor];
         self.incognito.frame = CGRectMake(self.frame.size.width-80, self.frame.size.height/2-30, 40.0, 40.0);
         [self.incognito setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.contentView addSubview:self.incognito];
@@ -68,6 +72,10 @@
     return self;
 }
 
+-(void)tap{
+    NSLog(@"tap");
+
+}
 - (void)setFrame:(CGRect)frame {
     frame.origin.y += 1;
     frame.size.height -=  1;
