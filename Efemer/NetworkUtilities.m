@@ -117,7 +117,7 @@
             }
         }];
             return nil;
-        }] deliverOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityHigh]];
+        }] deliverOnMainThread];
         return [signal
                 catch:^(NSError *error) {
                     NSLog(@"Error doing thing! %@", error);

@@ -31,7 +31,6 @@
 		C79FE45A1B4B9B61003DD88D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C79FE4591B4B9B61003DD88D /* User.m */; };
 		C79FE45D1B4B9B62003DD88D /* Followee.m in Sources */ = {isa = PBXBuildFile; fileRef = C79FE45C1B4B9B62003DD88D /* Followee.m */; };
 		C79FE4601B4B9B62003DD88D /* SongsQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C79FE45F1B4B9B62003DD88D /* SongsQueue.m */; };
-		C7B7B6D91B2AADFD00403609 /* SongQueueViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */; };
 		C7B7B6DC1B2AAF7500403609 /* CurrentSongSwipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */; };
 		C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C0D1B1ED10C00657D55 /* SearchBarVC.m */; };
 		C7D52C121B1ED4C000657D55 /* SearchBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D52C111B1ED4C000657D55 /* SearchBarViewModel.m */; };
@@ -101,8 +100,6 @@
 		C79FE45E1B4B9B62003DD88D /* SongsQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsQueue.h; sourceTree = "<group>"; };
 		C79FE45F1B4B9B62003DD88D /* SongsQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsQueue.m; sourceTree = "<group>"; };
 		C79FE4611B4B9BEE003DD88D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		C7B7B6D71B2AADFD00403609 /* SongQueueViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongQueueViewModel.h; sourceTree = "<group>"; };
-		C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongQueueViewModel.m; sourceTree = "<group>"; };
 		C7B7B6DA1B2AAF7500403609 /* CurrentSongSwipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentSongSwipeVC.h; sourceTree = "<group>"; };
 		C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentSongSwipeVC.m; sourceTree = "<group>"; };
 		C7D359071B2CBA8A006096DA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -214,8 +211,6 @@
 				C727FDB31B24188F00AF68A5 /* SongQueueCollectionVC.m */,
 				C7B7B6DA1B2AAF7500403609 /* CurrentSongSwipeVC.h */,
 				C7B7B6DB1B2AAF7500403609 /* CurrentSongSwipeVC.m */,
-				C7B7B6D71B2AADFD00403609 /* SongQueueViewModel.h */,
-				C7B7B6D81B2AADFD00403609 /* SongQueueViewModel.m */,
 			);
 			name = DiscoverPlaylistVC;
 			sourceTree = "<group>";
@@ -562,7 +557,6 @@
 				C7D52C0E1B1ED10C00657D55 /* SearchBarVC.m in Sources */,
 				C727FDAF1B240A9000AF68A5 /* SearchUsersVC.m in Sources */,
 				C79FE45A1B4B9B61003DD88D /* User.m in Sources */,
-				C7B7B6D91B2AADFD00403609 /* SongQueueViewModel.m in Sources */,
 				C727FDA81B22E1AF00AF68A5 /* StreamingPlayer.m in Sources */,
 				C7DCE1351B4E50C50021D1D1 /* SearchUsersViewModel.m in Sources */,
 				C7F523381B3BD63300C40672 /* FirstLoginUser.m in Sources */,
@@ -717,7 +711,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Efemer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Beatport;
 				PROVISIONING_PROFILE = "";
@@ -742,7 +736,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Efemer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Beatport;
 				PROVISIONING_PROFILE = "";

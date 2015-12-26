@@ -66,6 +66,7 @@
         DDLogInfo(@"New Song List");
         dispatch_async(dispatch_get_main_queue(), ^{
             @strongify(self);
+            [self.searchTable setContentOffset:CGPointZero animated:YES];
             [UIView animateWithDuration:0.5
                                   delay:0.1
                                 options: UIViewAnimationOptionCurveEaseIn
@@ -145,15 +146,6 @@
             DDLogVerbose(@"INCOGNITO %ld",(long)indexPath.row);
             Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
             [self.player addSongToIncognitoQueue:song];
-        }];
-        
-        [[cell.play rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(UIButton *sender){
-            @strongify(self);
-            CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.searchTable];
-            NSIndexPath *indexPath = [self.searchTable indexPathForRowAtPoint:buttonPosition];
-            DDLogVerbose(@"PLAY %ld",(long)indexPath.row);
-            Song *song=[[self.viewModel songs]objectAtIndex:indexPath.row];
-            [self.player playSong:song];
         }];
         
     }
